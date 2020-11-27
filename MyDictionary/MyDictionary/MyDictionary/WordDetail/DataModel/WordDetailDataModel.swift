@@ -9,4 +9,10 @@ import Foundation
 
 final class WordDetailDataModel {
     
+    let wordModel: WordModel
+    
+    init(wordModel: WordModel) {
+        self.wordModel = wordModel
+    }
+    
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct RootView {
  
     static var view: some View {
-        return WordListModule.module
+        return WordListModule.init(sender: nil).module
     }
     
 }

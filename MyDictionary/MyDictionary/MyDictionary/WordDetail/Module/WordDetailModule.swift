@@ -9,12 +9,19 @@ import SwiftUI
 
 final class WordDetailModule {
     
+    var sender: Any?
+    
+    init(sender: Any?) {
+        self.sender = sender
+    }
+    
 }
 
 extension WordDetailModule {
     
-    static var module: some View {
-        let dataModel = WordDetailDataModel.init()
+    var module: some View {
+        guard let model = sender as? WordModel else { fatalError("Impossible Cast To \(WordModel.self)") }
+        let dataModel = WordDetailDataModel.init(wordModel: model)
         let router = MYWordDetailRouter.init()
         let interactor = MYWordDetailInteractor.init(dataModel: dataModel)
         let presenter = MYWordDetailPresenter(interactor: interactor, router: router)

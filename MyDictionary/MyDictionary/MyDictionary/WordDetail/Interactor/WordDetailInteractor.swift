@@ -8,12 +8,12 @@
 import Foundation
 
 protocol WordDetailInteractor {
-    
+    var dataModel: WordDetailDataModel { get }
 }
 
 final class MYWordDetailInteractor: WordDetailInteractor {
     
-    fileprivate let dataModel: WordDetailDataModel
+    let dataModel: WordDetailDataModel
     
     init(dataModel: WordDetailDataModel) {
         self.dataModel = dataModel

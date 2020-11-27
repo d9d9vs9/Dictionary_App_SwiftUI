@@ -16,7 +16,8 @@ struct WordDetailView: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(presenter.wordModel.word)
+            .onDisappear { debugPrint("onDisappear", String(describing: WordDetailView.self)) }
     }
     
 }
@@ -24,7 +25,7 @@ struct WordDetailView: View {
 struct WordDetailView_Previews: PreviewProvider {
     
     static var previews: some View {
-        return WordDetailModule.module
+        return WordDetailModule.init(sender: WordModel.mock.first!).module
     }
     
 }

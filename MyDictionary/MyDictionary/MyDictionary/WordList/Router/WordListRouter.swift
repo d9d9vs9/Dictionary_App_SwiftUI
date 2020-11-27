@@ -5,12 +5,16 @@
 //  Created by Admin on 27.11.2020.
 //
 
-import Foundation
+import SwiftUI
 
-protocol WordListRouter {
-
+final class WordListRouter {
+    
 }
 
-final class MYWordListRouter: WordListRouter {
-    
+extension WordListRouter {
+
+    func makeWordDetailView(for word: WordModel) -> some View {
+        return WordDetailModule.init(sender: word).module
+    }
+
 }

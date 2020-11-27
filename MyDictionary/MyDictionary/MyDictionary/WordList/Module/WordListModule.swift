@@ -9,13 +9,19 @@ import SwiftUI
 
 final class WordListModule {
     
+    var sender: Any?
+    
+    init(sender: Any?) {
+        self.sender = sender
+    }
+    
 }
 
 extension WordListModule {
     
-    static var module: some View {
+    var module: some View {
         let dataModel = WordListDataModel.init()
-        let router = MYWordListRouter.init()
+        let router = WordListRouter.init()
         let interactor = MYWordListInteractor.init(dataModel: dataModel)
         let presenter = MYWordListPresenter(interactor: interactor, router: router)
         let view = WordListView.init(presenter: presenter)

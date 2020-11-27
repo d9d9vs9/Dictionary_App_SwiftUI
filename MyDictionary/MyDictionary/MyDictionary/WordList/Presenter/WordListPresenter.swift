@@ -13,7 +13,7 @@ protocol WordListPresenter: ObservableObject {
 }
 
 final class MYWordListPresenter: WordListPresenter {
-
+    
     @Published var words: [WordModel] = []
     
     fileprivate let interactor: WordListInteractor
@@ -25,8 +25,8 @@ final class MYWordListPresenter: WordListPresenter {
         self.router = router
         
         interactor.dataModel.$words
-          .assign(to: \.words, on: self)
-          .store(in: &cancellables)
+            .assign(to: \.words, on: self)
+            .store(in: &cancellables)
         
     }
     
@@ -35,13 +35,23 @@ final class MYWordListPresenter: WordListPresenter {
 }
 
 extension MYWordListPresenter {
-
+    
     func makeAddNewButton() -> some View {
         Button(action: addNewWord) {
             Image(systemName: "plus")
         }
     }
-        
+    
+}
+
+extension MYWordListPresenter {
+    
+    func linkBuilder<Content: View>(for word: WordModel, @ViewBuilder content: () -> Content) -> some View {
+        NavigationLink(destination: router.makeWordDetailView(for: word)) {
+            content()
+        }
+    }
+    
 }
 
 fileprivate extension MYWordListPresenter {
