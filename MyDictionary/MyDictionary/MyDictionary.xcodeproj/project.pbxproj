@@ -16,6 +16,7 @@
 		84BA37A225716B5700C59D90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BA37A025716B5700C59D90 /* LaunchScreen.storyboard */; };
 		84BA37AD25716B5700C59D90 /* MyDictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA37AC25716B5700C59D90 /* MyDictionaryTests.swift */; };
 		84BA37B825716B5800C59D90 /* MyDictionaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA37B725716B5800C59D90 /* MyDictionaryUITests.swift */; };
+		84BA37E82571740F00C59D90 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA37E72571740F00C59D90 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		84BA37B325716B5800C59D90 /* MyDictionaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDictionaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA37B725716B5800C59D90 /* MyDictionaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDictionaryUITests.swift; sourceTree = "<group>"; };
 		84BA37B925716B5800C59D90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84BA37E72571740F00C59D90 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +103,8 @@
 		84BA379125716B5100C59D90 /* MyDictionary */ = {
 			isa = PBXGroup;
 			children = (
-				84BA379225716B5100C59D90 /* AppDelegate.swift */,
-				84BA379425716B5100C59D90 /* SceneDelegate.swift */,
-				84BA379625716B5100C59D90 /* ContentView.swift */,
-				84BA379B25716B5600C59D90 /* Assets.xcassets */,
-				84BA37A025716B5700C59D90 /* LaunchScreen.storyboard */,
-				84BA37A325716B5700C59D90 /* Info.plist */,
-				84BA379825716B5100C59D90 /* MyDictionary.xcdatamodeld */,
+				84BA37D525716FED00C59D90 /* CoreData */,
+				84BA37D125716FE400C59D90 /* Resources */,
 				84BA379D25716B5600C59D90 /* Preview Content */,
 			);
 			path = MyDictionary;
@@ -137,6 +134,92 @@
 				84BA37B925716B5800C59D90 /* Info.plist */,
 			);
 			path = MyDictionaryUITests;
+			sourceTree = "<group>";
+		};
+		84BA37D125716FE400C59D90 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84BA37DF2571705500C59D90 /* LaunchScreen */,
+				84BA37DE2571704B00C59D90 /* Assets */,
+				84BA37DD2571703F00C59D90 /* ContentView */,
+				84BA37DC2571702800C59D90 /* InfoPlist */,
+				84BA37DB2571702200C59D90 /* SceneDelegate */,
+				84BA37D72571700100C59D90 /* AppDelegate */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		84BA37D525716FED00C59D90 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				84BA37E62571740100C59D90 /* CoreDataStack */,
+				84BA37D625716FF500C59D90 /* Model */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		84BA37D625716FF500C59D90 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84BA379825716B5100C59D90 /* MyDictionary.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84BA37D72571700100C59D90 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				84BA379225716B5100C59D90 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		84BA37DB2571702200C59D90 /* SceneDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				84BA379425716B5100C59D90 /* SceneDelegate.swift */,
+			);
+			path = SceneDelegate;
+			sourceTree = "<group>";
+		};
+		84BA37DC2571702800C59D90 /* InfoPlist */ = {
+			isa = PBXGroup;
+			children = (
+				84BA37A325716B5700C59D90 /* Info.plist */,
+			);
+			path = InfoPlist;
+			sourceTree = "<group>";
+		};
+		84BA37DD2571703F00C59D90 /* ContentView */ = {
+			isa = PBXGroup;
+			children = (
+				84BA379625716B5100C59D90 /* ContentView.swift */,
+			);
+			path = ContentView;
+			sourceTree = "<group>";
+		};
+		84BA37DE2571704B00C59D90 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				84BA379B25716B5600C59D90 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		84BA37DF2571705500C59D90 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				84BA37A025716B5700C59D90 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		84BA37E62571740100C59D90 /* CoreDataStack */ = {
+			isa = PBXGroup;
+			children = (
+				84BA37E72571740F00C59D90 /* CoreDataStack.swift */,
+			);
+			path = CoreDataStack;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BA37E82571740F00C59D90 /* CoreDataStack.swift in Sources */,
 				84BA379325716B5100C59D90 /* AppDelegate.swift in Sources */,
 				84BA379A25716B5100C59D90 /* MyDictionary.xcdatamodeld in Sources */,
 				84BA379525716B5100C59D90 /* SceneDelegate.swift in Sources */,
@@ -444,7 +528,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MyDictionary/Preview Content\"";
 				DEVELOPMENT_TEAM = URMC99RRR3;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = MyDictionary/Info.plist;
+				INFOPLIST_FILE = MyDictionary/Resources/InfoPlist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -466,7 +550,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MyDictionary/Preview Content\"";
 				DEVELOPMENT_TEAM = URMC99RRR3;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = MyDictionary/Info.plist;
+				INFOPLIST_FILE = MyDictionary/Resources/InfoPlist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
