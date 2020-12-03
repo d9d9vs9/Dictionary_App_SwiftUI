@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AddWordPresenter: ObservableObject {
-    var wordText: String { get }
+    func addToMyDictionaryButtonClicked(wordText: String, translatedText: String, completionHandler: WordStoredResult)
 }
 
 final class MYAddWordPresenter: AddWordPresenter {
@@ -16,13 +16,18 @@ final class MYAddWordPresenter: AddWordPresenter {
     fileprivate let interactor: AddWordInteractor
     fileprivate let router: AddWordRouter
     
-    /// Default is Constants.StaticText.emptyString
-    var wordText: String
-    
     init(interactor: AddWordInteractor, router: AddWordRouter) {
         self.interactor = interactor
-        self.router = router        
-        self.wordText = Constants.StaticText.emptyString
+        self.router = router
+    }
+    
+}
+
+// MARK: - Actions
+extension MYAddWordPresenter {
+    
+    func addToMyDictionaryButtonClicked(wordText: String, translatedText: String, completionHandler: WordStoredResult) {
+        interactor.add(word: WordModel.init(word: wordText, translatedWord: translatedText), completionHandler: completionHandler)
     }
     
 }

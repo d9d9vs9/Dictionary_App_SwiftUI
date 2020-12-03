@@ -18,7 +18,7 @@ final class MYWordSyncService: WordSyncService {
 extension MYWordSyncService {
     
     func add(word: WordModel, completionHandler: WordStoredResult) {
-        completionHandler()
+        completionHandler(nil)
     }
     
 }
@@ -34,7 +34,7 @@ extension MYWordSyncService {
 extension MYWordSyncService {
     
     func update(word: WordModel, completionHandler: WordStoredResult) {
-        completionHandler()
+        completionHandler(nil)
     }
     
 }
@@ -42,7 +42,7 @@ extension MYWordSyncService {
 extension MYWordSyncService {
         
     func delete(word: WordModel, completionHandler: WordStoredResult) {
-        completionHandler()
+        completionHandler(nil)
     }
     
 }

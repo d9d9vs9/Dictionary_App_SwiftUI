@@ -7,4 +7,4 @@
 
 import Foundation
 
-typealias WordStoredResult = (() -> Void)
+typealias WordStoredResult = ((Error?) -> Void)

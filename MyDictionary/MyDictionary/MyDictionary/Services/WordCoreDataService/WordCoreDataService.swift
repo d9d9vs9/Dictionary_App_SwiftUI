@@ -18,7 +18,7 @@ final class MYWordCoreDataService: WordCoreDataService {
 extension MYWordCoreDataService {
     
     func add(word: WordModel, completionHandler: WordStoredResult) {
-        completionHandler()
+        completionHandler(nil)
     }
     
 }
@@ -34,7 +34,7 @@ extension MYWordCoreDataService {
 extension MYWordCoreDataService {
     
     func update(word: WordModel, completionHandler: WordStoredResult) {
-        completionHandler()
+        completionHandler(nil)
     }
     
 }
@@ -42,7 +42,7 @@ extension MYWordCoreDataService {
 extension MYWordCoreDataService {
         
     func delete(word: WordModel, completionHandler: WordStoredResult) {
-        completionHandler()
+        completionHandler(nil)
     }
     
 }
