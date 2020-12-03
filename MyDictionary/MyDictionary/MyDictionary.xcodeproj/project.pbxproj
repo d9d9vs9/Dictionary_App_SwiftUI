@@ -277,6 +277,15 @@
 			path = CRUDWord;
 			sourceTree = "<group>";
 		};
+		22E5C9A92579675500B7C347 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				84BA37FA257176A900C59D90 /* WordDetail */,
+				84BA37EF2571758F00C59D90 /* WordList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		84BA378625716B5100C59D90 = {
 			isa = PBXGroup;
 			children = (
@@ -300,13 +309,12 @@
 		84BA379125716B5100C59D90 /* MyDictionary */ = {
 			isa = PBXGroup;
 			children = (
-				2214C321257935660019701C /* Services */,
-				2214C2FE2579322C0019701C /* Extensions */,
-				84BA38542571888300C59D90 /* Models */,
-				84BA3839257183E700C59D90 /* Utilites */,
-				84BA37FA257176A900C59D90 /* WordDetail */,
-				84BA37EF2571758F00C59D90 /* WordList */,
 				84BA37D525716FED00C59D90 /* CoreData */,
+				2214C2FE2579322C0019701C /* Extensions */,
+				22E5C9A92579675500B7C347 /* Modules */,
+				84BA38542571888300C59D90 /* Models */,
+				2214C321257935660019701C /* Services */,
+				84BA3839257183E700C59D90 /* Utilites */,
 				84BA37D125716FE400C59D90 /* Resources */,
 				84BA379D25716B5600C59D90 /* Preview Content */,
 			);
