@@ -26,7 +26,7 @@ struct MYAppLanguageService: AppLanguageService {
     
     var appLanguage: AppLanguageType {
         
-        guard let lanCode = self.languageCode else { return .uk }
+        guard let lanCode = self.languageCode else { return defaultAppLanguage }
         let stringFromAppleKey = getLanguageStringFromAppleLanguagesKey()
         
         if (stringFromAppleKey == nil) {
