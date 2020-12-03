@@ -9,6 +9,7 @@ import Foundation
 
 enum KeysForTranslate: String {    
     case words
+    case pleaseEnterWord = "please_enter_word"
 }
 
 // MARK: - LocalizableProtocol
