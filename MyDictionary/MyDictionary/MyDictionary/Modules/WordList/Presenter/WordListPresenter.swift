@@ -9,16 +9,16 @@ import SwiftUI
 import Combine
 
 protocol WordListPresenter: ObservableObject {
-    
+    var words: [WordModel] { get }
 }
 
 final class MYWordListPresenter: WordListPresenter {
-    
-    @Published var words: [WordModel] = []
-    
+        
     fileprivate let interactor: WordListInteractor
-    fileprivate let router: WordListRouter
     fileprivate var cancellables: Set<AnyCancellable> = []
+    let router: WordListRouter
+    
+    @Published var words: [WordModel] = []    
     
     init(interactor: WordListInteractor, router: WordListRouter) {
         self.interactor = interactor
@@ -30,18 +30,6 @@ final class MYWordListPresenter: WordListPresenter {
         
     }
     
-    
-    
-}
-
-extension MYWordListPresenter {
-    
-    func makeAddNewButton() -> some View {
-        Button(action: addNewWord) {
-            Image(systemName: "plus")
-        }
-    }
-    
 }
 
 extension MYWordListPresenter {
@@ -50,14 +38,6 @@ extension MYWordListPresenter {
         NavigationLink(destination: router.makeWordDetailView(for: word)) {
             content()
         }
-    }
-    
-}
-
-fileprivate extension MYWordListPresenter {
-    
-    func addNewWord() {
-        debugPrint(#function)
     }
     
 }

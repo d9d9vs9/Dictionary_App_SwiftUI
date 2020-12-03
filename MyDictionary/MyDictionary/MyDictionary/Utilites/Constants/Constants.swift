@@ -11,7 +11,7 @@ struct Constants {
     
     struct StaticText {
         static let emptyString: String = ""
-        static let defaultTableName: String = "Localizable"
+        static let defaultTableName: String = "Localizable"        
     }
 
 }

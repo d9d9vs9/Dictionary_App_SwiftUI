@@ -10,6 +10,7 @@ import SwiftUI
 struct WordListView: View {
     
     @ObservedObject fileprivate var presenter: MYWordListPresenter
+    @State fileprivate var showingDetail = false
     
     init(presenter: MYWordListPresenter) {
         self.presenter = presenter
@@ -24,13 +25,12 @@ struct WordListView: View {
             }
         }
         .navigationBarTitle(KeysForTranslate.words.localized)
-        .navigationBarItems(trailing: presenter.makeAddNewButton())
+        .navigationBarItems(trailing:
+                                Button(action: { self.showingDetail = true }) {
+                                    Image(systemName: "plus")
+                                }.sheet(isPresented: $showingDetail) {
+                                    self.presenter.router.makeAddWordView()
+                                })
     }
     
-}
-
-struct WordListView_Previews: PreviewProvider {
-    static var previews: some View {
-        return WordListModule.init(sender: nil).module
-    }
 }

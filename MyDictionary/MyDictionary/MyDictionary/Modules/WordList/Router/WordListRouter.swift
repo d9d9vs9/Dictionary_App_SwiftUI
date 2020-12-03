@@ -18,3 +18,11 @@ extension WordListRouter {
     }
 
 }
+
+extension WordListRouter {
+    
+    func makeAddWordView() -> some View {
+        return AddWordModule.init(sender: nil).module
+    }
+    
+}
