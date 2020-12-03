@@ -40,8 +40,7 @@ extension MYWordSyncService {
 }
 
 extension MYWordSyncService {
-    
-    
+        
     func delete(word: WordModel, completionHandler: WordStoredResult) {
         completionHandler()
     }

@@ -40,8 +40,7 @@ extension MYWordCoreDataService {
 }
 
 extension MYWordCoreDataService {
-    
-    
+        
     func delete(word: WordModel, completionHandler: WordStoredResult) {
         completionHandler()
     }
