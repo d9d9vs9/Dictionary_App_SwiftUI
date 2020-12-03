@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2214C3002579324D0019701C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214C2FF2579324D0019701C /* String+Extension.swift */; };
+		2214C307257932E60019701C /* AppLanguageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214C306257932E60019701C /* AppLanguageType.swift */; };
+		2214C30E2579334A0019701C /* LocalizableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214C30D2579334A0019701C /* LocalizableProtocol.swift */; };
+		2214C317257934590019701C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214C316257934590019701C /* Constants.swift */; };
+		2214C31D257934D60019701C /* KeysForTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214C31C257934D60019701C /* KeysForTranslate.swift */; };
+		2214C324257935730019701C /* AppLanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214C323257935730019701C /* AppLanguageService.swift */; };
+		2214C32E257939320019701C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2214C330257939320019701C /* Localizable.strings */; };
 		84BA379325716B5100C59D90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA379225716B5100C59D90 /* AppDelegate.swift */; };
 		84BA379525716B5100C59D90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA379425716B5100C59D90 /* SceneDelegate.swift */; };
 		84BA379725716B5100C59D90 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA379625716B5100C59D90 /* ContentView.swift */; };
@@ -52,6 +59,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2214C2FF2579324D0019701C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		2214C306257932E60019701C /* AppLanguageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageType.swift; sourceTree = "<group>"; };
+		2214C30D2579334A0019701C /* LocalizableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableProtocol.swift; sourceTree = "<group>"; };
+		2214C316257934590019701C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2214C31C257934D60019701C /* KeysForTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysForTranslate.swift; sourceTree = "<group>"; };
+		2214C323257935730019701C /* AppLanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageService.swift; sourceTree = "<group>"; };
+		2214C32F257939320019701C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		84BA378F25716B5100C59D90 /* MyDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA379225716B5100C59D90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84BA379425716B5100C59D90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +124,86 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2214C2FE2579322C0019701C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2214C2FF2579324D0019701C /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2214C304257932D60019701C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				2214C305257932DA0019701C /* AppLanguageType */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		2214C305257932DA0019701C /* AppLanguageType */ = {
+			isa = PBXGroup;
+			children = (
+				2214C306257932E60019701C /* AppLanguageType.swift */,
+			);
+			path = AppLanguageType;
+			sourceTree = "<group>";
+		};
+		2214C30B2579333A0019701C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2214C30C2579333D0019701C /* LocalizableProtocol */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		2214C30C2579333D0019701C /* LocalizableProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				2214C30D2579334A0019701C /* LocalizableProtocol.swift */,
+			);
+			path = LocalizableProtocol;
+			sourceTree = "<group>";
+		};
+		2214C315257934540019701C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2214C316257934590019701C /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		2214C31B257934D20019701C /* KeysForTranslate */ = {
+			isa = PBXGroup;
+			children = (
+				2214C31C257934D60019701C /* KeysForTranslate.swift */,
+			);
+			path = KeysForTranslate;
+			sourceTree = "<group>";
+		};
+		2214C321257935660019701C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2214C3222579356D0019701C /* AppLanguageService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2214C3222579356D0019701C /* AppLanguageService */ = {
+			isa = PBXGroup;
+			children = (
+				2214C323257935730019701C /* AppLanguageService.swift */,
+			);
+			path = AppLanguageService;
+			sourceTree = "<group>";
+		};
+		2214C3282579390D0019701C /* LocalizableStrings */ = {
+			isa = PBXGroup;
+			children = (
+				2214C330257939320019701C /* Localizable.strings */,
+			);
+			path = LocalizableStrings;
+			sourceTree = "<group>";
+		};
 		84BA378625716B5100C59D90 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +227,8 @@
 		84BA379125716B5100C59D90 /* MyDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				2214C321257935660019701C /* Services */,
+				2214C2FE2579322C0019701C /* Extensions */,
 				84BA38542571888300C59D90 /* Models */,
 				84BA3839257183E700C59D90 /* Utilites */,
 				84BA37FA257176A900C59D90 /* WordDetail */,
@@ -382,6 +478,11 @@
 		84BA3839257183E700C59D90 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
+				2214C3282579390D0019701C /* LocalizableStrings */,
+				2214C31B257934D20019701C /* KeysForTranslate */,
+				2214C315257934540019701C /* Constants */,
+				2214C30B2579333A0019701C /* Protocols */,
+				2214C304257932D60019701C /* Enums */,
 				84BA383A257183ED00C59D90 /* RootView */,
 			);
 			path = Utilites;
@@ -523,6 +624,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BA37A225716B5700C59D90 /* LaunchScreen.storyboard in Resources */,
+				2214C32E257939320019701C /* Localizable.strings in Resources */,
 				84BA379F25716B5600C59D90 /* Preview Assets.xcassets in Resources */,
 				84BA379C25716B5600C59D90 /* Assets.xcassets in Resources */,
 			);
@@ -550,6 +652,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BA37E82571740F00C59D90 /* CoreDataStack.swift in Sources */,
+				2214C30E2579334A0019701C /* LocalizableProtocol.swift in Sources */,
+				2214C3002579324D0019701C /* String+Extension.swift in Sources */,
 				84BA3850257185D200C59D90 /* WordListModule.swift in Sources */,
 				84BA38352571818400C59D90 /* WordDetailModule.swift in Sources */,
 				84BA379325716B5100C59D90 /* AppDelegate.swift in Sources */,
@@ -563,12 +667,16 @@
 				84BA382B25717F1100C59D90 /* WordDetailRouter.swift in Sources */,
 				84BA37F32571769500C59D90 /* WordListView.swift in Sources */,
 				84BA37FE257176E900C59D90 /* WordDetailView.swift in Sources */,
+				2214C307257932E60019701C /* AppLanguageType.swift in Sources */,
 				84BA379725716B5100C59D90 /* ContentView.swift in Sources */,
 				84BA3856257188B300C59D90 /* WordModel.swift in Sources */,
 				84BA380B2571772C00C59D90 /* WordListDataModel.swift in Sources */,
 				84BA3806257176F900C59D90 /* WordDetailDataModel.swift in Sources */,
+				2214C324257935730019701C /* AppLanguageService.swift in Sources */,
 				84BA3841257184D600C59D90 /* WordListPresenter.swift in Sources */,
+				2214C31D257934D60019701C /* KeysForTranslate.swift in Sources */,
 				84BA383025717F5300C59D90 /* WordDetailPresenter.swift in Sources */,
+				2214C317257934590019701C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +712,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2214C330257939320019701C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2214C32F257939320019701C /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		84BA37A025716B5700C59D90 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -736,9 +852,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"MyDictionary/Preview Content\"";
-				DEVELOPMENT_TEAM = URMC99RRR3;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MyDictionary/Resources/InfoPlist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -746,8 +862,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = admin.MyDictionary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myDictionary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -758,9 +875,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"MyDictionary/Preview Content\"";
-				DEVELOPMENT_TEAM = URMC99RRR3;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MyDictionary/Resources/InfoPlist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -768,8 +885,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = admin.MyDictionary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myDictionary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

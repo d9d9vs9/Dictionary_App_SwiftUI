@@ -23,7 +23,7 @@ struct WordListView: View {
                 }
             }
         }
-        .navigationBarTitle("Words", displayMode: .inline)
+        .navigationBarTitle(KeysForTranslate.words.localized)
         .navigationBarItems(trailing: presenter.makeAddNewButton())
     }
     
