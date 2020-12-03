@@ -9,6 +9,6 @@ import Foundation
 
 final class WordListDataModel {
     
-    @Published var words: [WordModel] = WordModel.mock
+    @Published var words: [WordModel] = []
     
 }

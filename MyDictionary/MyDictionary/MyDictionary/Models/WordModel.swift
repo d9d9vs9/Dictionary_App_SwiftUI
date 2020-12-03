@@ -11,18 +11,15 @@ final class WordModel {
     
     let id: String
     let word: String
-    let translate: String
-    let createdDate: Date
+    let translatedWord: String
     
-    init(id: String = UUID().uuidString,
+    init(id: String,
          word: String,
-         translate: String,
-         createdDate: Date) {
+         translatedWord: String) {
         
         self.id = id
         self.word = word
-        self.translate = translate
-        self.createdDate = createdDate
+        self.translatedWord = translatedWord
         
     }
     
@@ -36,16 +33,6 @@ extension WordModel: Equatable {
     
     static func == (lhs: WordModel, rhs: WordModel) -> Bool {
         return lhs.id == rhs.id
-    }
-    
-}
-
-extension WordModel {
-    
-    static var mock: [WordModel] {
-        return [.init(word: "Help",
-                      translate: "Помощь",
-                      createdDate: Date.init())]
     }
     
 }

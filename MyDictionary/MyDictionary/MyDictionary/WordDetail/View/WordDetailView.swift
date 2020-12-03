@@ -21,11 +21,3 @@ struct WordDetailView: View {
     }
     
 }
-
-struct WordDetailView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        return WordDetailModule.init(sender: WordModel.mock.first!).module
-    }
-    
-}

@@ -16,9 +16,3 @@ struct WordListCell: View {
     }
     
 }
-
-struct WordListCell_Previews: PreviewProvider {
-    static var previews: some View {
-        WordListCell(model: WordModel.mock.first!)
-    }
-}
