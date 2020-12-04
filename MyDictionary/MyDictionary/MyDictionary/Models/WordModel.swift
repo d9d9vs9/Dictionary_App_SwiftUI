@@ -33,3 +33,23 @@ extension WordModel: Equatable {
     }
     
 }
+
+extension WordModel {
+    
+    var wordModelCD: Word {
+        let word: Word = .init(word: self.word,
+                               translatedWord: self.translatedWord,
+                               insertIntoManagedObjectContext: CoreDataStack.shared.viewContext)
+        return word
+    }
+    
+}
+
+extension Word {
+    
+    var wordModel: WordModel {
+        guard let word = self.word, let translatedWord = self.translatedWord else { fatalError("Can't Find Object") }
+        return WordModel.init(word: word, translatedWord: translatedWord)
+    }
+    
+}
