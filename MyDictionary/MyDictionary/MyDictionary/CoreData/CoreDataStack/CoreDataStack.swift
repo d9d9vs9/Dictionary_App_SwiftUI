@@ -18,7 +18,7 @@ open class CoreDataStack {
     public init() {
     }
     
-    public lazy var mainContext: NSManagedObjectContext = {
+    fileprivate lazy var mainContext: NSManagedObjectContext = {
         return storeContainer.viewContext
     }()
     

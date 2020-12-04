@@ -20,7 +20,7 @@ final class MYAddWordInteractor: AddWordInteractor {
     
     init(dataModel: AddWordDataModel) {
         self.coreDataStack = CoreDataStack.init()
-        self.wordManager = MYWordManager.init(managedObjectContext: coreDataStack.mainContext,
+        self.wordManager = MYWordManager.init(managedObjectContext: coreDataStack.privateContext,
                                               coreDataStack: coreDataStack)
         self.dataModel = dataModel
     }

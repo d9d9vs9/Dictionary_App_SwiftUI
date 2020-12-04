@@ -11,7 +11,7 @@ import XCTest
 class MyDictionaryTests: XCTestCase {
     
     var coreDataStack: CoreDataStack = TestCoreDataStack()
-    lazy var wordCoreDataService: WordCoreDataService = MYWordCoreDataService(managedObjectContext: coreDataStack.mainContext,
+    lazy var wordCoreDataService: WordCoreDataService = MYWordCoreDataService(managedObjectContext: coreDataStack.privateContext,
                                                                          coreDataStack: coreDataStack)
       
     

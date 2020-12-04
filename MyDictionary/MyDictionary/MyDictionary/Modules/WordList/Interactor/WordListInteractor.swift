@@ -19,7 +19,7 @@ final class MYWordListInteractor: WordListInteractor {
     
     init(dataModel: WordListDataModel) {
         self.coreDataStack = CoreDataStack.init()
-        self.wordCoreDataService = MYWordCoreDataService(managedObjectContext: coreDataStack.mainContext,
+        self.wordCoreDataService = MYWordCoreDataService(managedObjectContext: coreDataStack.privateContext,
                                                          coreDataStack: coreDataStack)
         self.dataModel = dataModel
         subscribe()
