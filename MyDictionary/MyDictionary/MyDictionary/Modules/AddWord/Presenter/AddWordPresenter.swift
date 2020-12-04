@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AddWordPresenter: ObservableObject {
-    func addToMyDictionaryButtonClicked(wordText: String, translatedText: String, completionHandler: WordStoredResult)
+    func addToMyDictionaryButtonClicked(wordText: String, translatedText: String, completionHandler: @escaping ResultSavedWord)
 }
 
 final class MYAddWordPresenter: AddWordPresenter {
@@ -26,7 +26,7 @@ final class MYAddWordPresenter: AddWordPresenter {
 // MARK: - Actions
 extension MYAddWordPresenter {
     
-    func addToMyDictionaryButtonClicked(wordText: String, translatedText: String, completionHandler: WordStoredResult) {
+    func addToMyDictionaryButtonClicked(wordText: String, translatedText: String, completionHandler: @escaping ResultSavedWord) {
         interactor.add(word: WordModel.init(word: wordText, translatedWord: translatedText), completionHandler: completionHandler)
     }
     

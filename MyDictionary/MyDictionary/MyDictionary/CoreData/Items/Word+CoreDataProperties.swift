@@ -28,3 +28,11 @@ extension Word {
 extension Word : Identifiable {
 
 }
+
+extension Word {
+    
+    var wordModel: WordModel {
+        return WordModel.init(word: word, translatedWord: translatedWord)
+    }
+    
+}

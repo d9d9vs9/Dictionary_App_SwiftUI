@@ -8,5 +8,5 @@
 import Foundation
 
 protocol UpdateWordProtocol {
-    func update(word: WordModel, completionHandler: WordStoredResult)
+    func update(word: WordModel, completionHandler: @escaping ResultSavedWord)
 }

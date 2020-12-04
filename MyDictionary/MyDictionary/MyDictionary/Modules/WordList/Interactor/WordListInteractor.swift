@@ -13,12 +13,14 @@ protocol WordListInteractor {
 
 final class MYWordListInteractor: WordListInteractor {
     
+    fileprivate let coreDataStack: CoreDataStack
     fileprivate let wordCoreDataService: WordCoreDataService
-    
     let dataModel: WordListDataModel
     
     init(dataModel: WordListDataModel) {
-        self.wordCoreDataService = MYWordCoreDataService.init()
+        self.coreDataStack = CoreDataStack.init()
+        self.wordCoreDataService = MYWordCoreDataService(managedObjectContext: coreDataStack.mainContext,
+                                                         coreDataStack: coreDataStack)
         self.dataModel = dataModel
         subscribe()
         updateDataModel()

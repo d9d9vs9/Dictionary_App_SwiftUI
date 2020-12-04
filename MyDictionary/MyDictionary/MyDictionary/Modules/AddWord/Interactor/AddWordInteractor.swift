@@ -13,12 +13,15 @@ protocol AddWordInteractor: AddWordProtocol {
 
 final class MYAddWordInteractor: AddWordInteractor {
     
+    fileprivate let coreDataStack: CoreDataStack
     fileprivate let wordManager: WordManager
     
     let dataModel: AddWordDataModel
     
     init(dataModel: AddWordDataModel) {
-        self.wordManager = MYWordManager.init()
+        self.coreDataStack = CoreDataStack.init()
+        self.wordManager = MYWordManager.init(managedObjectContext: coreDataStack.mainContext,
+                                              coreDataStack: coreDataStack)
         self.dataModel = dataModel
     }
     
@@ -26,16 +29,19 @@ final class MYAddWordInteractor: AddWordInteractor {
 
 extension MYAddWordInteractor {
     
-    func add(word: WordModel, completionHandler: WordStoredResult) {
+    func add(word: WordModel, completionHandler: @escaping ResultSavedWord) {
         if (isValid(wordModel: word)) {
-            wordManager.add(word: word) { [unowned self] (error) in
-                if (error == nil) {
-                    postDidAddWordNotification()                    
+            wordManager.add(word: word) { [unowned self] (result) in
+                switch result {
+                case .success:
+                    postDidAddWordNotification()
+                case .failure:
+                    break
                 }
-                completionHandler(error)
+                completionHandler(result)
             }
         } else {
-            completionHandler(WordValidation.wordInvalid)
+            completionHandler(.failure(WordValidation.wordInvalid))
             return
         }
     }

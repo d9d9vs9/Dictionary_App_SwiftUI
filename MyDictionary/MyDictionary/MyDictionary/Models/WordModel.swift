@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class WordModel {
+public final class WordModel {
         
     let word: String
     let translatedWord: String
@@ -25,30 +25,3 @@ final class WordModel {
 extension WordModel: Identifiable {}
 
 extension WordModel: ObservableObject {}
-
-extension WordModel: Equatable {
-    
-    static func == (lhs: WordModel, rhs: WordModel) -> Bool {
-        return lhs.word == rhs.word && lhs.translatedWord == rhs.translatedWord
-    }
-    
-}
-
-extension WordModel {
-    
-    var wordModelCD: Word {
-        let word: Word = .init(word: self.word,
-                               translatedWord: self.translatedWord,
-                               insertIntoManagedObjectContext: CoreDataStack.shared.viewContext)
-        return word
-    }
-    
-}
-
-extension Word {
-    
-    var wordModel: WordModel {        
-        return WordModel.init(word: word, translatedWord: translatedWord)
-    }
-    
-}

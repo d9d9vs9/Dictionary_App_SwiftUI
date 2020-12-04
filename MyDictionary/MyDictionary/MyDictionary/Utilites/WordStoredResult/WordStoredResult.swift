@@ -7,4 +7,11 @@
 
 import Foundation
 
-typealias WordStoredResult = ((Error?) -> Void)
+public typealias WordStoredResult = ResultSaved
+public typealias ResultSavedWord = ((Result<WordModel, Error>) -> Void)
+public typealias ResultSaved = ((ResultSavedData<Error>) -> Void)
+
+public enum ResultSavedData<Failure> where Failure : Error {
+    case success
+    case failure(Failure)
+}

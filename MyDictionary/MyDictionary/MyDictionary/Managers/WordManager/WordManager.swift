@@ -5,22 +5,26 @@
 //  Created by Дмитрий Чумаков on 03.12.2020.
 //
 
-import Foundation
+import CoreData
 
 protocol WordManager: CRUDWord {
     
 }
 
 final class MYWordManager: WordManager {
-    
-    fileprivate let wordSyncService: WordSyncService,
+            
+    fileprivate let managedObjectContext: NSManagedObjectContext,
+                    coreDataStack: CoreDataStack,
+                    wordSyncService: WordSyncService,
                     wordCoreDataService: WordCoreDataService
     
-    init(wordSyncService: WordSyncService = MYWordSyncService(),
-         wordCoreDataService: WordCoreDataService = MYWordCoreDataService()) {
+    init(managedObjectContext: NSManagedObjectContext, coreDataStack: CoreDataStack) {
         
-        self.wordSyncService = wordSyncService
-        self.wordCoreDataService = wordCoreDataService
+        self.managedObjectContext = managedObjectContext
+        self.coreDataStack = coreDataStack
+        self.wordSyncService = MYWordSyncService()
+        self.wordCoreDataService = MYWordCoreDataService(managedObjectContext: managedObjectContext,
+                                                         coreDataStack: coreDataStack)
         
     }
     
@@ -28,7 +32,7 @@ final class MYWordManager: WordManager {
 
 extension MYWordManager {
     
-    func add(word: WordModel, completionHandler: WordStoredResult) {
+    func add(word: WordModel, completionHandler: @escaping ResultSavedWord) {
         wordCoreDataService.add(word: word, completionHandler: completionHandler)
         wordSyncService.add(word: word, completionHandler: completionHandler)
     }
@@ -45,7 +49,7 @@ extension MYWordManager {
 
 extension MYWordManager {
     
-    func update(word: WordModel, completionHandler: WordStoredResult) {
+    func update(word: WordModel, completionHandler: @escaping ResultSavedWord) {
         wordCoreDataService.update(word: word, completionHandler: completionHandler)
         wordSyncService.update(word: word, completionHandler: completionHandler)
     }
@@ -54,7 +58,7 @@ extension MYWordManager {
 
 extension MYWordManager {
         
-    func delete(word: WordModel, completionHandler: WordStoredResult) {
+    func delete(word: WordModel, completionHandler: @escaping ResultSavedWord) {
         wordCoreDataService.delete(word: word, completionHandler: completionHandler)
         wordSyncService.delete(word: word, completionHandler: completionHandler)
     }

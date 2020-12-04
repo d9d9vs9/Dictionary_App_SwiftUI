@@ -13,6 +13,7 @@ struct Constants {
         static let emptyString: String = ""
         static let defaultTableName: String = "Localizable"
         static let appName: String = "MyDictionary"
+        static let momdExtension: String = "momd"
     }
 
 }

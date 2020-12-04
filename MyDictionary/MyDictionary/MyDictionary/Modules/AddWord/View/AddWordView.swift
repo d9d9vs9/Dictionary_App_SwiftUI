@@ -41,13 +41,14 @@ fileprivate extension AddWordView {
     
     func addToMyDictionaryButtonAction() {
         presenter.addToMyDictionaryButtonClicked(wordText: wordText,
-                                                 translatedText: translatedText) { (error) in
+                                                 translatedText: translatedText) { (result) in
             
-            if (error == nil) {
+            switch result {
+            case .success:
                 closeSelf()
-            } else {
-                debugPrint(error!)
-            }
+            case .failure(let error):
+                debugPrint(error)
+            }                        
             
         }
         

@@ -15,6 +15,7 @@
 		2214C324257935730019701C /* AppLanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214C323257935730019701C /* AppLanguageService.swift */; };
 		2214C32E257939320019701C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2214C330257939320019701C /* Localizable.strings */; };
 		22400A70257A701B00699223 /* WordNSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22400A6F257A701B00699223 /* WordNSNotificationName.swift */; };
+		22400A7A257A86AB00699223 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22400A79257A86AB00699223 /* TestCoreDataStack.swift */; };
 		229A01C2257A60FA006CF2DC /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A01C0257A60FA006CF2DC /* Word+CoreDataProperties.swift */; };
 		229A01C3257A60FA006CF2DC /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A01C1257A60FA006CF2DC /* Word+CoreDataClass.swift */; };
 		229A01EF257A69B8006CF2DC /* MyDictionary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 229A01E3257A645C006CF2DC /* MyDictionary.xcdatamodeld */; };
@@ -86,6 +87,7 @@
 		2214C323257935730019701C /* AppLanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageService.swift; sourceTree = "<group>"; };
 		2214C32F257939320019701C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		22400A6F257A701B00699223 /* WordNSNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordNSNotificationName.swift; sourceTree = "<group>"; };
+		22400A79257A86AB00699223 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
 		229A01C0257A60FA006CF2DC /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		229A01C1257A60FA006CF2DC /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
 		229A01E4257A645C006CF2DC /* MyDictionary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyDictionary.xcdatamodel; sourceTree = "<group>"; };
@@ -270,22 +272,10 @@
 			path = CoreDataEntityName;
 			sourceTree = "<group>";
 		};
-		22E5C97B25795D1700B7C347 /* AddWordProtocol */ = {
-			isa = PBXGroup;
-			children = (
-				22E5C97C25795D2E00B7C347 /* AddWordProtocol.swift */,
-			);
-			path = AddWordProtocol;
-			sourceTree = "<group>";
-		};
 		22E5C98125795D3300B7C347 /* WordProtocols */ = {
 			isa = PBXGroup;
 			children = (
 				22E5C99D257965B600B7C347 /* CRUDWord */,
-				22E5C9972579642F00B7C347 /* DeleteWordProtocol */,
-				22E5C991257963CA00B7C347 /* FetchWordProtocol */,
-				22E5C98B2579638000B7C347 /* UpdateWordProtocol */,
-				22E5C97B25795D1700B7C347 /* AddWordProtocol */,
 			);
 			path = WordProtocols;
 			sourceTree = "<group>";
@@ -298,33 +288,13 @@
 			path = WordStoredResult;
 			sourceTree = "<group>";
 		};
-		22E5C98B2579638000B7C347 /* UpdateWordProtocol */ = {
-			isa = PBXGroup;
-			children = (
-				22E5C98C2579638A00B7C347 /* UpdateWordProtocol.swift */,
-			);
-			path = UpdateWordProtocol;
-			sourceTree = "<group>";
-		};
-		22E5C991257963CA00B7C347 /* FetchWordProtocol */ = {
-			isa = PBXGroup;
-			children = (
-				22E5C992257963D700B7C347 /* FetchWordProtocol.swift */,
-			);
-			path = FetchWordProtocol;
-			sourceTree = "<group>";
-		};
-		22E5C9972579642F00B7C347 /* DeleteWordProtocol */ = {
-			isa = PBXGroup;
-			children = (
-				22E5C9982579644100B7C347 /* DeleteWordProtocol.swift */,
-			);
-			path = DeleteWordProtocol;
-			sourceTree = "<group>";
-		};
 		22E5C99D257965B600B7C347 /* CRUDWord */ = {
 			isa = PBXGroup;
 			children = (
+				22E5C9982579644100B7C347 /* DeleteWordProtocol.swift */,
+				22E5C992257963D700B7C347 /* FetchWordProtocol.swift */,
+				22E5C98C2579638A00B7C347 /* UpdateWordProtocol.swift */,
+				22E5C97C25795D2E00B7C347 /* AddWordProtocol.swift */,
 				22E5C99E257965C400B7C347 /* CRUDWord.swift */,
 			);
 			path = CRUDWord;
@@ -480,6 +450,7 @@
 		84BA37AB25716B5700C59D90 /* MyDictionaryTests */ = {
 			isa = PBXGroup;
 			children = (
+				22400A79257A86AB00699223 /* TestCoreDataStack.swift */,
 				84BA37AC25716B5700C59D90 /* MyDictionaryTests.swift */,
 				84BA37AE25716B5700C59D90 /* Info.plist */,
 			);
@@ -937,6 +908,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BA37AD25716B5700C59D90 /* MyDictionaryTests.swift in Sources */,
+				22400A7A257A86AB00699223 /* TestCoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
