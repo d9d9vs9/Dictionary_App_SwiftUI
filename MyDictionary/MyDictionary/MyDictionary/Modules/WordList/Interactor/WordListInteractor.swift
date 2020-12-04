@@ -68,7 +68,15 @@ fileprivate extension MYWordListInteractor {
 fileprivate extension MYWordListInteractor {
     
     func updateDataModel() {
-        self.dataModel.words = fetchedWords()
+        fetchedWords { [unowned self] (result) in
+            switch result {
+            case .success(let words):
+                self.dataModel.words = words
+            case .failure(let error):
+                debugPrint(#function, error)
+                return
+            }
+        }
     }
     
 }
@@ -76,8 +84,8 @@ fileprivate extension MYWordListInteractor {
 // MARK: - Fetched Words
 fileprivate extension MYWordListInteractor {
     
-    func fetchedWords() -> [WordModel] {
-        return wordCoreDataService.fetchWords()
+    func fetchedWords(completionHandler: @escaping FetchResultWords) {
+        wordCoreDataService.fetchWords(completionHandler: completionHandler)
     }
     
 }

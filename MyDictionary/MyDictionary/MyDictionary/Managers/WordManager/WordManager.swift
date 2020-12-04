@@ -41,8 +41,8 @@ extension MYWordManager {
 
 extension MYWordManager {
     
-    func fetchWords() -> [WordModel] {
-        return wordCoreDataService.fetchWords()
+    func fetchWords(completionHandler: @escaping FetchResultWords) {
+        return wordCoreDataService.fetchWords(completionHandler: completionHandler)
     }
     
 }

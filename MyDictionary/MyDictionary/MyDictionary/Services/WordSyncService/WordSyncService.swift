@@ -25,8 +25,8 @@ extension MYWordSyncService {
 
 extension MYWordSyncService {
     
-    func fetchWords() -> [WordModel] {
-        return []
+    func fetchWords(completionHandler: @escaping FetchResultWords) {
+        completionHandler(.success([]))
     }
     
 }
