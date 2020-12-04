@@ -22,6 +22,12 @@ open class CoreDataStack {
         return storeContainer.viewContext
     }()
     
+    public lazy var privateContext: NSManagedObjectContext = {
+        let moc = NSManagedObjectContext.init(concurrencyType: .privateQueueConcurrencyType)
+        moc.parent = mainContext
+        return moc
+    }()
+    
     public lazy var storeContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: Constants.StaticText.appName,
                                               managedObjectModel: CoreDataStack.model)
@@ -38,12 +44,21 @@ open class CoreDataStack {
 // MARK: - Save Context
 extension CoreDataStack {
     
+    public func savePrivateAndMainContext(completionHandler: @escaping ResultSaved) {
+        savePrivateContext(completionHandler: completionHandler)
+        saveMainContext(completionHandler: completionHandler)
+    }
+    
     public func saveMainContext(completionHandler: @escaping ResultSaved) {
         saveContext(mainContext, completionHandler: completionHandler)
     }
     
+    public func savePrivateContext(completionHandler: @escaping ResultSaved) {
+        saveContext(privateContext, completionHandler: completionHandler)
+    }
+    
     public func saveContext(_ context: NSManagedObjectContext, completionHandler: @escaping ResultSaved) {
-        context.perform {
+        context.performAndWait {
             do {
                 try context.save()
                 completionHandler(.success)
