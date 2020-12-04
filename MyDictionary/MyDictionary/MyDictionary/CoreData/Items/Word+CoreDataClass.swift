@@ -12,7 +12,7 @@ import CoreData
 @objc(Word)
 public class Word: NSManagedObject {
     
-    convenience init(word: String?, translatedWord: String?, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+    convenience init(word: String, translatedWord: String, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         let entity = NSEntityDescription.entity(forEntityName: CoreDataEntityName.word, in: context)!
         self.init(entity: entity, insertInto: context)
         self.word = word

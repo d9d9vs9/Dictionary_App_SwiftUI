@@ -28,7 +28,12 @@ extension MYAddWordInteractor {
     
     func add(word: WordModel, completionHandler: WordStoredResult) {
         if (isValid(wordModel: word)) {
-            wordManager.add(word: word, completionHandler: completionHandler)
+            wordManager.add(word: word) { [unowned self] (error) in
+                if (error == nil) {
+                    postDidAddWordNotification()                    
+                }
+                completionHandler(error)
+            }
         } else {
             completionHandler(WordValidation.wordInvalid)
             return
@@ -55,6 +60,14 @@ fileprivate extension MYAddWordInteractor {
     enum WordValidation: Error {
         case wordInvalid
         case translatedWordInvalid
+    }
+    
+}
+
+fileprivate extension MYAddWordInteractor {
+    
+    func postDidAddWordNotification() {
+        NotificationCenter.default.post(name: WordNSNotificationName.didAddWord, object: nil)
     }
     
 }

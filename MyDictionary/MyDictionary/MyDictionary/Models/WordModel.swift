@@ -47,8 +47,7 @@ extension WordModel {
 
 extension Word {
     
-    var wordModel: WordModel {
-        guard let word = self.word, let translatedWord = self.translatedWord else { fatalError("Can't Find Object") }
+    var wordModel: WordModel {        
         return WordModel.init(word: word, translatedWord: translatedWord)
     }
     

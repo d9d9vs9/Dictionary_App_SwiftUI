@@ -20,8 +20,8 @@ extension Word {
         return NSFetchRequest<Word>(entityName: CoreDataEntityName.word)
     }
 
-    @NSManaged public var word: String?
-    @NSManaged public var translatedWord: String?
+    @NSManaged public var word: String
+    @NSManaged public var translatedWord: String
         
 }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Word" representedClassName="Word" syncable="YES" codeGenerationType="class">
-        <attribute name="translatedWord" optional="YES" attributeType="String"/>
-        <attribute name="word" optional="YES" attributeType="String"/>
+    <entity name="Word" representedClassName="Word" syncable="YES">
+        <attribute name="translatedWord" attributeType="String"/>
+        <attribute name="word" attributeType="String"/>
     </entity>
     <elements>
         <element name="Word" positionX="-45" positionY="0" width="128" height="59"/>
