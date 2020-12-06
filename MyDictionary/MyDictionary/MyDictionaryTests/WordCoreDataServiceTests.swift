@@ -87,7 +87,7 @@ extension WordCoreDataServiceTests {
                         self.wordCoreDataService.fetchWords { [unowned self] (result) in
                             switch result {
                             case .success(let words):
-                                XCTAssertFalse((words.contains(where: { $0.id == model.id })))
+                                XCTAssertFalse((words.contains(where: { $0.id == mockWord.id })))
                             case .failure:
                                 XCTAssertTrue(false)
                             }
