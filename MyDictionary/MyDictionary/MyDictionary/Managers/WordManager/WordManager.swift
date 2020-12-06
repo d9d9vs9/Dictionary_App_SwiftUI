@@ -45,6 +45,10 @@ extension MYWordManager {
         return wordCoreDataService.fetchWords(completionHandler: completionHandler)
     }
     
+    func fetchWord(byID id: String, completionHandler: @escaping ResultSavedWord) {
+        wordCoreDataService.fetchWord(byID: id, completionHandler: completionHandler)
+    }
+    
 }
 
 extension MYWordManager {
@@ -58,9 +62,9 @@ extension MYWordManager {
 
 extension MYWordManager {
         
-    func delete(word: WordModel, completionHandler: @escaping ResultDeletedWord) {
-        wordCoreDataService.delete(word: word, completionHandler: completionHandler)
-        wordSyncService.delete(word: word, completionHandler: completionHandler)
+    func delete(byID id: String, completionHandler: @escaping ResultDeletedWord) {
+        wordCoreDataService.delete(byID: id, completionHandler: completionHandler)
+        wordSyncService.delete(byID: id, completionHandler: completionHandler)
     }
     
 }

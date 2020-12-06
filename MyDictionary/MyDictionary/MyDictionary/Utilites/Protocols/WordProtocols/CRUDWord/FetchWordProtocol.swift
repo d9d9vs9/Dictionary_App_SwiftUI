@@ -9,4 +9,5 @@ import Foundation
 
 protocol FetchWordProtocol {
     func fetchWords(completionHandler: @escaping FetchResultWords)
+    func fetchWord(byID id: String, completionHandler: @escaping ResultSavedWord)
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 enum CustomCoreDataError: Error {
-    case finalResultIsNil
+    case finalResultIsNil    
 }

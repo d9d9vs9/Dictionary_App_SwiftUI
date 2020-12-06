@@ -32,12 +32,31 @@ final class MYWordListPresenter: WordListPresenter {
     
 }
 
+// MARK: - Link Builder
 extension MYWordListPresenter {
     
     func linkBuilder<Content: View>(for word: WordModel, @ViewBuilder content: () -> Content) -> some View {
         NavigationLink(destination: router.makeWordDetailView(for: word)) {
             content()
         }
+    }
+    
+}
+
+// MARK: - Move Words
+extension MYWordListPresenter {
+    
+    func move(from source: IndexSet, to destination: Int) {
+        words.move(fromOffsets: source, toOffset: destination)
+    }
+    
+}
+
+// MARK: - Delete Words
+extension MYWordListPresenter {
+    
+    func delete(from source: IndexSet) {
+        interactor.delete(from: source)
     }
     
 }

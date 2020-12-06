@@ -66,6 +66,31 @@ extension WordCoreDataServiceTests {
         
     }
     
+    func test_Fetch_Word_By_ID() {
+        let mockWord: WordModel = .init(id: UUID.init().uuidString,
+                                        word: "NFC",
+                                        translatedWord: "Near-field communication")
+        
+        wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
+            switch result {
+            case .success:
+                self.wordCoreDataService.fetchWord(byID: mockWord.id) { [unowned self] (result) in
+                    switch result {
+                    case .success(let model):
+                        XCTAssertTrue(model.id == mockWord.id)
+                        XCTAssertTrue(model.word == mockWord.word)
+                        XCTAssertTrue(model.translatedWord == mockWord.translatedWord)
+                    case .failure:
+                        XCTAssertTrue(false)
+                    }
+                }
+            case .failure:
+                XCTAssertTrue(false)
+            }
+        }
+        
+    }
+    
 }
 
 extension WordCoreDataServiceTests {
@@ -77,11 +102,8 @@ extension WordCoreDataServiceTests {
         
         wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
             switch result {
-            case .success(let model):
-                XCTAssertTrue(model.id == mockWord.id)
-                XCTAssertTrue(model.word == mockWord.word)
-                XCTAssertTrue(model.translatedWord == mockWord.translatedWord)
-                self.wordCoreDataService.delete(word: model) { [unowned self] (result) in
+            case .success(let model):                
+                self.wordCoreDataService.delete(byID: model.id) { [unowned self] (result) in
                     switch result {
                     case .success:
                         self.wordCoreDataService.fetchWords { [unowned self] (result) in

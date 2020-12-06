@@ -9,6 +9,7 @@ import Foundation
 
 protocol WordListInteractor {
     var dataModel: WordListDataModel { get }
+    func delete(from source: IndexSet)
 }
 
 final class MYWordListInteractor: WordListInteractor {
@@ -28,6 +29,22 @@ final class MYWordListInteractor: WordListInteractor {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+}
+
+extension MYWordListInteractor {
+    
+    func delete(from source: IndexSet) {
+        guard let id = source.map ({ self.dataModel.words[$0].id }).first else { return }        
+        wordCoreDataService.delete(byID: id) { [unowned self] (result) in
+            switch result {
+            case .success:
+                self.dataModel.words.remove(atOffsets: source)
+            case .failure:
+                return
+            }
+        }
     }
     
 }

@@ -59,6 +59,26 @@ extension MYWordCoreDataService {
         
     }
     
+    func fetchWord(byID id: String, completionHandler: @escaping ResultSavedWord) {
+        let fetchRequest = NSFetchRequest<Word>(entityName: CoreDataEntityName.word)
+        fetchRequest.predicate = NSPredicate(format: "\(WordAttributeName.id) == %@", id)
+        let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { [unowned self] asynchronousFetchResult in
+                        
+            guard let result = asynchronousFetchResult.finalResult else { completionHandler(.failure(CustomCoreDataError.finalResultIsNil)) ; return }
+            guard let word = result.map({ $0.wordModel }).first else { completionHandler(.failure(CustomCoreDataError.finalResultIsNil)) ; return }
+            DispatchQueue.main.async {
+                completionHandler(.success(word))
+            }
+            
+        }
+                
+        do {
+            try managedObjectContext.execute(asynchronousFetchRequest)
+        } catch let error {
+            completionHandler(.failure(error))
+        }
+    }
+    
 }
 
 extension MYWordCoreDataService {
@@ -71,9 +91,9 @@ extension MYWordCoreDataService {
 
 extension MYWordCoreDataService {
     
-    func delete(word: WordModel, completionHandler: @escaping ResultDeletedWord) {
+    func delete(byID id: String, completionHandler: @escaping ResultDeletedWord) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CoreDataEntityName.word)
-        fetchRequest.predicate = NSPredicate(format: "\(WordAttributeName.id) == %@", word.id)
+        fetchRequest.predicate = NSPredicate(format: "\(WordAttributeName.id) == %@", id)
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
             try managedObjectContext.execute(batchDeleteRequest)
@@ -89,10 +109,17 @@ extension MYWordCoreDataService {
 fileprivate extension MYWordCoreDataService {
     
     func save(word: Word, completionHandler: @escaping ResultSavedWord) {
-        coreDataStack.saveContext(managedObjectContext) { (result) in
+        coreDataStack.saveContext(managedObjectContext) { [unowned self] (result) in
             switch result {
             case .success:
-                completionHandler(.success(word.wordModel))
+                self.fetchWord(byID: word.id) { [unowned self] (result) in
+                    switch result {
+                    case .success(let wordModel):
+                        completionHandler(.success(wordModel))
+                    case .failure(let error):
+                        completionHandler(.failure(error))
+                    }
+                }
             case .failure(let error):
                 completionHandler(.failure(error))
             }

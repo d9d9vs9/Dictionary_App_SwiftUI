@@ -23,7 +23,8 @@ struct WordListView: View {
                     WordListCell(model: item)
                 }
             }
-            .onMove(perform: move)
+            .onMove(perform: presenter.move)
+            .onDelete(perform: presenter.delete)
         }
         .navigationBarTitle(KeysForTranslate.words.localized)
         .navigationBarItems(leading: EditButton(),
@@ -33,15 +34,6 @@ struct WordListView: View {
                                 }.sheet(isPresented: $showingAddWord) {
                                     self.presenter.router.makeAddWordView()
                                 })
-    }
-    
-}
-
-// MARK: - Move Words
-fileprivate extension WordListView {
-    
-    func move(from source: IndexSet, to destination: Int) {
-        presenter.words.move(fromOffsets: source, toOffset: destination)
     }
     
 }
