@@ -20,6 +20,7 @@ extension Word {
         return NSFetchRequest<Word>(entityName: CoreDataEntityName.word)
     }
 
+    @NSManaged public var id: String
     @NSManaged public var word: String
     @NSManaged public var translatedWord: String
         
@@ -32,7 +33,7 @@ extension Word : Identifiable {
 extension Word {
     
     var wordModel: WordModel {
-        return WordModel.init(word: word, translatedWord: translatedWord)
+        return WordModel.init(id: id, word: word, translatedWord: translatedWord)
     }
     
 }

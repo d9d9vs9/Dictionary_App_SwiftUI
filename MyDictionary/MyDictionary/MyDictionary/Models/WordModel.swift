@@ -8,13 +8,17 @@
 import Foundation
 
 public final class WordModel {
-        
+    
+    /// UUID
+    public let id: String
     let word: String
     let translatedWord: String
     
-    init(word: String,
+    init(id: String,
+         word: String,
          translatedWord: String) {
-                
+        
+        self.id = id
         self.word = word
         self.translatedWord = translatedWord
         
