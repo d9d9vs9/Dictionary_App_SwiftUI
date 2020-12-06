@@ -76,25 +76,6 @@ extension MYWordCoreDataService {
     
 }
 
-extension MYWordCoreDataService {
-    
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
-                               context: UnsafeMutableRawPointer?) {
-        
-        if (keyPath == #keyPath(Progress.completedUnitCount)),
-           let newValue = change?[.newKey] as? NSNumber {
-                debugPrint("observeValue", newValue)
-        } else {
-            return
-        }
-        
-        
-    }
-    
-}
-
 // MARK: - Save
 fileprivate extension MYWordCoreDataService {
     
@@ -107,15 +88,6 @@ fileprivate extension MYWordCoreDataService {
                 completionHandler(.failure(error))
             }
         }
-    }
-    
-}
-
-// MARK: - Custom Core Data Error
-fileprivate extension MYWordCoreDataService {
-    
-    enum CustomCoreDataError: Error {
-        case finalResultIsNil
     }
     
 }
