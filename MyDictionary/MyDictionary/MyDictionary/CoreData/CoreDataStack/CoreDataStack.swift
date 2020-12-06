@@ -30,7 +30,7 @@ open class CoreDataStack {
     
     public lazy var storeContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: Constants.StaticText.appName,
-                                              managedObjectModel: CoreDataStack.model)
+                                              managedObjectModel: CoreDataStack.model)        
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
