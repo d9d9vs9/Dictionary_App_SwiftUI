@@ -10,6 +10,7 @@ import XCTest
 
 final class WordCoreDataServiceTests: XCTestCase {
     
+    fileprivate let testTimeout: TimeInterval = 20.0
     var coreDataStack: CoreDataStack = TestCoreDataStack()
     lazy var wordCoreDataService: WordCoreDataService = MYWordCoreDataService(managedObjectContext: coreDataStack.privateContext,
                                                                               coreDataStack: coreDataStack)
@@ -19,6 +20,9 @@ final class WordCoreDataServiceTests: XCTestCase {
 extension WordCoreDataServiceTests {
     
     func test_Add_Word() {
+        
+        let expectation = XCTestExpectation(description: "Add Word Expectation")
+        
         let mockWord: WordModel = .init(id: UUID.init().uuidString,
                                         word: "MOSF",
                                         translatedWord: "metal–oxide–semiconductor-field")
@@ -29,10 +33,13 @@ extension WordCoreDataServiceTests {
                 XCTAssertTrue(model.id == mockWord.id)
                 XCTAssertTrue(model.word == mockWord.word)
                 XCTAssertTrue(model.translatedWord == mockWord.translatedWord)
+                expectation.fulfill()
             case .failure:
                 XCTAssertTrue(false)
             }
         }
+                
+        wait(for: [expectation], timeout: testTimeout)
         
     }
 }
@@ -40,10 +47,12 @@ extension WordCoreDataServiceTests {
 extension WordCoreDataServiceTests {
     
     func test_Fetch_Words() {
+        let expectation = XCTestExpectation(description: "Fetch Words Expectation")
+        
         let mockWord: WordModel = .init(id: UUID.init().uuidString,
                                         word: "MOSFC",
                                         translatedWord: "metal–oxide–semiconductor-field-c")
-        
+                        
         wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
             switch result {
             case .success(let model):
@@ -55,6 +64,7 @@ extension WordCoreDataServiceTests {
                         XCTAssertTrue(model.id == fetchedWords.last?.id)
                         XCTAssertTrue(model.word == fetchedWords.last?.word)
                         XCTAssertTrue(model.translatedWord == fetchedWords.last?.translatedWord)
+                        expectation.fulfill()
                     case .failure:
                         XCTAssertTrue(false)
                     }
@@ -64,10 +74,14 @@ extension WordCoreDataServiceTests {
                 XCTAssertTrue(false)
             }
         }
+                
+        wait(for: [expectation], timeout: testTimeout)
         
     }
     
     func test_Fetch_Word_By_ID() {
+        let expectation = XCTestExpectation(description: "Fetch Word Expectation")
+        
         let mockWord: WordModel = .init(id: UUID.init().uuidString,
                                         word: "NFC",
                                         translatedWord: "Near-field communication")
@@ -81,6 +95,7 @@ extension WordCoreDataServiceTests {
                         XCTAssertTrue(model.id == mockWord.id)
                         XCTAssertTrue(model.word == mockWord.word)
                         XCTAssertTrue(model.translatedWord == mockWord.translatedWord)
+                        expectation.fulfill()
                     case .failure:
                         XCTAssertTrue(false)
                     }
@@ -89,6 +104,8 @@ extension WordCoreDataServiceTests {
                 XCTAssertTrue(false)
             }
         }
+             
+        wait(for: [expectation], timeout: testTimeout)
         
     }
     
@@ -97,6 +114,8 @@ extension WordCoreDataServiceTests {
 extension WordCoreDataServiceTests {
     
     func test_Delete_Word() {
+        let expectation = XCTestExpectation(description: "Delete Word Expectation")
+        
         let mockWord: WordModel = .init(id: UUID.init().uuidString,
                                         word: "MOSFCX",
                                         translatedWord: "metal–oxide–semiconductor-field-c-x")
@@ -110,7 +129,9 @@ extension WordCoreDataServiceTests {
                         self.wordCoreDataService.fetchWords { [unowned self] (result) in
                             switch result {
                             case .success(let words):
-                                XCTAssertFalse((words.contains(where: { $0.id == mockWord.id })))
+                                let isContains = words.contains(where: { $0.id == mockWord.id })
+                                XCTAssertFalse(isContains)
+                                expectation.fulfill()
                             case .failure:
                                 XCTAssertTrue(false)
                             }
@@ -123,6 +144,8 @@ extension WordCoreDataServiceTests {
                 XCTAssertTrue(false)
             }
         }
+                
+        wait(for: [expectation], timeout: testTimeout)
         
     }
     
