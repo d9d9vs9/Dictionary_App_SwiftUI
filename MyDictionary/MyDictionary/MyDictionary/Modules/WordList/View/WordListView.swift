@@ -10,6 +10,7 @@ import SwiftUI
 struct WordListView: View {
     
     @ObservedObject fileprivate var presenter: MYWordListPresenter
+    @State fileprivate var editButtonAction = false
     @State fileprivate var showingAddWord = false
     
     init(presenter: MYWordListPresenter) {
@@ -25,7 +26,11 @@ struct WordListView: View {
             }
         }
         .navigationBarTitle(KeysForTranslate.words.localized)
-        .navigationBarItems(trailing:
+        .navigationBarItems(leading:
+                                Button(action: { self.editButtonAction = true }) {
+                                    Text(KeysForTranslate.edit.localized)
+                                },
+                            trailing:
                                 Button(action: { self.showingAddWord = true }) {
                                     Image(systemName: "plus")
                                 }.sheet(isPresented: $showingAddWord) {
