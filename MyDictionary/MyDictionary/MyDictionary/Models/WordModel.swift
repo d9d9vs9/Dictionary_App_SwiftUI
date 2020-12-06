@@ -5,7 +5,7 @@
 //  Created by Admin on 27.11.2020.
 //
 
-import Foundation
+import CoreData
 
 public final class WordModel {
         
@@ -28,3 +28,11 @@ public final class WordModel {
 extension WordModel: Identifiable {}
 
 extension WordModel: ObservableObject {}
+
+extension WordModel {
+    
+    func word(insertIntoManagedObjectContext: NSManagedObjectContext) -> Word {
+        return Word.init(uuid: uuid, word: word, translatedWord: translatedWord, insertIntoManagedObjectContext: insertIntoManagedObjectContext)
+    }
+    
+}

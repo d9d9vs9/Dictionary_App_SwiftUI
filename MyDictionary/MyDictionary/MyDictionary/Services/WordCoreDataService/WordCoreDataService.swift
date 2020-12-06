@@ -43,7 +43,7 @@ extension MYWordCoreDataService {
         
         let fetchRequest = NSFetchRequest<Word>(entityName: CoreDataEntityName.word)
         let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { [unowned self] asynchronousFetchResult in
-                        
+            
             if let result = asynchronousFetchResult.finalResult {
                 DispatchQueue.main.async {
                     completionHandler(.success(result.map({ $0.wordModel })))
@@ -51,7 +51,7 @@ extension MYWordCoreDataService {
             }
             
         }
-                
+        
         do {
             try managedObjectContext.execute(asynchronousFetchRequest)
         } catch let error {
@@ -64,7 +64,7 @@ extension MYWordCoreDataService {
         let fetchRequest = NSFetchRequest<Word>(entityName: CoreDataEntityName.word)
         fetchRequest.predicate = NSPredicate(format: "\(WordAttributeName.uuid) == %@", uuid)
         let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { [unowned self] asynchronousFetchResult in
-                        
+            
             if let result = asynchronousFetchResult.finalResult {
                 if let word = result.map({ $0.wordModel }).first {
                     DispatchQueue.main.async {
@@ -74,7 +74,7 @@ extension MYWordCoreDataService {
             }
             
         }
-                
+        
         do {
             try managedObjectContext.execute(asynchronousFetchRequest)
         } catch let error {
@@ -87,6 +87,24 @@ extension MYWordCoreDataService {
 extension MYWordCoreDataService {
     
     func update(word: WordModel, completionHandler: @escaping ResultSavedWord) {
+        let batchUpdateRequest = NSBatchUpdateRequest(entityName: CoreDataEntityName.word)
+        batchUpdateRequest.propertiesToUpdate = [WordAttributeName.word : word.word,
+                                                 WordAttributeName.translatedWord : word.translatedWord
+        ]
+        batchUpdateRequest.predicate = NSPredicate(format: "\(WordAttributeName.uuid) == %@", word.uuid)
+        
+        do {
+            try managedObjectContext.execute(batchUpdateRequest)
+            save(word: word.word(insertIntoManagedObjectContext: managedObjectContext)) { [unowned self] (result) in
+                DispatchQueue.main.async {
+                    completionHandler(result)
+                }
+            }
+        } catch let error {
+            DispatchQueue.main.async {
+                completionHandler(.failure(error))
+            }
+        }
         
     }
     
