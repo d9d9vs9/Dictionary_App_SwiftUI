@@ -70,8 +70,16 @@ extension MYWordCoreDataService {
 
 extension MYWordCoreDataService {
     
-    func delete(word: WordModel, completionHandler: @escaping ResultSavedWord) {
-        
+    func delete(word: WordModel, completionHandler: @escaping ResultDeletedWord) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CoreDataEntityName.word)        
+        fetchRequest.predicate = NSPredicate(format: "\(WordAttributeName.id) == %@", word.id)
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest) 
+        do {
+            try managedObjectContext.execute(batchDeleteRequest)
+            completionHandler(.success)
+        } catch let error {
+            completionHandler(.failure(error))
+        }
     }
     
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol DeleteWordProtocol {
-    func delete(word: WordModel, completionHandler: @escaping ResultSavedWord)
+    func delete(word: WordModel, completionHandler: @escaping ResultDeletedWord)
 }

@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 struct WordAttributeName {
+    static let id: String = "id"
     static let word: String = "word"
     static let translatedWord: String = "translatedWord"
 }

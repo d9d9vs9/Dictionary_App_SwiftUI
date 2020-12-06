@@ -41,8 +41,8 @@ extension MYWordSyncService {
 
 extension MYWordSyncService {
         
-    func delete(word: WordModel, completionHandler: @escaping ResultSavedWord) {
-        completionHandler(.success(word))
+    func delete(word: WordModel, completionHandler: @escaping ResultDeletedWord) {
+        completionHandler(.success)
     }
     
 }
