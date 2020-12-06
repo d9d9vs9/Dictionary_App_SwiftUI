@@ -43,10 +43,10 @@ extension MYWordCoreDataService {
         let fetchRequest = NSFetchRequest<Word>(entityName: CoreDataEntityName.word)
         let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { [unowned self] asynchronousFetchResult in
                         
-            guard let result = asynchronousFetchResult.finalResult else { completionHandler(.failure(CustomCoreDataError.finalResultIsNil)) ; return }
-            
-            DispatchQueue.main.async {
-                completionHandler(.success(result.map({ $0.wordModel })))
+            if let result = asynchronousFetchResult.finalResult {
+                DispatchQueue.main.async {
+                    completionHandler(.success(result.map({ $0.wordModel })))
+                }
             }
             
         }
@@ -64,10 +64,12 @@ extension MYWordCoreDataService {
         fetchRequest.predicate = NSPredicate(format: "\(WordAttributeName.uuid) == %@", uuid)
         let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { [unowned self] asynchronousFetchResult in
                         
-            guard let result = asynchronousFetchResult.finalResult else { completionHandler(.failure(CustomCoreDataError.finalResultIsNil)) ; return }
-            guard let word = result.map({ $0.wordModel }).first else { completionHandler(.failure(CustomCoreDataError.finalResultIsNil)) ; return }
-            DispatchQueue.main.async {
-                completionHandler(.success(word))
+            if let result = asynchronousFetchResult.finalResult {
+                if let word = result.map({ $0.wordModel }).first {
+                    DispatchQueue.main.async {
+                        completionHandler(.success(word))
+                    }
+                }
             }
             
         }
