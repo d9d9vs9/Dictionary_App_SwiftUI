@@ -45,8 +45,8 @@ extension MYWordManager {
         return wordCoreDataService.fetchWords(completionHandler: completionHandler)
     }
     
-    func fetchWord(byID id: String, completionHandler: @escaping ResultSavedWord) {
-        wordCoreDataService.fetchWord(byID: id, completionHandler: completionHandler)
+    func fetchWord(byUUID uuid: String, completionHandler: @escaping ResultSavedWord) {
+        wordCoreDataService.fetchWord(byUUID: uuid, completionHandler: completionHandler)
     }
     
 }
@@ -62,9 +62,9 @@ extension MYWordManager {
 
 extension MYWordManager {
         
-    func delete(byID id: String, completionHandler: @escaping ResultDeletedWord) {
-        wordCoreDataService.delete(byID: id, completionHandler: completionHandler)
-        wordSyncService.delete(byID: id, completionHandler: completionHandler)
+    func delete(byUUID uuid: String, completionHandler: @escaping ResultDeletedWord) {
+        wordCoreDataService.delete(byUUID: uuid, completionHandler: completionHandler)
+        wordSyncService.delete(byUUID: uuid, completionHandler: completionHandler)
     }
     
 }

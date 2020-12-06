@@ -8,5 +8,5 @@
 import Foundation
 
 protocol DeleteWordProtocol {
-    func delete(byID id: String, completionHandler: @escaping ResultDeletedWord)
+    func delete(byUUID uuid: String, completionHandler: @escaping ResultDeletedWord)
 }

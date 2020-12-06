@@ -27,8 +27,7 @@ final class MYWordCoreDataService: NSObject, WordCoreDataService {
 extension MYWordCoreDataService {
     
     func add(word: WordModel, completionHandler: @escaping ResultSavedWord) {
-        let newWord = Word.init(id: word.id,
-                                word: word.word,
+        let newWord = Word.init(word: word.word,
                                 translatedWord: word.translatedWord,
                                 insertIntoManagedObjectContext: managedObjectContext)
         
@@ -60,9 +59,9 @@ extension MYWordCoreDataService {
         
     }
     
-    func fetchWord(byID id: String, completionHandler: @escaping ResultSavedWord) {
+    func fetchWord(byUUID uuid: String, completionHandler: @escaping ResultSavedWord) {
         let fetchRequest = NSFetchRequest<Word>(entityName: CoreDataEntityName.word)
-        fetchRequest.predicate = NSPredicate(format: "\(WordAttributeName.id) == %@", id)
+        fetchRequest.predicate = NSPredicate(format: "\(WordAttributeName.uuid) == %@", uuid)
         let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { [unowned self] asynchronousFetchResult in
                         
             guard let result = asynchronousFetchResult.finalResult else { completionHandler(.failure(CustomCoreDataError.finalResultIsNil)) ; return }
@@ -92,9 +91,9 @@ extension MYWordCoreDataService {
 
 extension MYWordCoreDataService {
     
-    func delete(byID id: String, completionHandler: @escaping ResultDeletedWord) {
+    func delete(byUUID uuid: String, completionHandler: @escaping ResultDeletedWord) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CoreDataEntityName.word)
-        fetchRequest.predicate = NSPredicate(format: "\(WordAttributeName.id) == %@", id)
+        fetchRequest.predicate = NSPredicate(format: "\(WordAttributeName.uuid) == %@", uuid)
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
             try managedObjectContext.execute(batchDeleteRequest)
@@ -113,7 +112,7 @@ fileprivate extension MYWordCoreDataService {
         coreDataStack.saveContext(managedObjectContext) { [unowned self] (result) in
             switch result {
             case .success:
-                self.fetchWord(byID: word.id) { [unowned self] (result) in
+                self.fetchWord(byUUID: word.uuid) { [unowned self] (result) in
                     switch result {
                     case .success(let wordModel):
                         completionHandler(.success(wordModel))

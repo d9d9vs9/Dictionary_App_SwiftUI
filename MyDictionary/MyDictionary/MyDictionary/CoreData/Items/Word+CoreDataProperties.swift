@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 struct WordAttributeName {
-    static let id: String = "id"
+    static let uuid: String = "uuid"
     static let word: String = "word"
     static let translatedWord: String = "translatedWord"
 }
@@ -21,7 +21,7 @@ extension Word {
         return NSFetchRequest<Word>(entityName: CoreDataEntityName.word)
     }
 
-    @NSManaged public var id: String
+    @NSManaged public var uuid: String
     @NSManaged public var word: String
     @NSManaged public var translatedWord: String
         
@@ -34,7 +34,7 @@ extension Word : Identifiable {
 extension Word {
     
     var wordModel: WordModel {
-        return WordModel.init(id: id, word: word, translatedWord: translatedWord)
+        return WordModel.init(uuid: uuid, word: word, translatedWord: translatedWord)
     }
     
 }

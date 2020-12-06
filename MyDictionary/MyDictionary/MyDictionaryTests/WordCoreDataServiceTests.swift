@@ -23,14 +23,14 @@ extension WordCoreDataServiceTests {
         
         let expectation = XCTestExpectation(description: "Add Word Expectation")
         
-        let mockWord: WordModel = .init(id: UUID.init().uuidString,
+        let mockWord: WordModel = .init(uuid: UUID.init().uuidString,
                                         word: "MOSF",
                                         translatedWord: "metal–oxide–semiconductor-field")
         
         wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
             switch result {
             case .success(let model):
-                XCTAssertTrue(model.id == mockWord.id)
+                XCTAssertTrue(model.uuid == mockWord.uuid)
                 XCTAssertTrue(model.word == mockWord.word)
                 XCTAssertTrue(model.translatedWord == mockWord.translatedWord)
                 expectation.fulfill()
@@ -49,7 +49,7 @@ extension WordCoreDataServiceTests {
     func test_Fetch_Words() {
         let expectation = XCTestExpectation(description: "Fetch Words Expectation")
         
-        let mockWord: WordModel = .init(id: UUID.init().uuidString,
+        let mockWord: WordModel = .init(uuid: UUID.init().uuidString,
                                         word: "MOSFC",
                                         translatedWord: "metal–oxide–semiconductor-field-c")
                         
@@ -61,7 +61,7 @@ extension WordCoreDataServiceTests {
                     switch result {
                     case .success(let fetchedWords):
                         XCTAssertFalse(fetchedWords.isEmpty)
-                        XCTAssertTrue(model.id == fetchedWords.last?.id)
+                        XCTAssertTrue(model.uuid == fetchedWords.last?.uuid)
                         XCTAssertTrue(model.word == fetchedWords.last?.word)
                         XCTAssertTrue(model.translatedWord == fetchedWords.last?.translatedWord)
                         expectation.fulfill()
@@ -79,20 +79,20 @@ extension WordCoreDataServiceTests {
         
     }
     
-    func test_Fetch_Word_By_ID() {
+    func test_Fetch_Word_By_UUID() {
         let expectation = XCTestExpectation(description: "Fetch Word Expectation")
         
-        let mockWord: WordModel = .init(id: UUID.init().uuidString,
+        let mockWord: WordModel = .init(uuid: UUID.init().uuidString,
                                         word: "NFC",
                                         translatedWord: "Near-field communication")
         
         wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
             switch result {
             case .success:
-                self.wordCoreDataService.fetchWord(byID: mockWord.id) { [unowned self] (result) in
+                self.wordCoreDataService.fetchWord(byUUID: mockWord.uuid) { [unowned self] (result) in
                     switch result {
                     case .success(let model):
-                        XCTAssertTrue(model.id == mockWord.id)
+                        XCTAssertTrue(model.uuid == mockWord.uuid)
                         XCTAssertTrue(model.word == mockWord.word)
                         XCTAssertTrue(model.translatedWord == mockWord.translatedWord)
                         expectation.fulfill()
@@ -116,20 +116,20 @@ extension WordCoreDataServiceTests {
     func test_Delete_Word() {
         let expectation = XCTestExpectation(description: "Delete Word Expectation")
         
-        let mockWord: WordModel = .init(id: UUID.init().uuidString,
+        let mockWord: WordModel = .init(uuid: UUID.init().uuidString,
                                         word: "MOSFCX",
                                         translatedWord: "metal–oxide–semiconductor-field-c-x")
         
         wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
             switch result {
             case .success(let model):
-                self.wordCoreDataService.delete(byID: model.id) { [unowned self] (result) in
+                self.wordCoreDataService.delete(byUUID: model.uuid) { [unowned self] (result) in
                     switch result {
                     case .success:
                         self.wordCoreDataService.fetchWords { [unowned self] (result) in
                             switch result {
                             case .success(let words):
-                                let isContains = words.contains(where: { $0.id == mockWord.id })
+                                let isContains = words.contains(where: { $0.uuid == mockWord.uuid })
                                 XCTAssertFalse(isContains)
                                 expectation.fulfill()
                             case .failure:

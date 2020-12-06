@@ -27,7 +27,7 @@ final class MYAddWordPresenter: AddWordPresenter {
 extension MYAddWordPresenter {
     
     func addToMyDictionaryButtonClicked(wordText: String, translatedText: String, completionHandler: @escaping ResultSavedWord) {
-        interactor.add(word: WordModel.init(id: UUID.init().uuidString, word: wordText, translatedWord: translatedText), completionHandler: completionHandler)
+        interactor.add(word: WordModel.init(uuid: UUID.init().uuidString, word: wordText, translatedWord: translatedText), completionHandler: completionHandler)
     }
     
 }

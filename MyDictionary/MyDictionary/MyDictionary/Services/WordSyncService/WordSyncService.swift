@@ -29,7 +29,7 @@ extension MYWordSyncService {
         completionHandler(.success([]))
     }
     
-    func fetchWord(byID id: String, completionHandler: @escaping ResultSavedWord) {
+    func fetchWord(byUUID uuid: String, completionHandler: @escaping ResultSavedWord) {
         
     }
     
@@ -45,7 +45,7 @@ extension MYWordSyncService {
 
 extension MYWordSyncService {
         
-    func delete(byID id: String, completionHandler: @escaping ResultDeletedWord) {
+    func delete(byUUID uuid: String, completionHandler: @escaping ResultDeletedWord) {
         completionHandler(.success)
     }
     

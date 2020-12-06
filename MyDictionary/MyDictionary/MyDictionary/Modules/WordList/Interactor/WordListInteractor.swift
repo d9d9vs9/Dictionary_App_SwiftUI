@@ -36,8 +36,8 @@ final class MYWordListInteractor: WordListInteractor {
 extension MYWordListInteractor {
     
     func delete(from source: IndexSet) {
-        guard let id = source.map ({ self.dataModel.words[$0].id }).first else { return }        
-        wordCoreDataService.delete(byID: id) { [unowned self] (result) in
+        guard let uuid = source.map ({ self.dataModel.words[$0].uuid }).first else { return }
+        wordCoreDataService.delete(byUUID: uuid) { [unowned self] (result) in
             switch result {
             case .success:
                 self.dataModel.words.remove(atOffsets: source)
