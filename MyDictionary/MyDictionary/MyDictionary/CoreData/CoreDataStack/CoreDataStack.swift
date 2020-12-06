@@ -44,17 +44,17 @@ open class CoreDataStack {
 // MARK: - Save Context
 extension CoreDataStack {
     
-    public func save(completionHandler: @escaping ResultSaved) {
-        saveContext(privateContext, completionHandler: completionHandler)
-        saveContext(mainContext, completionHandler: completionHandler)
+    public func savePerformAndWait(completionHandler: @escaping ResultSaved) {
+        savePerformAndWaitContext(privateContext, completionHandler: completionHandler)
+        savePerformAndWaitContext(mainContext, completionHandler: completionHandler)
     }
     
-    public func saveDeleted(completionHandler: @escaping ResultSaved) {
-        saveDeletedContext(privateContext, completionHandler: completionHandler)
-        saveDeletedContext(mainContext, completionHandler: completionHandler)
+    public func savePerform(completionHandler: @escaping ResultSaved) {
+        savePerformContext(privateContext, completionHandler: completionHandler)
+        savePerformContext(mainContext, completionHandler: completionHandler)
     }
     
-    private func saveContext(_ context: NSManagedObjectContext, completionHandler: @escaping ResultSaved) {
+    private func savePerformAndWaitContext(_ context: NSManagedObjectContext, completionHandler: @escaping ResultSaved) {
         context.performAndWait {
             do {
                 try context.save()
@@ -67,7 +67,7 @@ extension CoreDataStack {
         }
     }
     
-    private func saveDeletedContext(_ context: NSManagedObjectContext, completionHandler: @escaping ResultSaved) {
+    private func savePerformContext(_ context: NSManagedObjectContext, completionHandler: @escaping ResultSaved) {
         context.perform {
             do {
                 try context.save()

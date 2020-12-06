@@ -116,11 +116,11 @@ extension MYWordCoreDataService {
 fileprivate extension MYWordCoreDataService {
     
     func saveDeleted(completionHandler: @escaping ResultSaved) {
-        coreDataStack.saveDeleted(completionHandler: completionHandler)
+        coreDataStack.savePerform(completionHandler: completionHandler)
     }
     
     func save(word: Word, completionHandler: @escaping ResultSavedWord) {
-        coreDataStack.save() { [unowned self] (result) in
+        coreDataStack.savePerformAndWait() { [unowned self] (result) in
             switch result {
             case .success:
                 self.fetchWord(byUUID: word.uuid) { [unowned self] (result) in
