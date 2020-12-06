@@ -28,6 +28,7 @@ extension MYWordCoreDataService {
     
     func add(word: WordModel, completionHandler: @escaping ResultSavedWord) {
         let newWord = Word.init(context: managedObjectContext)
+        newWord.id = word.id
         newWord.word = word.word
         newWord.translatedWord = word.translatedWord
         self.save(word: newWord, completionHandler: completionHandler)
@@ -71,9 +72,9 @@ extension MYWordCoreDataService {
 extension MYWordCoreDataService {
     
     func delete(word: WordModel, completionHandler: @escaping ResultDeletedWord) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CoreDataEntityName.word)        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CoreDataEntityName.word)
         fetchRequest.predicate = NSPredicate(format: "\(WordAttributeName.id) == %@", word.id)
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest) 
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
             try managedObjectContext.execute(batchDeleteRequest)
             completionHandler(.success)
