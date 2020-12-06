@@ -24,6 +24,7 @@ struct WordListView: View {
                     WordListCell(model: item)
                 }
             }
+            .onMove(perform: move)
         }
         .navigationBarTitle(KeysForTranslate.words.localized)
         .navigationBarItems(leading:
@@ -36,6 +37,15 @@ struct WordListView: View {
                                 }.sheet(isPresented: $showingAddWord) {
                                     self.presenter.router.makeAddWordView()
                                 })
+    }
+    
+}
+
+// MARK: - Move Words
+fileprivate extension WordListView {
+    
+    func move(from source: IndexSet, to destination: Int) {
+        presenter.words.move(fromOffsets: source, toOffset: destination)
     }
     
 }
