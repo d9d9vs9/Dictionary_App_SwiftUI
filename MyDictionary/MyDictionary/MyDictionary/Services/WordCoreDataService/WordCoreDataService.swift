@@ -27,10 +27,11 @@ final class MYWordCoreDataService: NSObject, WordCoreDataService {
 extension MYWordCoreDataService {
     
     func add(word: WordModel, completionHandler: @escaping ResultSavedWord) {
-        let newWord = Word.init(context: managedObjectContext)
-        newWord.id = word.id
-        newWord.word = word.word
-        newWord.translatedWord = word.translatedWord
+        let newWord = Word.init(id: word.id,
+                                word: word.word,
+                                translatedWord: word.translatedWord,
+                                insertIntoManagedObjectContext: managedObjectContext)
+        
         self.save(word: newWord, completionHandler: completionHandler)
     }
     
