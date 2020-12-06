@@ -109,7 +109,7 @@ extension MYWordCoreDataService {
 fileprivate extension MYWordCoreDataService {
     
     func save(word: Word, completionHandler: @escaping ResultSavedWord) {
-        coreDataStack.saveContext(managedObjectContext) { [unowned self] (result) in
+        coreDataStack.save() { [unowned self] (result) in
             switch result {
             case .success:
                 self.fetchWord(byUUID: word.uuid) { [unowned self] (result) in

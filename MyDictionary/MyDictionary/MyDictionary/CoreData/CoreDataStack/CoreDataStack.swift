@@ -30,7 +30,7 @@ open class CoreDataStack {
     
     public lazy var storeContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: Constants.StaticText.appName,
-                                              managedObjectModel: CoreDataStack.model)        
+                                              managedObjectModel: CoreDataStack.model)
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -44,7 +44,7 @@ open class CoreDataStack {
 // MARK: - Save Context
 extension CoreDataStack {
     
-    public func savePrivateAndMainContext(completionHandler: @escaping ResultSaved) {
+    public func save(completionHandler: @escaping ResultSaved) {
         savePrivateContext(completionHandler: completionHandler)
         saveMainContext(completionHandler: completionHandler)
     }
@@ -57,7 +57,7 @@ extension CoreDataStack {
         saveContext(privateContext, completionHandler: completionHandler)
     }
     
-    public func saveContext(_ context: NSManagedObjectContext, completionHandler: @escaping ResultSaved) {
+    private func saveContext(_ context: NSManagedObjectContext, completionHandler: @escaping ResultSaved) {
         context.performAndWait {
             do {
                 try context.save()
