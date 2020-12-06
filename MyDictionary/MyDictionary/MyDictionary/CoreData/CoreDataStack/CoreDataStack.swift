@@ -28,18 +28,15 @@ open class CoreDataStack {
         return moc
     }()
     
-    public lazy var persistentContainer: NSPersistentContainer = {
-       return NSPersistentContainer(name: Constants.StaticText.appName,
-                                    managedObjectModel: CoreDataStack.model)
-    }()
-    
-    public lazy var storeContainer: NSPersistentContainer = {        
-        persistentContainer.loadPersistentStores { _, error in
+    public lazy var storeContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: Constants.StaticText.appName,
+                                              managedObjectModel: CoreDataStack.model)
+        container.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         }
-        return persistentContainer
+        return container
     }()
     
 }

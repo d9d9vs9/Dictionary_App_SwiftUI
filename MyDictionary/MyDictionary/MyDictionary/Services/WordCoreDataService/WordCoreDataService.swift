@@ -97,7 +97,7 @@ extension MYWordCoreDataService {
         fetchRequest.predicate = NSPredicate(format: "\(WordAttributeName.id) == %@", id)
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
-            try managedObjectContext.execute(batchDeleteRequest)
+            try coreDataStack.persistentContainer.execute(batchDeleteRequest, context: managedObjectContext)
             completionHandler(.success)
         } catch let error {
             completionHandler(.failure(error))
