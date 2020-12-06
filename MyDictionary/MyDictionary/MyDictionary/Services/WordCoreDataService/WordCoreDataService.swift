@@ -95,7 +95,7 @@ extension MYWordCoreDataService {
         
         do {
             try managedObjectContext.execute(batchUpdateRequest)
-            save(word: word.word(insertIntoManagedObjectContext: managedObjectContext)) { [unowned self] (result) in
+            savePerform(word: word.word(insertIntoManagedObjectContext: managedObjectContext)) { [unowned self] (result) in
                 DispatchQueue.main.async {
                     completionHandler(result)
                 }
@@ -118,7 +118,7 @@ extension MYWordCoreDataService {
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
             try managedObjectContext.execute(batchDeleteRequest)
-            self.saveDeleted { [unowned self] (result) in
+            self.savePerform { [unowned self] (result) in
                 DispatchQueue.main.async {
                     completionHandler(result)
                 }
@@ -133,8 +133,26 @@ extension MYWordCoreDataService {
 // MARK: - Save
 fileprivate extension MYWordCoreDataService {
     
-    func saveDeleted(completionHandler: @escaping ResultSaved) {
+    func savePerform(completionHandler: @escaping ResultSaved) {
         coreDataStack.savePerform(completionHandler: completionHandler)
+    }
+    
+    func savePerform(word: Word, completionHandler: @escaping ResultSavedWord) {
+        coreDataStack.savePerform() { [unowned self] (result) in
+            switch result {
+            case .success:
+                self.fetchWord(byUUID: word.uuid) { [unowned self] (result) in
+                    switch result {
+                    case .success(let wordModel):
+                        completionHandler(.success(wordModel))
+                    case .failure(let error):
+                        completionHandler(.failure(error))
+                    }
+                }
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        }
     }
     
     func save(word: Word, completionHandler: @escaping ResultSavedWord) {

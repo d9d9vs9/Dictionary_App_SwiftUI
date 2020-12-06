@@ -113,6 +113,44 @@ extension WordCoreDataServiceTests {
 
 extension WordCoreDataServiceTests {
     
+    func test_Update_Word() {
+        let expectation = XCTestExpectation(description: "Update Word Expectation")
+        
+        let mockWord: WordModel = .init(uuid: UUID.init().uuidString,
+                                        word: "BLE",
+                                        translatedWord: "Bluetooth Low Energy")
+                
+        wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
+            switch result {
+            case .success:
+                let updatedWord: WordModel = .init(uuid: mockWord.uuid,
+                                                   word: "NBA",
+                                                   translatedWord: "The National Basketball Association")
+                
+                self.wordCoreDataService.update(word: updatedWord) { [unowned self] (result) in
+                    switch result {
+                    case .success(let updated):
+                        XCTAssertTrue(updated.uuid == updatedWord.uuid)
+                        XCTAssertTrue(updated.word == updatedWord.word)
+                        XCTAssertTrue(updated.translatedWord == updatedWord.translatedWord)
+                        expectation.fulfill()
+                    case .failure:
+                        XCTAssertTrue(false)
+                    }
+                }
+                                
+            case .failure:
+                XCTAssertTrue(false)
+            }
+        }
+             
+        wait(for: [expectation], timeout: testTimeout)
+    }
+    
+}
+
+extension WordCoreDataServiceTests {
+    
     func test_Delete_Word() {
         let expectation = XCTestExpectation(description: "Delete Word Expectation")
         
