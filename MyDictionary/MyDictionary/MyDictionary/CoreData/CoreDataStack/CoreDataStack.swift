@@ -45,20 +45,30 @@ open class CoreDataStack {
 extension CoreDataStack {
     
     public func save(completionHandler: @escaping ResultSaved) {
-        savePrivateContext(completionHandler: completionHandler)
-        saveMainContext(completionHandler: completionHandler)
-    }
-    
-    public func saveMainContext(completionHandler: @escaping ResultSaved) {
+        saveContext(privateContext, completionHandler: completionHandler)
         saveContext(mainContext, completionHandler: completionHandler)
     }
     
-    public func savePrivateContext(completionHandler: @escaping ResultSaved) {
-        saveContext(privateContext, completionHandler: completionHandler)
+    public func saveDeleted(completionHandler: @escaping ResultSaved) {
+        saveDeletedContext(privateContext, completionHandler: completionHandler)
+        saveDeletedContext(mainContext, completionHandler: completionHandler)
     }
     
     private func saveContext(_ context: NSManagedObjectContext, completionHandler: @escaping ResultSaved) {
         context.performAndWait {
+            do {
+                try context.save()
+                completionHandler(.success)
+            } catch {
+                let nsError = error as NSError
+                debugPrint(#function, "Unresolved error \(nsError), \(nsError.userInfo)")
+                completionHandler(.failure(error))
+            }
+        }
+    }
+    
+    private func saveDeletedContext(_ context: NSManagedObjectContext, completionHandler: @escaping ResultSaved) {
+        context.perform {
             do {
                 try context.save()
                 completionHandler(.success)

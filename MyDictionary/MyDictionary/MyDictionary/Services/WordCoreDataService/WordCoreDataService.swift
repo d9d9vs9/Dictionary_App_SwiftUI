@@ -27,7 +27,8 @@ final class MYWordCoreDataService: NSObject, WordCoreDataService {
 extension MYWordCoreDataService {
     
     func add(word: WordModel, completionHandler: @escaping ResultSavedWord) {
-        let newWord = Word.init(word: word.word,
+        let newWord = Word.init(uuid: word.uuid,
+                                word: word.word,
                                 translatedWord: word.translatedWord,
                                 insertIntoManagedObjectContext: managedObjectContext)
         
@@ -99,7 +100,11 @@ extension MYWordCoreDataService {
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
             try managedObjectContext.execute(batchDeleteRequest)
-            completionHandler(.success)
+            self.saveDeleted { [unowned self] (result) in
+                DispatchQueue.main.async {
+                    completionHandler(result)
+                }
+            }
         } catch let error {
             completionHandler(.failure(error))
         }
@@ -109,6 +114,10 @@ extension MYWordCoreDataService {
 
 // MARK: - Save
 fileprivate extension MYWordCoreDataService {
+    
+    func saveDeleted(completionHandler: @escaping ResultSaved) {
+        coreDataStack.saveDeleted(completionHandler: completionHandler)
+    }
     
     func save(word: Word, completionHandler: @escaping ResultSavedWord) {
         coreDataStack.save() { [unowned self] (result) in

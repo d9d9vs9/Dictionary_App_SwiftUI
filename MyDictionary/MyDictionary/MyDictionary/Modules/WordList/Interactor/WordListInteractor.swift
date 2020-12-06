@@ -40,7 +40,7 @@ extension MYWordListInteractor {
         wordCoreDataService.delete(byUUID: uuid) { [unowned self] (result) in
             switch result {
             case .success:
-                self.dataModel.words.remove(atOffsets: source)
+                self.dataModel.words.removeAll(where: { $0.uuid == uuid })
             case .failure:
                 return
             }
