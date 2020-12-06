@@ -51,6 +51,7 @@ extension WordCoreDataServiceTests {
                 self.wordCoreDataService.fetchWords { [unowned self] (result) in
                     switch result {
                     case .success(let fetchedWords):
+                        XCTAssertFalse(fetchedWords.isEmpty)
                         XCTAssertTrue(model.id == fetchedWords.last?.id)
                         XCTAssertTrue(model.word == fetchedWords.last?.word)
                         XCTAssertTrue(model.translatedWord == fetchedWords.last?.translatedWord)
@@ -102,7 +103,7 @@ extension WordCoreDataServiceTests {
         
         wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
             switch result {
-            case .success(let model):                
+            case .success(let model):
                 self.wordCoreDataService.delete(byID: model.id) { [unowned self] (result) in
                     switch result {
                     case .success:
