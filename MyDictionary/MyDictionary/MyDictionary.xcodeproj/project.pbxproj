@@ -26,6 +26,7 @@
 		229A01C2257A60FA006CF2DC /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A01C0257A60FA006CF2DC /* Word+CoreDataProperties.swift */; };
 		229A01C3257A60FA006CF2DC /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A01C1257A60FA006CF2DC /* Word+CoreDataClass.swift */; };
 		229A01EF257A69B8006CF2DC /* MyDictionary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 229A01E3257A645C006CF2DC /* MyDictionary.xcdatamodeld */; };
+		229C6C2A258007950034DCD4 /* AppStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C6C29258007950034DCD4 /* AppStyling.swift */; };
 		22C3F5D6257A5DEC00449FBC /* CoreDataEntityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3F5D5257A5DEC00449FBC /* CoreDataEntityName.swift */; };
 		22E5C97D25795D2E00B7C347 /* AddWordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5C97C25795D2E00B7C347 /* AddWordProtocol.swift */; };
 		22E5C98D2579638A00B7C347 /* UpdateWordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5C98C2579638A00B7C347 /* UpdateWordProtocol.swift */; };
@@ -105,6 +106,7 @@
 		229A01C0257A60FA006CF2DC /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		229A01C1257A60FA006CF2DC /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
 		229A01E4257A645C006CF2DC /* MyDictionary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyDictionary.xcdatamodel; sourceTree = "<group>"; };
+		229C6C29258007950034DCD4 /* AppStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyling.swift; sourceTree = "<group>"; };
 		22C3F5D5257A5DEC00449FBC /* CoreDataEntityName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEntityName.swift; sourceTree = "<group>"; };
 		22E5C97C25795D2E00B7C347 /* AddWordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordProtocol.swift; sourceTree = "<group>"; };
 		22E5C98C2579638A00B7C347 /* UpdateWordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWordProtocol.swift; sourceTree = "<group>"; };
@@ -296,6 +298,14 @@
 				229A01C1257A60FA006CF2DC /* Word+CoreDataClass.swift */,
 			);
 			path = Items;
+			sourceTree = "<group>";
+		};
+		229C6C282580077E0034DCD4 /* AppStyling */ = {
+			isa = PBXGroup;
+			children = (
+				229C6C29258007950034DCD4 /* AppStyling.swift */,
+			);
+			path = AppStyling;
 			sourceTree = "<group>";
 		};
 		22C3F5D4257A5DC900449FBC /* CoreDataEntityName */ = {
@@ -723,6 +733,7 @@
 		84BA3839257183E700C59D90 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
+				229C6C282580077E0034DCD4 /* AppStyling */,
 				224826E9257D067500B56D57 /* CustomCoreDataError */,
 				224826E8257D066B00B56D57 /* Results */,
 				22400A6E257A701500699223 /* WordNSNotificationName */,
@@ -946,6 +957,7 @@
 				84BA3841257184D600C59D90 /* WordListPresenter.swift in Sources */,
 				224826F3257D06B700B56D57 /* ResultSavedWord.swift in Sources */,
 				2214C31D257934D60019701C /* KeysForTranslate.swift in Sources */,
+				229C6C2A258007950034DCD4 /* AppStyling.swift in Sources */,
 				22E5C9D225796E7300B7C347 /* AddWordPresenter.swift in Sources */,
 				84BA383025717F5300C59D90 /* WordDetailPresenter.swift in Sources */,
 				22E5C9EA2579700500B7C347 /* AddWordDataModel.swift in Sources */,
