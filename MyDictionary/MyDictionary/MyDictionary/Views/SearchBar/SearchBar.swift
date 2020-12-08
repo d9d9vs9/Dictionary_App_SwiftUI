@@ -10,35 +10,32 @@ import SwiftUI
 struct SearchBar: View {
     
     @Binding var searchInput: String
-    @State fileprivate var searching = false
     
     var body: some View {
         ZStack {
             // Background Color
-            Color(#colorLiteral(red: 0.737254902, green: 0.1294117647, blue: 0.2941176471, alpha: 1))
+            Color(AppStyling.Color.lightGray.color())
             // Custom Search Bar (Search Bar + 'Cancel' Button)
             HStack {
                 // Search Bar
                 HStack {
                     // Magnifying Glass Icon
                     Image(systemName: "magnifyingglass")
-                        .foregroundColor(Color(#colorLiteral(red: 0.737254902, green: 0.1294117647, blue: 0.2941176471, alpha: 1)))
                     
                     // Search Area TextField
                     TextField(KeysForTranslate.search.localized,
                               text: $searchInput)
-                        .accentColor(.white)
-                        .foregroundColor(.white)
+                        .accentColor(Color(AppStyling.Color.systemWhite.color()))
+                        .foregroundColor(Color(AppStyling.Color.systemBlack.color()))
                 }
                 .padding(EdgeInsets(top: 5,
                                     leading: 5,
                                     bottom: 5,
                                     trailing: 5))
-                .background(Color(#colorLiteral(red: 0.6196078431, green: 0.1098039216, blue: 0.2509803922, alpha: 1)).cornerRadius(8.0))
+                .background(Color(AppStyling.Color.systemWhite.color()).cornerRadius(8.0))
                 
                 // 'Cancel' Button
-                Button(action: {
-                    searching = false
+                Button(action: {                    
                     searchInput = Constants.StaticText.emptyString
                     
                     // Hide Keyboard
@@ -49,7 +46,7 @@ struct SearchBar: View {
                 }, label: {
                     Text(KeysForTranslate.cancel.localized)
                 })
-                .accentColor(Color.white)
+                .accentColor(Color(AppStyling.Color.systemWhite.color()))
                 .padding(EdgeInsets(top: 2,
                                     leading: 2,
                                     bottom: 2,
