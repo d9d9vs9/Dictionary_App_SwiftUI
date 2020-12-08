@@ -15,6 +15,8 @@ enum KeysForTranslate: String {
     case edit = "edit"
     case cancel
     case search
+    case word
+    case translatedWord = "translated_Word"
 }
 
 // MARK: - LocalizableProtocol
