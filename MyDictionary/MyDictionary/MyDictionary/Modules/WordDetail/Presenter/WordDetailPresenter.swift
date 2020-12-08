@@ -9,6 +9,7 @@ import Foundation
 
 protocol WordDetailPresenter: ObservableObject {
     var wordModel: WordModel { get }
+    func onDisappear(wordText: String, translatedWord: String)
 }
 
 final class MYWordDetailPresenter: WordDetailPresenter {
@@ -24,6 +25,14 @@ final class MYWordDetailPresenter: WordDetailPresenter {
         
         self.wordModel = interactor.dataModel.wordModel
         
+    }
+    
+}
+
+extension MYWordDetailPresenter {
+    
+    func onDisappear(wordText: String, translatedWord: String) {
+        interactor.onDisappear(wordText: wordText, translatedWord: translatedWord)
     }
     
 }

@@ -9,4 +9,5 @@ import Foundation
 
 struct WordNSNotificationName {
     static let didAddWord: NSNotification.Name = NSNotification.Name.init("didAddWord")
+    static let didUpdateWord: NSNotification.Name = NSNotification.Name.init("didUpdateWord")
 }

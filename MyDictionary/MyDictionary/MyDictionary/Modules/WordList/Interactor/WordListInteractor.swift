@@ -68,6 +68,13 @@ fileprivate extension MYWordListInteractor {
                          selector: #selector(didAddWordAction),
                          name: WordNSNotificationName.didAddWord,
                          object: nil)
+        
+        NotificationCenter
+            .default
+            .addObserver(self,
+                         selector: #selector(didUpdateWordAction),
+                         name: WordNSNotificationName.didUpdateWord,
+                         object: nil)
     }
     
 }
@@ -76,6 +83,10 @@ fileprivate extension MYWordListInteractor {
 fileprivate extension MYWordListInteractor {
     
     @objc func didAddWordAction() {
+        updateDataModel()
+    }
+    
+    @objc func didUpdateWordAction() {
         updateDataModel()
     }
     
