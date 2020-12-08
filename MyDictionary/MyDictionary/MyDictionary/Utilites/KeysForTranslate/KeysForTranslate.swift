@@ -13,6 +13,8 @@ enum KeysForTranslate: String {
     case addToMyDictionary = "add_to_my_dictionary"
     case pleaseEnterTranslate = "please_enter_translate"
     case edit = "edit"
+    case cancel
+    case search
 }
 
 // MARK: - LocalizableProtocol

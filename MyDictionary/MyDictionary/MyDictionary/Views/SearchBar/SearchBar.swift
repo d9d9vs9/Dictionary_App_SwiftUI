@@ -25,11 +25,15 @@ struct SearchBar: View {
                         .foregroundColor(Color(#colorLiteral(red: 0.737254902, green: 0.1294117647, blue: 0.2941176471, alpha: 1)))
                     
                     // Search Area TextField
-                    TextField("", text: $searchInput)
+                    TextField(KeysForTranslate.search.localized,
+                              text: $searchInput)
                         .accentColor(.white)
                         .foregroundColor(.white)
                 }
-                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                .padding(EdgeInsets(top: 5,
+                                    leading: 5,
+                                    bottom: 5,
+                                    trailing: 5))
                 .background(Color(#colorLiteral(red: 0.6196078431, green: 0.1098039216, blue: 0.2509803922, alpha: 1)).cornerRadius(8.0))
                 
                 // 'Cancel' Button
@@ -38,16 +42,25 @@ struct SearchBar: View {
                     searchInput = Constants.StaticText.emptyString
                     
                     // Hide Keyboard
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                                    to: nil,
+                                                    from: nil,
+                                                    for: nil)
                 }, label: {
-                    Text("Cancel")
+                    Text(KeysForTranslate.cancel.localized)
                 })
                 .accentColor(Color.white)
-                .padding(EdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 8))
+                .padding(EdgeInsets(top: 2,
+                                    leading: 2,
+                                    bottom: 2,
+                                    trailing: 8))
             }
-            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+            .padding(EdgeInsets(top: 5,
+                                leading: 5,
+                                bottom: 5,
+                                trailing: 5))
         }
         .frame(height: 50)
     }
-        
+    
 }
