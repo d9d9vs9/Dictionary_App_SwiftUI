@@ -82,7 +82,7 @@ fileprivate extension MYWordListInteractor {
     
 }
 
-// MARK: - Subscribe
+// MARK: - Add Observers
 fileprivate extension MYWordListInteractor {
     
     func addObservers() {
