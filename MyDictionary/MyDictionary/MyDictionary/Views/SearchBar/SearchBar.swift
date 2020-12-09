@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchBar: View {
     
     @Binding var searchInput: String
+    @Binding var cancelButtonAction: Bool
     
     var body: some View {
         ZStack {
@@ -25,7 +26,7 @@ struct SearchBar: View {
                     // Search Area TextField
                     TextField(KeysForTranslate.search.localized,
                               text: $searchInput)
-                        .accentColor(Color(AppStyling.Color.systemWhite.color()))
+                        .accentColor(Color(AppStyling.Color.systemBlack.color()))
                         .foregroundColor(Color(AppStyling.Color.systemBlack.color()))
                 }
                 .padding(EdgeInsets(top: 5,
@@ -35,9 +36,9 @@ struct SearchBar: View {
                 .background(Color(AppStyling.Color.systemWhite.color()).cornerRadius(8.0))
                 
                 // 'Cancel' Button
-                Button(action: {                    
-                    searchInput = Constants.StaticText.emptyString
-                    
+                Button(action: {
+                    self.searchInput = Constants.StaticText.emptyString
+                    self.cancelButtonAction = true
                     // Hide Keyboard
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
                                                     to: nil,

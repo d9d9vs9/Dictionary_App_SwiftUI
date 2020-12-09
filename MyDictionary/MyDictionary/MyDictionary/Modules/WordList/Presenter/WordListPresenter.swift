@@ -10,6 +10,8 @@ import Combine
 
 protocol WordListPresenter: ObservableObject {
     var words: [WordModel] { get }
+    func searchTextDidChange(_ string: String)
+    func searchBarCancelButtonClicked()
 }
 
 final class MYWordListPresenter: WordListPresenter {
@@ -57,6 +59,24 @@ extension MYWordListPresenter {
     
     func delete(from source: IndexSet) {
         interactor.delete(from: source)
+    }
+    
+}
+
+// MARK: - Search Text Did Change
+extension MYWordListPresenter {
+    
+    func searchTextDidChange(_ string: String) {
+        interactor.searchTextDidChange(string)
+    }
+    
+}
+
+// MARK: - Search Bar Cancel Button Clicked
+extension MYWordListPresenter {
+    
+    func searchBarCancelButtonClicked() {
+        interactor.searchBarCancelButtonClicked()
     }
     
 }
