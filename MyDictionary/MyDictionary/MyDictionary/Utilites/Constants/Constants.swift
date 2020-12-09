@@ -17,7 +17,7 @@ struct Constants {
     }
     
     struct CoreData {
-        static let fetchLimit: Int = 20
+        static let fetchLimit: Int = 10
     }
 
 }
