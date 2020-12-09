@@ -111,8 +111,10 @@ fileprivate extension MYWordListInteractor {
         self.dataModel.words.append(word)        
     }
     
-    @objc func didUpdateWordAction() {
-        updateWords()
+    @objc func didUpdateWordAction(_ notification: Notification) {
+        guard let word = notification.object as? WordModel else { return }
+        guard let index = self.dataModel.words.firstIndex(where: { $0.uuid == word.uuid }) else { return }
+        self.dataModel.words[index] = word
     }
     
 }

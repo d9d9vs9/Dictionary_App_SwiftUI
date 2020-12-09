@@ -45,9 +45,9 @@ extension MYWordDetailInteractor {
                                                             translatedWord: translatedWord,
                                                             stringCreatedDate: dataModel.wordModel.stringCreatedDate)) { [unowned self] (result) in
                 switch result {
-                case .success:
+                case .success(let model):
                     // Post Updated Word Notification
-                    self.postDidUpdateWordNotification()
+                    self.postDidUpdateWordNotification(model)
                     break
                 case .failure:
                     break
@@ -67,8 +67,8 @@ extension MYWordDetailInteractor {
 // MARK: - Post Did Update Word Notification
 fileprivate extension MYWordDetailInteractor {
     
-    func postDidUpdateWordNotification() {
-        NotificationCenter.default.post(name: WordNSNotificationName.didUpdateWord, object: nil)
+    func postDidUpdateWordNotification(_ word: WordModel) {
+        NotificationCenter.default.post(name: WordNSNotificationName.didUpdateWord, object: word)
     }
     
 }
