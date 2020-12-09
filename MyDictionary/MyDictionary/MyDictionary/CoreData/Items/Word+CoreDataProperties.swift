@@ -24,6 +24,7 @@ extension Word {
     @NSManaged public var uuid: String
     @NSManaged public var word: String
     @NSManaged public var translatedWord: String
+    @NSManaged public var stringCreatedDate: String
         
 }
 
@@ -34,7 +35,7 @@ extension Word : Identifiable {
 extension Word {
     
     var wordModel: WordModel {
-        return WordModel.init(uuid: uuid, word: word, translatedWord: translatedWord)
+        return WordModel.init(uuid: uuid, word: word, translatedWord: translatedWord, stringCreatedDate: stringCreatedDate)
     }
     
 }

@@ -42,7 +42,8 @@ extension MYWordDetailInteractor {
             // Update And Save Word
             wordCoreDataService.update(word: WordModel.init(uuid: dataModel.wordModel.uuid,
                                                             word: wordText,
-                                                            translatedWord: translatedWord)) { [unowned self] (result) in
+                                                            translatedWord: translatedWord,
+                                                            stringCreatedDate: dataModel.wordModel.stringCreatedDate)) { [unowned self] (result) in
                 switch result {
                 case .success:
                     // Post Updated Word Notification

@@ -30,6 +30,7 @@ extension MYWordCoreDataService {
         let newWord = Word.init(uuid: word.uuid,
                                 word: word.word,
                                 translatedWord: word.translatedWord,
+                                stringCreatedDate: word.stringCreatedDate,
                                 insertIntoManagedObjectContext: managedObjectContext)
         
         self.save(word: newWord, completionHandler: completionHandler)

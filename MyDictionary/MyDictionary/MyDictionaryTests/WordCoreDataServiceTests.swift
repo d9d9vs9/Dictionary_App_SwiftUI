@@ -25,7 +25,8 @@ extension WordCoreDataServiceTests {
         
         let mockWord: WordModel = .init(uuid: UUID.init().uuidString,
                                         word: "MOSF",
-                                        translatedWord: "metal–oxide–semiconductor-field")
+                                        translatedWord: "metal–oxide–semiconductor-field",
+                                        stringCreatedDate: ISO8601DateFormatter.init().string(from: Date.init()))
         
         wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
             switch result {
@@ -33,12 +34,13 @@ extension WordCoreDataServiceTests {
                 XCTAssertTrue(model.uuid == mockWord.uuid)
                 XCTAssertTrue(model.word == mockWord.word)
                 XCTAssertTrue(model.translatedWord == mockWord.translatedWord)
+                XCTAssertTrue(model.stringCreatedDate == mockWord.stringCreatedDate)
                 expectation.fulfill()
             case .failure:
                 XCTAssertTrue(false)
             }
         }
-                
+        
         wait(for: [expectation], timeout: testTimeout)
         
     }
@@ -51,8 +53,9 @@ extension WordCoreDataServiceTests {
         
         let mockWord: WordModel = .init(uuid: UUID.init().uuidString,
                                         word: "MOSFC",
-                                        translatedWord: "metal–oxide–semiconductor-field-c")
-                        
+                                        translatedWord: "metal–oxide–semiconductor-field-c",
+                                        stringCreatedDate: ISO8601DateFormatter.init().string(from: Date.init()))
+        
         wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
             switch result {
             case .success(let model):
@@ -64,6 +67,7 @@ extension WordCoreDataServiceTests {
                         XCTAssertTrue(model.uuid == fetchedWords.last?.uuid)
                         XCTAssertTrue(model.word == fetchedWords.last?.word)
                         XCTAssertTrue(model.translatedWord == fetchedWords.last?.translatedWord)
+                        XCTAssertTrue(model.stringCreatedDate == fetchedWords.first?.stringCreatedDate)
                         expectation.fulfill()
                     case .failure:
                         XCTAssertTrue(false)
@@ -74,7 +78,7 @@ extension WordCoreDataServiceTests {
                 XCTAssertTrue(false)
             }
         }
-                
+        
         wait(for: [expectation], timeout: testTimeout)
         
     }
@@ -84,7 +88,8 @@ extension WordCoreDataServiceTests {
         
         let mockWord: WordModel = .init(uuid: UUID.init().uuidString,
                                         word: "NFC",
-                                        translatedWord: "Near-field communication")
+                                        translatedWord: "Near-field communication",
+                                        stringCreatedDate: ISO8601DateFormatter.init().string(from: Date.init()))
         
         wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
             switch result {
@@ -95,6 +100,7 @@ extension WordCoreDataServiceTests {
                         XCTAssertTrue(model.uuid == mockWord.uuid)
                         XCTAssertTrue(model.word == mockWord.word)
                         XCTAssertTrue(model.translatedWord == mockWord.translatedWord)
+                        XCTAssertTrue(model.stringCreatedDate == mockWord.stringCreatedDate)
                         expectation.fulfill()
                     case .failure:
                         XCTAssertTrue(false)
@@ -104,7 +110,7 @@ extension WordCoreDataServiceTests {
                 XCTAssertTrue(false)
             }
         }
-             
+        
         wait(for: [expectation], timeout: testTimeout)
         
     }
@@ -118,14 +124,16 @@ extension WordCoreDataServiceTests {
         
         let mockWord: WordModel = .init(uuid: UUID.init().uuidString,
                                         word: "BLE",
-                                        translatedWord: "Bluetooth Low Energy")
-                
+                                        translatedWord: "Bluetooth Low Energy",
+                                        stringCreatedDate: ISO8601DateFormatter.init().string(from: Date.init()))
+        
         wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
             switch result {
             case .success:
                 let updatedWord: WordModel = .init(uuid: mockWord.uuid,
                                                    word: "NBA",
-                                                   translatedWord: "The National Basketball Association")
+                                                   translatedWord: "The National Basketball Association",
+                                                   stringCreatedDate: ISO8601DateFormatter.init().string(from: Date.init()))
                 
                 self.wordCoreDataService.update(word: updatedWord) { [unowned self] (result) in
                     switch result {
@@ -133,17 +141,18 @@ extension WordCoreDataServiceTests {
                         XCTAssertTrue(updated.uuid == updatedWord.uuid)
                         XCTAssertTrue(updated.word == updatedWord.word)
                         XCTAssertTrue(updated.translatedWord == updatedWord.translatedWord)
+                        XCTAssertTrue(updated.stringCreatedDate == updatedWord.stringCreatedDate)
                         expectation.fulfill()
                     case .failure:
                         XCTAssertTrue(false)
                     }
                 }
-                                
+                
             case .failure:
                 XCTAssertTrue(false)
             }
         }
-             
+        
         wait(for: [expectation], timeout: testTimeout)
     }
     
@@ -156,7 +165,8 @@ extension WordCoreDataServiceTests {
         
         let mockWord: WordModel = .init(uuid: UUID.init().uuidString,
                                         word: "MOSFCX",
-                                        translatedWord: "metal–oxide–semiconductor-field-c-x")
+                                        translatedWord: "metal–oxide–semiconductor-field-c-x",
+                                        stringCreatedDate: ISO8601DateFormatter.init().string(from: Date.init()))
         
         wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
             switch result {
@@ -182,7 +192,7 @@ extension WordCoreDataServiceTests {
                 XCTAssertTrue(false)
             }
         }
-                
+        
         wait(for: [expectation], timeout: testTimeout)
         
     }
