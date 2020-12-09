@@ -7,4 +7,4 @@
 
 import Foundation
 
-public typealias ResultSaved = ((ResultSavedData<Error>) -> Void)
+public typealias ResultSaved = ((ResultWithoutSuccessGeneric<Error>) -> Void)

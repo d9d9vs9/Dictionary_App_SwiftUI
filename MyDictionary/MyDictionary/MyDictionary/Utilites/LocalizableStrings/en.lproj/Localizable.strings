@@ -15,3 +15,7 @@
 "search" = "Search";
 "word" = "Word";
 "translated_Word" = "Translated word";
+"done" = "Done";
+"error" = "Error";
+"field_Word_Invalid" = "Field word invalid";
+"field_Translated_Word_Invalid" = "Field translated word invalid";

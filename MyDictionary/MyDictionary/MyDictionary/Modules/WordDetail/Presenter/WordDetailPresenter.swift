@@ -9,7 +9,7 @@ import Foundation
 
 protocol WordDetailPresenter: ObservableObject {
     var wordModel: WordModel { get }
-    func onDisappear(wordText: String, translatedWord: String)
+    func doneButtonClicked(wordText: String, translatedWord: String, completionHandler: @escaping ResultSavedWord)
 }
 
 final class MYWordDetailPresenter: WordDetailPresenter {
@@ -31,8 +31,8 @@ final class MYWordDetailPresenter: WordDetailPresenter {
 
 extension MYWordDetailPresenter {
     
-    func onDisappear(wordText: String, translatedWord: String) {
-        interactor.onDisappear(wordText: wordText, translatedWord: translatedWord)
+    func doneButtonClicked(wordText: String, translatedWord: String, completionHandler: @escaping ResultSavedWord) {
+        interactor.updateWord(wordText: wordText, translatedWord: translatedWord, completionHandler: completionHandler)
     }
     
 }

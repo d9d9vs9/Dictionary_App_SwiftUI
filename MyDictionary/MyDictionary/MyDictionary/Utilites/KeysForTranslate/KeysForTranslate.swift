@@ -17,6 +17,10 @@ enum KeysForTranslate: String {
     case search
     case word
     case translatedWord = "translated_Word"
+    case done
+    case error
+    case fieldWordInvalid = "field_Word_Invalid"
+    case fieldTranslatedWordInvalid = "field_Translated_Word_Invalid"
 }
 
 // MARK: - LocalizableProtocol

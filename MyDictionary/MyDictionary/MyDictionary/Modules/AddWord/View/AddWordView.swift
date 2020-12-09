@@ -15,6 +15,8 @@ struct AddWordView: View {
     @State fileprivate var wordText: String = Constants.StaticText.emptyString
     /// Default is Constants.StaticText.emptyString
     @State fileprivate var translatedText: String = Constants.StaticText.emptyString
+    @State fileprivate var showAlertAction: Bool = false
+    @State fileprivate var error: Error? = nil
     
     init(presenter: MYAddWordPresenter) {
         self.presenter = presenter
@@ -32,6 +34,11 @@ struct AddWordView: View {
                 Text(KeysForTranslate.addToMyDictionary.localized)
             }
         }.padding()
+        .alert(isPresented: $showAlertAction) {
+            Alert(title: Text(KeysForTranslate.error.localized),
+                  message: Text(error?.localizedDescription ?? Constants.StaticText.emptyString),
+                  dismissButton: .cancel(Text(KeysForTranslate.cancel.localized)))
+        }
     }
     
 }
@@ -47,11 +54,31 @@ fileprivate extension AddWordView {
             case .success:
                 closeSelf()
             case .failure(let error):
+                self.setError(error)
+                self.showAlert()
                 debugPrint(error)
             }                        
             
         }
         
+    }
+    
+}
+
+// MARK: - Show Alert
+fileprivate extension AddWordView {
+    
+    func showAlert() {
+        self.showAlertAction = true
+    }
+    
+}
+
+// MARK: - Set Error
+fileprivate extension AddWordView {
+    
+    func setError(_ newError: Error) {
+        self.error = newError
     }
     
 }

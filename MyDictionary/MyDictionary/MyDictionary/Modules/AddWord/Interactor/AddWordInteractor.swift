@@ -15,6 +15,7 @@ final class MYAddWordInteractor: AddWordInteractor {
     
     fileprivate let coreDataStack: CoreDataStack
     fileprivate let wordManager: WordManager
+    fileprivate let wordValidationService: WordValidationService
     
     let dataModel: AddWordDataModel
     
@@ -22,6 +23,7 @@ final class MYAddWordInteractor: AddWordInteractor {
         self.coreDataStack = CoreDataStack.init()
         self.wordManager = MYWordManager.init(managedObjectContext: coreDataStack.privateContext,
                                               coreDataStack: coreDataStack)
+        self.wordValidationService = MYWordValidationService.init()
         self.dataModel = dataModel
     }
     
@@ -30,42 +32,22 @@ final class MYAddWordInteractor: AddWordInteractor {
 extension MYAddWordInteractor {
     
     func add(word: WordModel, completionHandler: @escaping ResultSavedWord) {
-        if (isValid(wordModel: word)) {
+        switch wordValidationService.isValid(word: word.word,
+                                             translatedWord: word.translatedWord) {
+        case .success:
             wordManager.add(word: word) { [unowned self] (result) in
                 switch result {
                 case .success:
-                    postDidAddWordNotification()
+                    self.postDidAddWordNotification()
                 case .failure:
                     break
                 }
                 completionHandler(result)
             }
-        } else {
-            completionHandler(.failure(WordValidation.wordInvalid))
-            return
+        case .failure(let error):
+            completionHandler(.failure(error))
+            break
         }
-    }
-    
-}
-
-fileprivate extension MYAddWordInteractor {
-    
-    func isValid(wordModel: WordModel) -> Bool {
-        let characterSet = NSCharacterSet.letters
-                
-        let wordRange = wordModel.word.rangeOfCharacter(from: characterSet)
-        let translatedWordRange = wordModel.translatedWord.rangeOfCharacter(from: characterSet)
-                
-        return (wordRange != nil && translatedWordRange != nil)
-    }
-    
-}
-
-fileprivate extension MYAddWordInteractor {
-    
-    enum WordValidation: Error {
-        case wordInvalid
-        case translatedWordInvalid
     }
     
 }
