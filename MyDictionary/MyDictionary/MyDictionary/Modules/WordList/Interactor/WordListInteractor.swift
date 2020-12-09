@@ -142,7 +142,9 @@ fileprivate extension MYWordListInteractor {
 fileprivate extension MYWordListInteractor {
     
     func fetchedWords(completionHandler: @escaping FetchResultWords) {
-        wordCoreDataService.fetchWords(completionHandler: completionHandler)
+        wordCoreDataService.fetchWords(fetchLimit: Constants.CoreData.fetchLimit,
+                                       fetchOffset: 0,
+                                       completionHandler: completionHandler)
     }
     
 }

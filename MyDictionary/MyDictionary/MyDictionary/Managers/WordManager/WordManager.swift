@@ -41,8 +41,10 @@ extension MYWordManager {
 
 extension MYWordManager {
     
-    func fetchWords(completionHandler: @escaping FetchResultWords) {
-        return wordCoreDataService.fetchWords(completionHandler: completionHandler)
+    func fetchWords(fetchLimit: Int, fetchOffset: Int, completionHandler: @escaping FetchResultWords) {
+        return wordCoreDataService.fetchWords(fetchLimit: fetchLimit,
+                                              fetchOffset: fetchOffset,
+                                              completionHandler: completionHandler)
     }
     
     func fetchWord(byUUID uuid: String, completionHandler: @escaping ResultSavedWord) {

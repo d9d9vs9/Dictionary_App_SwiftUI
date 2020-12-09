@@ -40,9 +40,11 @@ extension MYWordCoreDataService {
 
 extension MYWordCoreDataService {
     
-    func fetchWords(completionHandler: @escaping FetchResultWords){
+    func fetchWords(fetchLimit: Int, fetchOffset: Int, completionHandler: @escaping FetchResultWords){
         
         let fetchRequest = NSFetchRequest<Word>(entityName: CoreDataEntityName.word)
+        fetchRequest.fetchLimit = fetchLimit
+        fetchRequest.fetchOffset = fetchOffset
         let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { [unowned self] asynchronousFetchResult in
             
             if let result = asynchronousFetchResult.finalResult {

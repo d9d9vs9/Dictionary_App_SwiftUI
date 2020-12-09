@@ -8,6 +8,6 @@
 import Foundation
 
 protocol FetchWordProtocol {
-    func fetchWords(completionHandler: @escaping FetchResultWords)
+    func fetchWords(fetchLimit: Int, fetchOffset: Int, completionHandler: @escaping FetchResultWords)
     func fetchWord(byUUID uuid: String, completionHandler: @escaping ResultSavedWord)
 }

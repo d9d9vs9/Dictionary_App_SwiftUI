@@ -25,7 +25,7 @@ extension MYWordSyncService {
 
 extension MYWordSyncService {
     
-    func fetchWords(completionHandler: @escaping FetchResultWords) {
+    func fetchWords(fetchLimit: Int, fetchOffset: Int, completionHandler: @escaping FetchResultWords) {
         completionHandler(.success([]))
     }
     
