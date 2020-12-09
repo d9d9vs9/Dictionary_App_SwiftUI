@@ -38,7 +38,7 @@ extension MYAddWordInteractor {
             wordManager.add(word: word) { [unowned self] (result) in
                 switch result {
                 case .success:
-                    self.postDidAddWordNotification()
+                    self.postDidAddWordNotification(word)
                 case .failure:
                     break
                 }
@@ -52,10 +52,11 @@ extension MYAddWordInteractor {
     
 }
 
+// MARK: - Post Did Add Word Notification
 fileprivate extension MYAddWordInteractor {
     
-    func postDidAddWordNotification() {
-        NotificationCenter.default.post(name: WordNSNotificationName.didAddWord, object: nil)
+    func postDidAddWordNotification(_ word: WordModel) {
+        NotificationCenter.default.post(name: WordNSNotificationName.didAddWord, object: word)
     }
     
 }

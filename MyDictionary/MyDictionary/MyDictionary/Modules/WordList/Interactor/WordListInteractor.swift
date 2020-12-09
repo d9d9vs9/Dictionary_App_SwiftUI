@@ -106,8 +106,9 @@ fileprivate extension MYWordListInteractor {
 // MARK: - Actions
 fileprivate extension MYWordListInteractor {
     
-    @objc func didAddWordAction() {
-        updateWords()
+    @objc func didAddWordAction(_ notification: Notification) {
+        guard let word = notification.object as? WordModel else { return }
+        self.dataModel.words.append(word)        
     }
     
     @objc func didUpdateWordAction() {
