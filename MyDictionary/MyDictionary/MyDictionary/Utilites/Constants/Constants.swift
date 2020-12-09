@@ -15,5 +15,9 @@ struct Constants {
         static let appName: String = "MyDictionary"
         static let momdExtension: String = "momd"
     }
+    
+    struct CoreData {
+        static let fetchLimit: Int = 20
+    }
 
 }
