@@ -33,6 +33,10 @@ extension MYWordSyncService {
         
     }
     
+    func fetchWordsCount(completionHandler: @escaping (FetchResultWordsCount)) {
+        
+    }
+    
 }
 
 extension MYWordSyncService {

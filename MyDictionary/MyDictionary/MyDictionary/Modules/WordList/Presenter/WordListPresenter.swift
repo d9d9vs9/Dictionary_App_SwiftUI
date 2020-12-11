@@ -12,6 +12,7 @@ protocol WordListPresenter: ObservableObject {
     var words: [WordModel] { get }
     func searchTextDidChange(_ string: String)
     func searchBarCancelButtonClicked()
+    func onAppearCell(word: WordModel)
 }
 
 final class MYWordListPresenter: WordListPresenter {
@@ -77,6 +78,15 @@ extension MYWordListPresenter {
     
     func searchBarCancelButtonClicked() {
         interactor.searchBarCancelButtonClicked()
+    }
+    
+}
+
+// MARK: - On Appear Cell
+extension MYWordListPresenter {
+    
+    func onAppearCell(word: WordModel) {
+        interactor.onAppearCell(word: word)
     }
     
 }

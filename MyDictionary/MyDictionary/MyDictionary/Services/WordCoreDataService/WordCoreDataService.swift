@@ -85,6 +85,19 @@ extension MYWordCoreDataService {
         }
     }
     
+    func fetchWordsCount(completionHandler: @escaping (FetchResultWordsCount)) {
+        
+        let fetchRequest = NSFetchRequest<Word>(entityName: CoreDataEntityName.word)
+       
+        do {
+            let count = try managedObjectContext.count(for: fetchRequest)
+            completionHandler(.success(count))
+        } catch let error {
+            completionHandler(.failure(error))
+        }
+        
+    }
+    
 }
 
 extension MYWordCoreDataService {

@@ -43,6 +43,9 @@ struct WordListView: View {
                 ForEach(presenter.words, id: \.id) { item in
                     self.presenter.linkBuilder(for: item) {
                         WordListCell(model: item)
+                            .onAppear {
+                                self.presenter.onAppearCell(word: item)
+                            }
                     }
                 }
                 .onMove(perform: presenter.move)

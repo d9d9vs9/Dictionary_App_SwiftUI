@@ -51,6 +51,10 @@ extension MYWordManager {
         wordCoreDataService.fetchWord(byUUID: uuid, completionHandler: completionHandler)
     }
     
+    func fetchWordsCount(completionHandler: @escaping (FetchResultWordsCount)) {
+        wordCoreDataService.fetchWordsCount(completionHandler: completionHandler)
+    }
+    
 }
 
 extension MYWordManager {

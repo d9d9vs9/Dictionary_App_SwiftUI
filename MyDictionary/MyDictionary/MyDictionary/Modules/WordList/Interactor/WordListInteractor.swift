@@ -12,13 +12,17 @@ protocol WordListInteractor {
     func delete(from source: IndexSet)
     func searchTextDidChange(_ string: String)
     func searchBarCancelButtonClicked()
+    func onAppearCell(word: WordModel)
 }
 
 final class MYWordListInteractor: WordListInteractor {
     
     fileprivate let coreDataStack: CoreDataStack
     fileprivate let wordCoreDataService: WordCoreDataService
+    // Default is []
     fileprivate var words: [WordModel]
+    // Default is 0
+    fileprivate var fetchOffset: Int
     let dataModel: WordListDataModel
     
     init(dataModel: WordListDataModel) {
@@ -27,6 +31,7 @@ final class MYWordListInteractor: WordListInteractor {
                                                          coreDataStack: coreDataStack)
         self.words = []
         self.dataModel = dataModel
+        self.fetchOffset = 0
         subscribe()
         updateWords()
     }
@@ -72,6 +77,14 @@ extension MYWordListInteractor {
     
 }
 
+// MARK: - On Appear Cell
+extension MYWordListInteractor {
+    
+    func onAppearCell(word: WordModel) {
+        self.onScrollToBottom(word: word)
+    }
+    
+}
 
 // MARK: - Subscribe
 fileprivate extension MYWordListInteractor {
@@ -146,8 +159,17 @@ fileprivate extension MYWordListInteractor {
     
     func fetchedWords(completionHandler: @escaping FetchResultWords) {
         wordCoreDataService.fetchWords(fetchLimit: Constants.CoreData.fetchLimit,
-                                       fetchOffset: 0,
+                                       fetchOffset: self.fetchOffset,
                                        completionHandler: completionHandler)
+    }
+    
+}
+
+// MARK: - Fetched All Words Count
+fileprivate extension MYWordListInteractor {
+    
+    func fetchedAllWordsCount(completionHandler: @escaping FetchResultWordsCount) {
+        wordCoreDataService.fetchWordsCount(completionHandler: completionHandler)
     }
     
 }
@@ -163,6 +185,67 @@ fileprivate extension MYWordListInteractor {
                 return wordModel.word.lowercased().contains(input.lowercased())
             })
             return filteredWords
+        }
+    }
+    
+}
+
+// MARK: - Merge Words
+fileprivate extension MYWordListInteractor {
+    
+    func mergeWords() {
+        fetchedWords { [unowned self] (result) in
+            switch result {
+            case .success(let words):
+                self.dataModel.words.append(contentsOf: words)
+                self.words.append(contentsOf: words)
+            case .failure(let error):
+                debugPrint(#function, error)
+                return
+            }
+        }
+    }
+    
+}
+
+// MARK: - On Scroll To Bottom
+fileprivate extension MYWordListInteractor {
+    
+    func onScrollToBottom(word: WordModel) {
+        let isLastCell: Bool = (word.uuid == self.dataModel.words.last?.uuid)
+        if (isLastCell) {
+            self.canLoadNextWords { [unowned self] (isLoad) in
+                if (isLoad) {
+                    self.fetchOffset += Constants.CoreData.fetchLimit
+                    self.mergeWords()
+                } else {
+                    return
+                }
+            }
+        } else {
+            return
+        }
+    }
+    
+}
+
+// MARK: - Can Load Next Words
+fileprivate extension MYWordListInteractor {
+    
+    func canLoadNextWords(completionHandler: @escaping((Bool) -> Void)) {
+        fetchedAllWordsCount { [unowned self] (result) in
+            switch result {
+            case .success(let wordsCount):
+                if (self.dataModel.words.count == wordsCount) {
+                    completionHandler(false)
+                } else {
+                    completionHandler(true)
+                }
+                break
+            case .failure:
+                completionHandler(false)
+                break
+            }
         }
     }
     

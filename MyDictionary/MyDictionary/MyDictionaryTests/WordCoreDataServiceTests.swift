@@ -60,7 +60,7 @@ extension WordCoreDataServiceTests {
             switch result {
             case .success(let model):
                 
-                self.wordCoreDataService.fetchWords { [unowned self] (result) in
+                self.wordCoreDataService.fetchWords(fetchLimit: 0, fetchOffset: 0) { [unowned self] (result) in
                     switch result {
                     case .success(let fetchedWords):
                         XCTAssertFalse(fetchedWords.isEmpty)
@@ -113,6 +113,34 @@ extension WordCoreDataServiceTests {
         
         wait(for: [expectation], timeout: testTimeout)
         
+    }
+    
+    func test_Fetch_Words_Count_After_One_Addition() {
+        let expectation = XCTestExpectation(description: "Fetch Words Count Expectation")
+        
+        let mockWord: WordModel = .init(uuid: UUID.init().uuidString,
+                                        word: "USB",
+                                        translatedWord: "Universal Serial Bus",
+                                        stringCreatedDate: ISO8601DateFormatter.init().string(from: Date.init()))
+        
+        wordCoreDataService.add(word: mockWord) { [unowned self] (result) in
+            switch result {
+            case .success:
+                self.wordCoreDataService.fetchWordsCount() { [unowned self] (result) in
+                    switch result {
+                    case .success(let count):
+                        XCTAssertTrue(count == 1)                        
+                        expectation.fulfill()
+                    case .failure:
+                        XCTAssertTrue(false)
+                    }
+                }
+            case .failure:
+                XCTAssertTrue(false)
+            }
+        }
+        
+        wait(for: [expectation], timeout: testTimeout)
     }
     
 }
@@ -174,7 +202,7 @@ extension WordCoreDataServiceTests {
                 self.wordCoreDataService.delete(byUUID: model.uuid) { [unowned self] (result) in
                     switch result {
                     case .success:
-                        self.wordCoreDataService.fetchWords { [unowned self] (result) in
+                        self.wordCoreDataService.fetchWords(fetchLimit: 0, fetchOffset: 0) { [unowned self] (result) in
                             switch result {
                             case .success(let words):
                                 let isContains = words.contains(where: { $0.uuid == mockWord.uuid })
