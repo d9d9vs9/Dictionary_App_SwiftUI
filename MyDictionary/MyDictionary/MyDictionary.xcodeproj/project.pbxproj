@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -31,7 +31,6 @@
 		229A01EF257A69B8006CF2DC /* MyDictionary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 229A01E3257A645C006CF2DC /* MyDictionary.xcdatamodeld */; };
 		229C6C2A258007950034DCD4 /* AppStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C6C29258007950034DCD4 /* AppStyling.swift */; };
 		22C3F5D6257A5DEC00449FBC /* CoreDataEntityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3F5D5257A5DEC00449FBC /* CoreDataEntityName.swift */; };
-		22E48924258A6AA800BEEF5F /* MyDictionaryFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 22E48923258A6AA800BEEF5F /* MyDictionaryFramework */; };
 		22E5C97D25795D2E00B7C347 /* AddWordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5C97C25795D2E00B7C347 /* AddWordProtocol.swift */; };
 		22E5C98D2579638A00B7C347 /* UpdateWordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5C98C2579638A00B7C347 /* UpdateWordProtocol.swift */; };
 		22E5C993257963D700B7C347 /* FetchWordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5C992257963D700B7C347 /* FetchWordProtocol.swift */; };
@@ -167,7 +166,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22E48924258A6AA800BEEF5F /* MyDictionaryFramework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,7 +822,6 @@
 			);
 			name = MyDictionary;
 			packageProductDependencies = (
-				22E48923258A6AA800BEEF5F /* MyDictionaryFramework */,
 			);
 			productName = MyDictionary;
 			productReference = 84BA378F25716B5100C59D90 /* MyDictionary.app */;
@@ -898,7 +895,6 @@
 			);
 			mainGroup = 84BA378625716B5100C59D90;
 			packageReferences = (
-				22E48922258A6AA800BEEF5F /* XCRemoteSwiftPackageReference "DictionaryFramework" */,
 			);
 			productRefGroup = 84BA379025716B5100C59D90 /* Products */;
 			projectDirPath = "";
@@ -1341,25 +1337,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		22E48922258A6AA800BEEF5F /* XCRemoteSwiftPackageReference "DictionaryFramework" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/d9d9vs9/DictionaryFramework";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		22E48923258A6AA800BEEF5F /* MyDictionaryFramework */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 22E48922258A6AA800BEEF5F /* XCRemoteSwiftPackageReference "DictionaryFramework" */;
-			productName = MyDictionaryFramework;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		229A01E3257A645C006CF2DC /* MyDictionary.xcdatamodeld */ = {
