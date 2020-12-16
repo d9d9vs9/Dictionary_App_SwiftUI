@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "MyDictionaryFramework",
+        "repositoryURL": "https://github.com/d9d9vs9/DictionaryFramework",
+        "state": {
+          "branch": "master",
+          "revision": "ebcd32502ff53c1ba8608d168ad1a8de8cf8164e",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
