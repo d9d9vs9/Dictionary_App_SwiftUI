@@ -7,8 +7,15 @@
 
 import CoreData
 
-public final class WordModel {
+public final class WordModel: Decodable {
         
+    enum CodingKeys: String, CodingKey {
+        case uuid
+        case word
+        case translatedWord = "translated_word"
+        case createdDate = "created_date"
+    }
+    
     let uuid: String
     let word: String
     let translatedWord: String
@@ -27,6 +34,14 @@ public final class WordModel {
         self.translatedWord = translatedWord
         self.stringCreatedDate = stringCreatedDate
         
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.uuid = try container.decode(String.self, forKey: .uuid)
+        self.word = try container.decode(String.self, forKey: .word)
+        self.translatedWord = try container.decode(String.self, forKey: .translatedWord)
+        self.stringCreatedDate = try container.decode(String.self, forKey: .createdDate)
     }
     
 }
