@@ -26,6 +26,9 @@
 		2287C6BB2583A77F00E14F34 /* FetchResultWordsCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287C6BA2583A77E00E14F34 /* FetchResultWordsCount.swift */; };
 		2289C800259B930B00DB941E /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2289C7FF259B930B00DB941E /* HTTPHeader.swift */; };
 		2289C806259B938A00DB941E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2289C805259B938A00DB941E /* HTTPMethod.swift */; };
+		2289C80C259B9C2000DB941E /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2289C80B259B9C2000DB941E /* ConcurrentOperation.swift */; };
+		2289C814259BA5C600DB941E /* OperationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2289C813259BA5C600DB941E /* OperationResult.swift */; };
+		2289C81A259BA60700DB941E /* OperationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2289C819259BA60700DB941E /* OperationState.swift */; };
 		228D4B5325810C8800E8F27E /* WordValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D4B5225810C8800E8F27E /* WordValidationError.swift */; };
 		228D4B5925810FB900E8F27E /* WordValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D4B5825810FB900E8F27E /* WordValidationService.swift */; };
 		229A01C2257A60FA006CF2DC /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A01C0257A60FA006CF2DC /* Word+CoreDataProperties.swift */; };
@@ -111,6 +114,9 @@
 		2287C6BA2583A77E00E14F34 /* FetchResultWordsCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResultWordsCount.swift; sourceTree = "<group>"; };
 		2289C7FF259B930B00DB941E /* HTTPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
 		2289C805259B938A00DB941E /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		2289C80B259B9C2000DB941E /* ConcurrentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		2289C813259BA5C600DB941E /* OperationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationResult.swift; sourceTree = "<group>"; };
+		2289C819259BA60700DB941E /* OperationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationState.swift; sourceTree = "<group>"; };
 		228D4B5225810C8800E8F27E /* WordValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordValidationError.swift; sourceTree = "<group>"; };
 		228D4B5825810FB900E8F27E /* WordValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordValidationService.swift; sourceTree = "<group>"; };
 		229A01C0257A60FA006CF2DC /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -201,6 +207,7 @@
 		2214C304257932D60019701C /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				2289C818259BA60300DB941E /* OperationState */,
 				2214C305257932DA0019701C /* AppLanguageType */,
 			);
 			path = Enums;
@@ -292,6 +299,7 @@
 				22482707257D070A00B56D57 /* ResultWithoutSuccessGeneric.swift */,
 				22482714257D1FD600B56D57 /* ResultDeletedWord.swift */,
 				2287C6BA2583A77E00E14F34 /* FetchResultWordsCount.swift */,
+				2289C813259BA5C600DB941E /* OperationResult.swift */,
 			);
 			path = Results;
 			sourceTree = "<group>";
@@ -327,6 +335,22 @@
 				2289C805259B938A00DB941E /* HTTPMethod.swift */,
 			);
 			path = HTTPMethod;
+			sourceTree = "<group>";
+		};
+		2289C80A259B9BC900DB941E /* ConcurrentOperation */ = {
+			isa = PBXGroup;
+			children = (
+				2289C80B259B9C2000DB941E /* ConcurrentOperation.swift */,
+			);
+			path = ConcurrentOperation;
+			sourceTree = "<group>";
+		};
+		2289C818259BA60300DB941E /* OperationState */ = {
+			isa = PBXGroup;
+			children = (
+				2289C819259BA60700DB941E /* OperationState.swift */,
+			);
+			path = OperationState;
 			sourceTree = "<group>";
 		};
 		228D4B5125810C6F00E8F27E /* WordValidationError */ = {
@@ -787,6 +811,7 @@
 		84BA3839257183E700C59D90 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
+				2289C80A259B9BC900DB941E /* ConcurrentOperation */,
 				228D4B5125810C6F00E8F27E /* WordValidationError */,
 				229C6C282580077E0034DCD4 /* AppStyling */,
 				224826E9257D067500B56D57 /* CustomCoreDataError */,
@@ -997,6 +1022,7 @@
 				229A01C2257A60FA006CF2DC /* Word+CoreDataProperties.swift in Sources */,
 				84BA382325717ED400C59D90 /* WordDetailInteractor.swift in Sources */,
 				228D4B5925810FB900E8F27E /* WordValidationService.swift in Sources */,
+				2289C814259BA5C600DB941E /* OperationResult.swift in Sources */,
 				22E5C99F257965C400B7C347 /* CRUDWord.swift in Sources */,
 				84BA38462571850600C59D90 /* WordListInteractor.swift in Sources */,
 				84BA379525716B5100C59D90 /* SceneDelegate.swift in Sources */,
@@ -1012,6 +1038,7 @@
 				22E5C9D825796EE000B7C347 /* AddWordInteractor.swift in Sources */,
 				22E5C9992579644100B7C347 /* DeleteWordProtocol.swift in Sources */,
 				84BA379725716B5100C59D90 /* ContentView.swift in Sources */,
+				2289C80C259B9C2000DB941E /* ConcurrentOperation.swift in Sources */,
 				84BA3856257188B300C59D90 /* WordModel.swift in Sources */,
 				84BA380B2571772C00C59D90 /* WordListDataModel.swift in Sources */,
 				84BA3806257176F900C59D90 /* WordDetailDataModel.swift in Sources */,
@@ -1021,6 +1048,7 @@
 				84BA3841257184D600C59D90 /* WordListPresenter.swift in Sources */,
 				224826F3257D06B700B56D57 /* ResultSavedWord.swift in Sources */,
 				2214C31D257934D60019701C /* KeysForTranslate.swift in Sources */,
+				2289C81A259BA60700DB941E /* OperationState.swift in Sources */,
 				229C6C2A258007950034DCD4 /* AppStyling.swift in Sources */,
 				22E5C9D225796E7300B7C347 /* AddWordPresenter.swift in Sources */,
 				84BA383025717F5300C59D90 /* WordDetailPresenter.swift in Sources */,
