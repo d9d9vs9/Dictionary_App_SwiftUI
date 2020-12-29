@@ -23,6 +23,10 @@ open class ConcurrentOperation: Operation {
         }
     }
     
+    open override var isConcurrent: Bool {
+        return true
+    }
+    
     open override var isReady: Bool {
         return super.isReady && state == .ready
     }
