@@ -17,6 +17,7 @@
 		22400A70257A701B00699223 /* WordNSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22400A6F257A701B00699223 /* WordNSNotificationName.swift */; };
 		22400A7A257A86AB00699223 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22400A79257A86AB00699223 /* TestCoreDataStack.swift */; };
 		22455908259C99F000B00BD3 /* EnvironmentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22455907259C99F000B00BD3 /* EnvironmentProtocol.swift */; };
+		2245590D259C9A5B00B00BD3 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245590C259C9A5B00B00BD3 /* APIEnvironment.swift */; };
 		224826EB257D068000B56D57 /* CustomCoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224826EA257D068000B56D57 /* CustomCoreDataError.swift */; };
 		224826F3257D06B700B56D57 /* ResultSavedWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224826F2257D06B700B56D57 /* ResultSavedWord.swift */; };
 		224826FE257D06DB00B56D57 /* ResultSaved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224826FD257D06DB00B56D57 /* ResultSaved.swift */; };
@@ -108,6 +109,7 @@
 		22400A6F257A701B00699223 /* WordNSNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordNSNotificationName.swift; sourceTree = "<group>"; };
 		22400A79257A86AB00699223 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
 		22455907259C99F000B00BD3 /* EnvironmentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProtocol.swift; sourceTree = "<group>"; };
+		2245590C259C9A5B00B00BD3 /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		224826EA257D068000B56D57 /* CustomCoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCoreDataError.swift; sourceTree = "<group>"; };
 		224826F2257D06B700B56D57 /* ResultSavedWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSavedWord.swift; sourceTree = "<group>"; };
 		224826FD257D06DB00B56D57 /* ResultSaved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSaved.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				2289C818259BA60300DB941E /* OperationState */,
 				2214C305257932DA0019701C /* AppLanguageType */,
+				2245590C259C9A5B00B00BD3 /* APIEnvironment.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1050,6 +1053,7 @@
 				84BA382325717ED400C59D90 /* WordDetailInteractor.swift in Sources */,
 				228D4B5925810FB900E8F27E /* WordValidationService.swift in Sources */,
 				2289C814259BA5C600DB941E /* OperationResult.swift in Sources */,
+				2245590D259C9A5B00B00BD3 /* APIEnvironment.swift in Sources */,
 				22E5C99F257965C400B7C347 /* CRUDWord.swift in Sources */,
 				84BA38462571850600C59D90 /* WordListInteractor.swift in Sources */,
 				84BA379525716B5100C59D90 /* SceneDelegate.swift in Sources */,
