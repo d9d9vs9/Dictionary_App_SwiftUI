@@ -12,4 +12,6 @@ protocol Endpoint {
     var httpMethod: HTTPMethod { get }
     var httpHeaders: HTTPHeader { get }
     var httpParameters: HTTPParameters? { get }
+    var requestType: RequestType { get }    
+    var responseType: ResponseType { get }
 }
