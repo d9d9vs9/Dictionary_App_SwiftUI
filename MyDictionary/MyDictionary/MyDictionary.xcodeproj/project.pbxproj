@@ -25,6 +25,7 @@
 		22455926259CA76000B00BD3 /* OperationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22455925259CA76000B00BD3 /* OperationProtocol.swift */; };
 		2245592B259CA7A500B00BD3 /* RequestDispatcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245592A259CA7A500B00BD3 /* RequestDispatcherProtocol.swift */; };
 		22455930259CA7F100B00BD3 /* ResponseOperationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245592F259CA7F100B00BD3 /* ResponseOperationResult.swift */; };
+		22455936259CA88E00B00BD3 /* APIOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22455935259CA88E00B00BD3 /* APIOperation.swift */; };
 		224826EB257D068000B56D57 /* CustomCoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224826EA257D068000B56D57 /* CustomCoreDataError.swift */; };
 		224826F3257D06B700B56D57 /* ResultSavedWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224826F2257D06B700B56D57 /* ResultSavedWord.swift */; };
 		224826FE257D06DB00B56D57 /* ResultSaved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224826FD257D06DB00B56D57 /* ResultSaved.swift */; };
@@ -124,6 +125,7 @@
 		22455925259CA76000B00BD3 /* OperationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationProtocol.swift; sourceTree = "<group>"; };
 		2245592A259CA7A500B00BD3 /* RequestDispatcherProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDispatcherProtocol.swift; sourceTree = "<group>"; };
 		2245592F259CA7F100B00BD3 /* ResponseOperationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseOperationResult.swift; sourceTree = "<group>"; };
+		22455935259CA88E00B00BD3 /* APIOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOperation.swift; sourceTree = "<group>"; };
 		224826EA257D068000B56D57 /* CustomCoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCoreDataError.swift; sourceTree = "<group>"; };
 		224826F2257D06B700B56D57 /* ResultSavedWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSavedWord.swift; sourceTree = "<group>"; };
 		224826FD257D06DB00B56D57 /* ResultSaved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSaved.swift; sourceTree = "<group>"; };
@@ -318,6 +320,14 @@
 				22400A6F257A701B00699223 /* WordNSNotificationName.swift */,
 			);
 			path = WordNSNotificationName;
+			sourceTree = "<group>";
+		};
+		22455934259CA88700B00BD3 /* APIOperation */ = {
+			isa = PBXGroup;
+			children = (
+				22455935259CA88E00B00BD3 /* APIOperation.swift */,
+			);
+			path = APIOperation;
 			sourceTree = "<group>";
 		};
 		224826E8257D066B00B56D57 /* Results */ = {
@@ -860,6 +870,7 @@
 		84BA3839257183E700C59D90 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
+				22455934259CA88700B00BD3 /* APIOperation */,
 				2289C80A259B9BC900DB941E /* ConcurrentOperation */,
 				228D4B5125810C6F00E8F27E /* WordValidationError */,
 				229C6C282580077E0034DCD4 /* AppStyling */,
@@ -1060,6 +1071,7 @@
 				22482715257D1FD600B56D57 /* ResultDeletedWord.swift in Sources */,
 				2289C800259B930B00DB941E /* HTTPHeader.swift in Sources */,
 				22455917259CA31300B00BD3 /* ResponseType.swift in Sources */,
+				22455936259CA88E00B00BD3 /* APIOperation.swift in Sources */,
 				22E5C9C525796AD900B7C347 /* WordManager.swift in Sources */,
 				84BA38352571818400C59D90 /* WordDetailModule.swift in Sources */,
 				2245592B259CA7A500B00BD3 /* RequestDispatcherProtocol.swift in Sources */,
