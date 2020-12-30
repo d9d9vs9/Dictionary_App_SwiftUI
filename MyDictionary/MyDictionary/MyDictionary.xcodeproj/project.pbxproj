@@ -20,6 +20,7 @@
 		2245590D259C9A5B00B00BD3 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245590C259C9A5B00B00BD3 /* APIEnvironment.swift */; };
 		22455912259CA2DD00B00BD3 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22455911259CA2DD00B00BD3 /* RequestType.swift */; };
 		22455917259CA31300B00BD3 /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22455916259CA31300B00BD3 /* ResponseType.swift */; };
+		2245591C259CA39100B00BD3 /* NetworkSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245591B259CA39100B00BD3 /* NetworkSessionProtocol.swift */; };
 		224826EB257D068000B56D57 /* CustomCoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224826EA257D068000B56D57 /* CustomCoreDataError.swift */; };
 		224826F3257D06B700B56D57 /* ResultSavedWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224826F2257D06B700B56D57 /* ResultSavedWord.swift */; };
 		224826FE257D06DB00B56D57 /* ResultSaved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224826FD257D06DB00B56D57 /* ResultSaved.swift */; };
@@ -114,6 +115,7 @@
 		2245590C259C9A5B00B00BD3 /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		22455911259CA2DD00B00BD3 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		22455916259CA31300B00BD3 /* ResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseType.swift; sourceTree = "<group>"; };
+		2245591B259CA39100B00BD3 /* NetworkSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionProtocol.swift; sourceTree = "<group>"; };
 		224826EA257D068000B56D57 /* CustomCoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCoreDataError.swift; sourceTree = "<group>"; };
 		224826F2257D06B700B56D57 /* ResultSavedWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSavedWord.swift; sourceTree = "<group>"; };
 		224826FD257D06DB00B56D57 /* ResultSaved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSaved.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				22E5C98125795D3300B7C347 /* WordProtocols */,
 				2214C30C2579333D0019701C /* LocalizableProtocol */,
 				22455907259C99F000B00BD3 /* EnvironmentProtocol.swift */,
+				2245591B259CA39100B00BD3 /* NetworkSessionProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1076,6 +1079,7 @@
 				2289C806259B938A00DB941E /* HTTPMethod.swift in Sources */,
 				22E5C9D825796EE000B7C347 /* AddWordInteractor.swift in Sources */,
 				22E5C9992579644100B7C347 /* DeleteWordProtocol.swift in Sources */,
+				2245591C259CA39100B00BD3 /* NetworkSessionProtocol.swift in Sources */,
 				84BA379725716B5100C59D90 /* ContentView.swift in Sources */,
 				2289C80C259B9C2000DB941E /* ConcurrentOperation.swift in Sources */,
 				84BA3856257188B300C59D90 /* WordModel.swift in Sources */,
