@@ -26,7 +26,7 @@ struct Constants {
         static let applicationJson: String = "application/json"
         
         /// return
-        /// Content-Type : application/json        
+        /// Content-Type : application/json
         static func defaultHeaders() -> HTTPHeader {
             return [contentType : applicationJson]
         }
