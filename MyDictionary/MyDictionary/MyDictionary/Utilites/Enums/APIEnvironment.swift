@@ -11,13 +11,6 @@ enum APIEnvironment: EnvironmentProtocol {
     
     case development
     
-    var httpHeaders: HTTPHeader? {
-        switch self {
-        case .development:
-            return nil
-        }
-    }
-    
     var baseURL: String {
         switch self {
         case .development:

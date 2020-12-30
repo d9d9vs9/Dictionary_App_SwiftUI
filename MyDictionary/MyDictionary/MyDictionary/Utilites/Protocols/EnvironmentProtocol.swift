@@ -7,7 +7,6 @@
 
 import Foundation
 
-protocol EnvironmentProtocol {
-    var httpHeaders: HTTPHeader? { get }
+protocol EnvironmentProtocol {    
     var baseURL: String { get }
 }

@@ -21,14 +21,10 @@ final class APIRequestDispatcherService: RequestDispatcherProtocol {
     
     func execute(endpoint: Endpoint, completion: @escaping (ResponseOperationResult) -> Void) -> URLSessionTask? {
         // Create a URL request.
-        guard var urlRequest = endpoint.urlRequest(with: environment) else {
+        guard let urlRequest = endpoint.urlRequest(with: environment) else {
             completion(.error(APIError.badRequest("Invalid URL for: \(endpoint)"), nil))
             return nil
         }
-        // Add the environment specific headers.
-        environment.httpHeaders?.forEach({ (key: String, value: String) in
-            urlRequest.addValue(value, forHTTPHeaderField: key)
-        })
         
         // Create a URLSessionTask to execute the URLRequest.
         var task: URLSessionTask?
@@ -75,7 +71,7 @@ final class APIRequestDispatcherService: RequestDispatcherProtocol {
                 completion(ResponseOperationResult.error(error, urlResponse))
             }
         }
-    }       
+    }
     
     fileprivate func parse(data: Data?) -> Result<Any, Error> {
         guard let data = data else {
