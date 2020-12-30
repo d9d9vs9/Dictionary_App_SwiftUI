@@ -25,7 +25,7 @@ final class APINetworkSessionService: NSObject {
         // Configure the default URLSessionConfiguration.
         let sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.timeoutIntervalForResource = 30
-        sessionConfiguration.waitsForConnectivity = true        
+        sessionConfiguration.waitsForConnectivity = true
         
         // Create a `OperationQueue` instance for scheduling the delegate calls and completion handlers.
         let queue = OperationQueue()
@@ -54,4 +54,16 @@ final class APINetworkSessionService: NSObject {
 // MARK: - URLSessionDelegate
 extension APINetworkSessionService: URLSessionDelegate {
     
+}
+
+// MARK: - NetworkSessionProtocol
+extension APINetworkSessionService: NetworkSessionProtocol {
+
+    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask? {
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            completionHandler(data, response, error)
+        }
+        return dataTask
+    }
+
 }
