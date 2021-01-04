@@ -8,5 +8,5 @@
 import Foundation
 
 enum ResponseType {    
-    case json
+    case data
 }

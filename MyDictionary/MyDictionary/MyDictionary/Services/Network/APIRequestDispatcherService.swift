@@ -30,8 +30,8 @@ final class APIRequestDispatcherService: RequestDispatcherProtocol {
         var task: URLSessionTask?
         switch endpoint.requestType {
         case .data:
-            task = networkSession.dataTask(with: urlRequest, completionHandler: { [weak self] (data, urlResponse, error) in
-                self?.handleJsonTaskResponse(data: data, urlResponse: urlResponse, error: error, completion: completion)
+            task = networkSession.dataTask(with: urlRequest, completionHandler: { (data, urlResponse, error) in
+                self.handleJsonTaskResponse(data: data, urlResponse: urlResponse, error: error, completion: completion)
             })
             break
         default:
@@ -54,17 +54,8 @@ final class APIRequestDispatcherService: RequestDispatcherProtocol {
         let result = verify(data: data, urlResponse: urlResponse, error: error)
         switch result {
         case .success(let data):
-            // Parse the JSON data
-            let parseResult = parse(data: data as? Data)
-            switch parseResult {
-            case .success(let json):
-                DispatchQueue.main.async {
-                    completion(ResponseOperationResult.json(json, urlResponse))
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    completion(ResponseOperationResult.error(error, urlResponse))
-                }
+            DispatchQueue.main.async {
+                completion(ResponseOperationResult.data(data, urlResponse))
             }
         case .failure(let error):
             DispatchQueue.main.async {
@@ -72,21 +63,8 @@ final class APIRequestDispatcherService: RequestDispatcherProtocol {
             }
         }
     }
-    
-    fileprivate func parse(data: Data?) -> Result<Any, Error> {
-        guard let data = data else {
-            return .failure(APIError.invalidResponse)
-        }
         
-        do {
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            return .success(json)
-        } catch (let exception) {
-            return .failure(APIError.parseError(exception.localizedDescription))
-        }
-    }
-    
-    fileprivate func verify(data: Any?, urlResponse: HTTPURLResponse, error: Error?) -> Result<Any, Error> {
+    fileprivate func verify(data: Data?, urlResponse: HTTPURLResponse, error: Error?) -> Result<Data, Error> {
         switch urlResponse.statusCode {
         case 200...299:
             if let data = data {

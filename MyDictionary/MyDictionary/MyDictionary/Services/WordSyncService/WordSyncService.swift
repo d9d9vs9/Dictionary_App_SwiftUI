@@ -13,6 +13,17 @@ protocol WordSyncService: CRUDWord {
 
 final class MYWordSyncService: WordSyncService {
     
+    fileprivate let requestDispatcher: APIRequestDispatcherService
+    
+    convenience init() {
+        self.init(apiRequestDispatcher: APIRequestDispatcherService.init(environment: APIEnvironment.development,
+                                                                         networkSession: APINetworkSessionService()))
+    }
+    
+    init(apiRequestDispatcher: APIRequestDispatcherService) {
+        self.requestDispatcher = apiRequestDispatcher
+    }
+    
 }
 
 extension MYWordSyncService {
@@ -26,7 +37,22 @@ extension MYWordSyncService {
 extension MYWordSyncService {
     
     func fetchWords(fetchLimit: Int, fetchOffset: Int, completionHandler: @escaping FetchResultWords) {
-        completionHandler(.success([]))
+        let endpoint = WordEndpoint.getWords
+        let apiOperation: APIOperation = APIOperation.init(endpoint)
+        apiOperation.execute(in: requestDispatcher) { (response) in
+            switch response {
+            case .data(let data, _):                
+                do {
+                    completionHandler(.success(try JSONDecoder.init().decode([WordModel].self, from: data)))
+                } catch {
+                    completionHandler(.failure(APIError.parseError(error.localizedDescription)))
+                }
+                break
+            case .error(let error, _):
+                completionHandler(.failure(error))
+                break
+            }
+        }
     }
     
     func fetchWord(byUUID uuid: String, completionHandler: @escaping ResultSavedWord) {

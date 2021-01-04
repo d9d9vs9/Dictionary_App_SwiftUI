@@ -14,7 +14,7 @@ enum APIEnvironment: EnvironmentProtocol {
     var baseURL: String {
         switch self {
         case .development:
-            return ""
+            return "http://localhost:8000/api/"
         }
     }
     
