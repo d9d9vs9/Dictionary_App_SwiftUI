@@ -85,7 +85,17 @@ extension MYWordSyncService {
 extension MYWordSyncService {
     
     func delete(byUUID uuid: String, completionHandler: @escaping ResultDeletedWord) {
-        completionHandler(.success)
+        APIOperation.init(WordEndpoint.deleteWord(atUUID: uuid))
+            .execute(in: requestDispatcher) { (response) in
+                switch response {
+                case .data:
+                    completionHandler(.success)
+                    break
+                case .error(let error, _):
+                    completionHandler(.failure(error))
+                    break
+                }
+            }
     }
     
 }

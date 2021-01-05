@@ -11,6 +11,7 @@ enum WordEndpoint: Endpoint {
     
     case addWord(_ word: WordModel)
     case getWords
+    case deleteWord(atUUID: String)
     
     var path: String {
         switch self {
@@ -18,6 +19,8 @@ enum WordEndpoint: Endpoint {
             return "addWord"
         case .getWords:
             return "words"
+        case .deleteWord(let uuid):
+            return "deleteWord" + "?" + WordModel.CodingKeys.uuid.rawValue + "=" + uuid
         }
     }
     
@@ -27,6 +30,8 @@ enum WordEndpoint: Endpoint {
             return .post
         case .getWords:
             return .get
+        case .deleteWord:
+            return .delete
         }
     }
     
@@ -35,6 +40,8 @@ enum WordEndpoint: Endpoint {
         case .addWord:
             return Constants.HTTPHeaderConstants.defaultHeaders()
         case .getWords:
+            return Constants.HTTPHeaderConstants.defaultHeaders()
+        case .deleteWord:
             return Constants.HTTPHeaderConstants.defaultHeaders()
         }
     }
@@ -45,6 +52,8 @@ enum WordEndpoint: Endpoint {
             return model.data
         case .getWords:
             return nil
+        case .deleteWord:
+            return nil
         }
     }
     
@@ -54,6 +63,8 @@ enum WordEndpoint: Endpoint {
             return .data
         case .getWords:
             return .data
+        case .deleteWord:
+            return .data
         }
     }
     
@@ -62,6 +73,8 @@ enum WordEndpoint: Endpoint {
         case .addWord:
             return .data
         case .getWords:
+            return .data
+        case .deleteWord:
             return .data
         }
     }
