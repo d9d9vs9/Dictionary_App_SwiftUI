@@ -29,7 +29,17 @@ final class MYWordSyncService: WordSyncService {
 extension MYWordSyncService {
     
     func add(word: WordModel, completionHandler: @escaping ResultSavedWord) {
-        completionHandler(.success(word))
+        APIOperation.init(WordEndpoint.addWord(word))
+            .execute(in: requestDispatcher) { (response) in
+                switch response {
+                case .data:
+                    completionHandler(.success(word))
+                    break
+                case .error(let error, _):
+                    completionHandler(.failure(error))
+                    break
+                }
+            }
     }
     
 }
@@ -40,7 +50,7 @@ extension MYWordSyncService {
         APIOperation.init(WordEndpoint.getWords)
             .execute(in: requestDispatcher) { (response) in
                 switch response {
-                case .data(let data, _):                
+                case .data(let data, _):
                     do {
                         completionHandler(.success(try JSONDecoder.init().decode([WordModel].self, from: data)))
                     } catch {

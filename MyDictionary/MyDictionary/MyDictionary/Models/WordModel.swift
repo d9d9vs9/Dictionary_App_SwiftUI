@@ -7,7 +7,7 @@
 
 import CoreData
 
-public final class WordModel: Decodable {
+public final class WordModel: Codable {
         
     enum CodingKeys: String, CodingKey {
         case uuid
@@ -42,6 +42,14 @@ public final class WordModel: Decodable {
         self.word = try container.decode(String.self, forKey: .word)
         self.translatedWord = try container.decode(String.self, forKey: .translatedWord)
         self.stringCreatedDate = try container.decode(String.self, forKey: .createdDate)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(uuid, forKey: .uuid)
+        try container.encode(word, forKey: .word)
+        try container.encode(translatedWord, forKey: .translatedWord)
+        try container.encode(stringCreatedDate, forKey: .createdDate)
     }
     
 }

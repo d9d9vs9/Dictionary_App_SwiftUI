@@ -9,10 +9,13 @@ import Foundation
 
 enum WordEndpoint: Endpoint {
     
+    case addWord(_ word: WordModel)
     case getWords
     
     var path: String {
         switch self {
+        case .addWord:
+            return "addWord"
         case .getWords:
             return "words"
         }
@@ -20,6 +23,8 @@ enum WordEndpoint: Endpoint {
     
     var httpMethod: HTTPMethod {
         switch self {
+        case .addWord:
+            return .post
         case .getWords:
             return .get
         }
@@ -27,6 +32,8 @@ enum WordEndpoint: Endpoint {
     
     var httpHeaders: HTTPHeader {
         switch self {
+        case .addWord:
+            return Constants.HTTPHeaderConstants.defaultHeaders()
         case .getWords:
             return Constants.HTTPHeaderConstants.defaultHeaders()
         }
@@ -34,20 +41,26 @@ enum WordEndpoint: Endpoint {
     
     var httpParameters: HTTPParameters? {
         switch self {
+        case .addWord(let model):
+            return model.data
         case .getWords:
             return nil
         }
     }
     
-    var requestType: RequestType  {
+    var requestType: RequestType {
         switch self {
+        case .addWord:
+            return .data
         case .getWords:
             return .data
         }
     }
     
-    var responseType: ResponseType  {
+    var responseType: ResponseType {
         switch self {
+        case .addWord:
+            return .data
         case .getWords:
             return .data
         }
