@@ -14,7 +14,7 @@ protocol WordDetailInteractor {
 
 final class MYWordDetailInteractor: WordDetailInteractor {
     
-    fileprivate let wordCoreDataService: WordCoreDataService
+    fileprivate let wordManager: WordManager
     fileprivate let coreDataStack: CoreDataStack
     fileprivate let wordValidationService: WordValidationService
     let dataModel: WordDetailDataModel
@@ -23,7 +23,7 @@ final class MYWordDetailInteractor: WordDetailInteractor {
         self.dataModel = dataModel
         let coreDataStack = CoreDataStack.init()
         self.coreDataStack = coreDataStack
-        self.wordCoreDataService = MYWordCoreDataService.init(managedObjectContext: coreDataStack.privateContext,
+        self.wordManager = MYWordManager.init(managedObjectContext: coreDataStack.privateContext,
                                                               coreDataStack: coreDataStack)
         
         self.wordValidationService = MYWordValidationService.init()
@@ -40,7 +40,7 @@ extension MYWordDetailInteractor {
                                              translatedWord: translatedWord) {
         case .success:
             // Update And Save Word
-            wordCoreDataService.update(word: WordModel.init(uuid: dataModel.wordModel.uuid,
+            wordManager.update(word: WordModel.init(uuid: dataModel.wordModel.uuid,
                                                             word: wordText,
                                                             translatedWord: translatedWord,
                                                             stringCreatedDate: dataModel.wordModel.stringCreatedDate)) { [unowned self] (result) in

@@ -18,7 +18,7 @@ protocol WordListInteractor {
 final class MYWordListInteractor: WordListInteractor {
     
     fileprivate let coreDataStack: CoreDataStack
-    fileprivate let wordCoreDataService: WordCoreDataService
+    fileprivate let wordManager: WordManager
     // Default is []
     fileprivate var words: [WordModel]
     // Default is 0
@@ -27,7 +27,7 @@ final class MYWordListInteractor: WordListInteractor {
     
     init(dataModel: WordListDataModel) {
         self.coreDataStack = CoreDataStack.init()
-        self.wordCoreDataService = MYWordCoreDataService(managedObjectContext: coreDataStack.privateContext,
+        self.wordManager = MYWordManager(managedObjectContext: coreDataStack.privateContext,
                                                          coreDataStack: coreDataStack)
         self.words = []
         self.dataModel = dataModel
@@ -47,7 +47,7 @@ extension MYWordListInteractor {
     
     func delete(from source: IndexSet) {
         guard let uuid = source.map ({ self.dataModel.words[$0].uuid }).first else { return }
-        wordCoreDataService.delete(byUUID: uuid) { [unowned self] (result) in
+        wordManager.delete(byUUID: uuid) { [unowned self] (result) in
             switch result {
             case .success:
                 self.dataModel.words.removeAll(where: { $0.uuid == uuid })
@@ -158,7 +158,7 @@ fileprivate extension MYWordListInteractor {
 fileprivate extension MYWordListInteractor {
     
     func fetchedWords(completionHandler: @escaping FetchResultWords) {
-        wordCoreDataService.fetchWords(fetchLimit: Constants.CoreData.fetchLimit,
+        wordManager.fetchWords(fetchLimit: Constants.CoreData.fetchLimit,
                                        fetchOffset: self.fetchOffset,
                                        completionHandler: completionHandler)
     }
@@ -169,7 +169,7 @@ fileprivate extension MYWordListInteractor {
 fileprivate extension MYWordListInteractor {
     
     func fetchedAllWordsCount(completionHandler: @escaping FetchResultWordsCount) {
-        wordCoreDataService.fetchWordsCount(completionHandler: completionHandler)
+        wordManager.fetchWordsCount(completionHandler: completionHandler)
     }
     
 }
