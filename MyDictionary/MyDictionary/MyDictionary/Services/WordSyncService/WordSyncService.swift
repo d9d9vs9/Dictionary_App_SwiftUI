@@ -37,22 +37,21 @@ extension MYWordSyncService {
 extension MYWordSyncService {
     
     func fetchWords(fetchLimit: Int, fetchOffset: Int, completionHandler: @escaping FetchResultWords) {
-        let endpoint = WordEndpoint.getWords
-        let apiOperation: APIOperation = APIOperation.init(endpoint)
-        apiOperation.execute(in: requestDispatcher) { (response) in
-            switch response {
-            case .data(let data, _):                
-                do {
-                    completionHandler(.success(try JSONDecoder.init().decode([WordModel].self, from: data)))
-                } catch {
-                    completionHandler(.failure(APIError.parseError(error.localizedDescription)))
+        APIOperation.init(WordEndpoint.getWords)
+            .execute(in: requestDispatcher) { (response) in
+                switch response {
+                case .data(let data, _):                
+                    do {
+                        completionHandler(.success(try JSONDecoder.init().decode([WordModel].self, from: data)))
+                    } catch {
+                        completionHandler(.failure(APIError.parseError(error.localizedDescription)))
+                    }
+                    break
+                case .error(let error, _):
+                    completionHandler(.failure(error))
+                    break
                 }
-                break
-            case .error(let error, _):
-                completionHandler(.failure(error))
-                break
             }
-        }
     }
     
     func fetchWord(byUUID uuid: String, completionHandler: @escaping ResultSavedWord) {
@@ -74,7 +73,7 @@ extension MYWordSyncService {
 }
 
 extension MYWordSyncService {
-        
+    
     func delete(byUUID uuid: String, completionHandler: @escaping ResultDeletedWord) {
         completionHandler(.success)
     }
