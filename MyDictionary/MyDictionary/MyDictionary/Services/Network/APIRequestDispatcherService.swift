@@ -33,9 +33,7 @@ final class APIRequestDispatcherService: RequestDispatcherProtocol {
             task = networkSession.dataTask(with: urlRequest, completionHandler: { (data, urlResponse, error) in
                 self.handleJsonTaskResponse(data: data, urlResponse: urlResponse, error: error, completion: completion)
             })
-            break
-        default:
-            break
+            break        
         }
         
         // Start the task.

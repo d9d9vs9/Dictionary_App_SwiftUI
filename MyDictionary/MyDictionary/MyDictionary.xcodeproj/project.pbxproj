@@ -36,6 +36,7 @@
 		22482708257D070A00B56D57 /* ResultWithoutSuccessGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22482707257D070A00B56D57 /* ResultWithoutSuccessGeneric.swift */; };
 		2248270D257D078800B56D57 /* WordCoreDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248270C257D078800B56D57 /* WordCoreDataServiceTests.swift */; };
 		22482715257D1FD600B56D57 /* ResultDeletedWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22482714257D1FD600B56D57 /* ResultDeletedWord.swift */; };
+		2248641325A5E9D800F8ADE8 /* DeleteWordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248641225A5E9D800F8ADE8 /* DeleteWordModel.swift */; };
 		2287C6BB2583A77F00E14F34 /* FetchResultWordsCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287C6BA2583A77E00E14F34 /* FetchResultWordsCount.swift */; };
 		2289C800259B930B00DB941E /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2289C7FF259B930B00DB941E /* HTTPHeader.swift */; };
 		2289C806259B938A00DB941E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2289C805259B938A00DB941E /* HTTPMethod.swift */; };
@@ -140,6 +141,7 @@
 		22482707257D070A00B56D57 /* ResultWithoutSuccessGeneric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWithoutSuccessGeneric.swift; sourceTree = "<group>"; };
 		2248270C257D078800B56D57 /* WordCoreDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCoreDataServiceTests.swift; sourceTree = "<group>"; };
 		22482714257D1FD600B56D57 /* ResultDeletedWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDeletedWord.swift; sourceTree = "<group>"; };
+		2248641225A5E9D800F8ADE8 /* DeleteWordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWordModel.swift; sourceTree = "<group>"; };
 		2287C6BA2583A77E00E14F34 /* FetchResultWordsCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResultWordsCount.swift; sourceTree = "<group>"; };
 		2289C7FF259B930B00DB941E /* HTTPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
 		2289C805259B938A00DB941E /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -912,6 +914,7 @@
 			isa = PBXGroup;
 			children = (
 				84BA3855257188B300C59D90 /* WordModel.swift */,
+				2248641225A5E9D800F8ADE8 /* DeleteWordModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1095,6 +1098,7 @@
 				84BA379325716B5100C59D90 /* AppDelegate.swift in Sources */,
 				228D4B5325810C8800E8F27E /* WordValidationError.swift in Sources */,
 				84BA3860257192A200C59D90 /* WordListCell.swift in Sources */,
+				2248641325A5E9D800F8ADE8 /* DeleteWordModel.swift in Sources */,
 				22E5C9CC25796E3000B7C347 /* AddWordView.swift in Sources */,
 				224826EB257D068000B56D57 /* CustomCoreDataError.swift in Sources */,
 				84BA383C257183FD00C59D90 /* RootView.swift in Sources */,

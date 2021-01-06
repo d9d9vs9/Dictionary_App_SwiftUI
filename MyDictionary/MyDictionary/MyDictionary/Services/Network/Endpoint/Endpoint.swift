@@ -29,7 +29,7 @@ extension Endpoint {
         // Append all related properties.
         request.httpMethod = httpMethod.rawValue
         request.allHTTPHeaderFields = httpHeaders
-        request.httpBody = jsonBody
+        request.httpBody = httpBody
         
         return request
     }
@@ -60,9 +60,9 @@ extension Endpoint {
     }
     
     /// Returns the URLRequest body `Data`
-    fileprivate var jsonBody: Data? {
-        // The body data should be used for POST, PUT and PATCH only
-        guard [.post, .put].contains(httpMethod), let data = httpParameters else {
+    fileprivate var httpBody: Data? {
+        // The body data should be used for POST, PUT and DELETE only
+        guard [.post, .put, .delete].contains(httpMethod), let data = httpParameters else {
             return nil
         }
         return data

@@ -11,7 +11,7 @@ enum WordEndpoint: Endpoint {
     
     case addWord(_ word: WordModel)
     case getWords
-    case deleteWord(atUUID: String)
+    case deleteWord(atModel: DeleteWordModel)
     
     var path: String {
         switch self {
@@ -19,8 +19,8 @@ enum WordEndpoint: Endpoint {
             return "addWord"
         case .getWords:
             return "words"
-        case .deleteWord(let uuid):
-            return "deleteWord" + "?" + WordModel.CodingKeys.uuid.rawValue + "=" + uuid
+        case .deleteWord:
+            return "deleteWord"
         }
     }
     
@@ -52,8 +52,8 @@ enum WordEndpoint: Endpoint {
             return model.data
         case .getWords:
             return nil
-        case .deleteWord:
-            return nil
+        case .deleteWord(let model):
+            return model.data
         }
     }
     
