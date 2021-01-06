@@ -11,6 +11,7 @@ enum WordEndpoint: Endpoint {
     
     case addWord(_ word: WordModel)
     case getWords
+    case updateWord(atModel: UpdateWordModel)
     case deleteWord(atModel: DeleteWordModel)
     
     var path: String {
@@ -19,6 +20,8 @@ enum WordEndpoint: Endpoint {
             return "addWord"
         case .getWords:
             return "words"
+        case .updateWord:
+            return "updateWord"
         case .deleteWord:
             return "deleteWord"
         }
@@ -30,6 +33,8 @@ enum WordEndpoint: Endpoint {
             return .post
         case .getWords:
             return .get
+        case .updateWord:
+            return .put
         case .deleteWord:
             return .delete
         }
@@ -40,6 +45,8 @@ enum WordEndpoint: Endpoint {
         case .addWord:
             return Constants.HTTPHeaderConstants.defaultHeaders()
         case .getWords:
+            return Constants.HTTPHeaderConstants.defaultHeaders()
+        case .updateWord:
             return Constants.HTTPHeaderConstants.defaultHeaders()
         case .deleteWord:
             return Constants.HTTPHeaderConstants.defaultHeaders()
@@ -52,6 +59,8 @@ enum WordEndpoint: Endpoint {
             return model.data
         case .getWords:
             return nil
+        case .updateWord(let model):
+            return model.data
         case .deleteWord(let model):
             return model.data
         }
@@ -63,6 +72,8 @@ enum WordEndpoint: Endpoint {
             return .data
         case .getWords:
             return .data
+        case .updateWord:
+            return .data
         case .deleteWord:
             return .data
         }
@@ -73,6 +84,8 @@ enum WordEndpoint: Endpoint {
         case .addWord:
             return .data
         case .getWords:
+            return .data
+        case .updateWord:
             return .data
         case .deleteWord:
             return .data

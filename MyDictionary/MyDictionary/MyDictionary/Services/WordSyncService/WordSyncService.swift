@@ -77,7 +77,19 @@ extension MYWordSyncService {
 extension MYWordSyncService {
     
     func update(word: WordModel, completionHandler: @escaping ResultSavedWord) {
-        completionHandler(.success(word))
+        APIOperation.init(WordEndpoint.updateWord(atModel: .init(uuid: word.uuid,
+                                                                 word: word.word,
+                                                                 translatedWord: word.translatedWord)))
+            .execute(in: requestDispatcher) { (response) in
+                switch response {
+                case .data:
+                    completionHandler(.success(word))
+                    break
+                case .error(let error, _):
+                    completionHandler(.failure(error))
+                    break
+                }
+            }
     }
     
 }
