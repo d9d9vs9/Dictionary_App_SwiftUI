@@ -53,6 +53,7 @@
 		229A01EF257A69B8006CF2DC /* MyDictionary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 229A01E3257A645C006CF2DC /* MyDictionary.xcdatamodeld */; };
 		229C6C2A258007950034DCD4 /* AppStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C6C29258007950034DCD4 /* AppStyling.swift */; };
 		229F220725A4A11C000FEFD2 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229F220625A4A11C000FEFD2 /* Encodable+Extension.swift */; };
+		22AD16AB25A89611001E2568 /* APIWordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AD16AA25A89611001E2568 /* APIWordService.swift */; };
 		22C3F5D6257A5DEC00449FBC /* CoreDataEntityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3F5D5257A5DEC00449FBC /* CoreDataEntityName.swift */; };
 		22E5C97D25795D2E00B7C347 /* AddWordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5C97C25795D2E00B7C347 /* AddWordProtocol.swift */; };
 		22E5C98D2579638A00B7C347 /* UpdateWordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5C98C2579638A00B7C347 /* UpdateWordProtocol.swift */; };
@@ -159,6 +160,7 @@
 		229A01E4257A645C006CF2DC /* MyDictionary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyDictionary.xcdatamodel; sourceTree = "<group>"; };
 		229C6C29258007950034DCD4 /* AppStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyling.swift; sourceTree = "<group>"; };
 		229F220625A4A11C000FEFD2 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
+		22AD16AA25A89611001E2568 /* APIWordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWordService.swift; sourceTree = "<group>"; };
 		22C3F5D5257A5DEC00449FBC /* CoreDataEntityName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEntityName.swift; sourceTree = "<group>"; };
 		22E5C97C25795D2E00B7C347 /* AddWordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordProtocol.swift; sourceTree = "<group>"; };
 		22E5C98C2579638A00B7C347 /* UpdateWordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWordProtocol.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 		2214C321257935660019701C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				22AD16A925A89601001E2568 /* APIWordService */,
 				2289C7FD259B925400DB941E /* Network */,
 				228D4B5725810F8600E8F27E /* WordValidationService */,
 				22E5C9B3257968C100B7C347 /* WordSyncService */,
@@ -460,6 +463,15 @@
 			path = AppStyling;
 			sourceTree = "<group>";
 		};
+		22AD16A925A89601001E2568 /* APIWordService */ = {
+			isa = PBXGroup;
+			children = (
+				22AD16AA25A89611001E2568 /* APIWordService.swift */,
+				22478AA125A348E900F8FBFC /* WordEndpoint.swift */,
+			);
+			path = APIWordService;
+			sourceTree = "<group>";
+		};
 		22C3F5D4257A5DC900449FBC /* CoreDataEntityName */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,7 +522,6 @@
 			isa = PBXGroup;
 			children = (
 				22E5C9B4257968CA00B7C347 /* WordSyncService.swift */,
-				22478AA125A348E900F8FBFC /* WordEndpoint.swift */,
 			);
 			path = WordSyncService;
 			sourceTree = "<group>";
@@ -1117,6 +1128,7 @@
 				84BA384B2571852900C59D90 /* WordListRouter.swift in Sources */,
 				22482703257D06EC00B56D57 /* FetchResultWords.swift in Sources */,
 				84BA382B25717F1100C59D90 /* WordDetailRouter.swift in Sources */,
+				22AD16AB25A89611001E2568 /* APIWordService.swift in Sources */,
 				84BA37F32571769500C59D90 /* WordListView.swift in Sources */,
 				84BA37FE257176E900C59D90 /* WordDetailView.swift in Sources */,
 				22E5C9AF257967D500B7C347 /* WordCoreDataService.swift in Sources */,
