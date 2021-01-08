@@ -21,29 +21,41 @@ struct WordDetailView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(KeysForTranslate.word.localized)
-            TextField(self.presenter.wordModel.word,
-                      text: $word)
-            Text(KeysForTranslate.translatedWord.localized)
-            TextField(self.presenter.wordModel.translatedWord,
-                      text: $translatedWord)
-                .navigationBarItems(trailing:
-                                        Button(action: {
-                                            self.doneButtonAction()
-                                        }) {
-                                            Text(KeysForTranslate.done.localized)
-                                        })
-                
-                .onDisappear {
-                    debugPrint("onDisappear", String(describing: WordDetailView.self))
-                }                
+        ZStack {
+            VStack() {
+                Text(KeysForTranslate.word.localized)
+                TextField(self.presenter.wordModel.word,
+                          text: $word)
+                    .padding([.leading, .trailing], 16)
+                Text(KeysForTranslate.translatedWord.localized)
+                TextField(self.presenter.wordModel.translatedWord,
+                          text: $translatedWord)
+                    .padding([.leading, .trailing], 16)
+                    .navigationBarItems(trailing:
+                                            Button(action: {
+                                                self.doneButtonAction()
+                                            }) {
+                                                Text(KeysForTranslate.done.localized)
+                                            })
+                    
+                    .onDisappear {
+                        debugPrint("onDisappear", String(describing: WordDetailView.self))
+                    }
+                Spacer()
+            }
+            .alert(isPresented: $showAlertAction) {
+                Alert(title: Text(KeysForTranslate.error.localized),
+                      message: Text(error?.localizedDescription ?? Constants.StaticText.emptyString),
+                      dismissButton: .cancel(Text(KeysForTranslate.cancel.localized)))
+            }
         }
-        .alert(isPresented: $showAlertAction) {
-            Alert(title: Text(KeysForTranslate.error.localized),
-                  message: Text(error?.localizedDescription ?? Constants.StaticText.emptyString),
-                  dismissButton: .cancel(Text(KeysForTranslate.cancel.localized)))
-        }
+        .contentShape(Rectangle())
+        .gesture(
+            TapGesture()
+                .onEnded { _ in
+                    Constants.Keyboard.hideKeyboard()
+                }
+        )
     }
 }
 
