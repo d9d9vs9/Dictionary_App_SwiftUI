@@ -23,22 +23,37 @@ struct AddWordView: View {
     }
     
     var body: some View {
-        VStack() {
-            TextField(KeysForTranslate.pleaseEnterWord.localized,
-                      text: $wordText)
-            TextField(KeysForTranslate.pleaseEnterTranslate.localized,
-                      text: $translatedText)
-            Button(action: {
-                self.addToMyDictionaryButtonAction()
-            }) {
-                Text(KeysForTranslate.addToMyDictionary.localized)
+        ZStack {
+            VStack() {
+                TextField(KeysForTranslate.pleaseEnterWord.localized,
+                          text: $wordText)
+                    .padding(.top, 24)
+                    .padding([.leading, .trailing], 16)
+                TextField(KeysForTranslate.pleaseEnterTranslate.localized,
+                          text: $translatedText)
+                    .padding([.leading, .trailing], 16)
+                Button(action: {
+                    self.addToMyDictionaryButtonAction()
+                }) {
+                    Text(KeysForTranslate.addToMyDictionary.localized)
+                }
+                .padding(.top, 8)
+                .padding([.leading, .trailing], 16)
+                Spacer()
             }
-        }.padding()
-        .alert(isPresented: $showAlertAction) {
-            Alert(title: Text(KeysForTranslate.error.localized),
-                  message: Text(error?.localizedDescription ?? Constants.StaticText.emptyString),
-                  dismissButton: .cancel(Text(KeysForTranslate.cancel.localized)))
+            .alert(isPresented: $showAlertAction) {
+                Alert(title: Text(KeysForTranslate.error.localized),
+                      message: Text(error?.localizedDescription ?? Constants.StaticText.emptyString),
+                      dismissButton: .cancel(Text(KeysForTranslate.cancel.localized)))
+            }
         }
+        .contentShape(Rectangle())
+        .gesture(
+            TapGesture()
+                .onEnded { _ in
+                    Constants.Keyboard.hideKeyboard()
+                }
+        )
     }
     
 }

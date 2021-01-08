@@ -40,10 +40,7 @@ struct SearchBar: View {
                     self.searchInput = Constants.StaticText.emptyString
                     self.cancelButtonAction = true
                     // Hide Keyboard
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
-                                                    to: nil,
-                                                    from: nil,
-                                                    for: nil)
+                    Constants.Keyboard.hideKeyboard()
                 }, label: {
                     Text(KeysForTranslate.cancel.localized)
                 })
