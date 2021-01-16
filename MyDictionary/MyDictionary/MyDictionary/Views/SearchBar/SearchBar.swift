@@ -15,7 +15,7 @@ struct SearchBar: View {
     var body: some View {
         ZStack {
             // Background Color
-            Color(AppStyling.Color.lightGray.color())
+            AppStyling.MYColor.gray.color()
             // Custom Search Bar (Search Bar + 'Cancel' Button)
             HStack {
                 // Search Bar
@@ -26,14 +26,14 @@ struct SearchBar: View {
                     // Search Area TextField
                     TextField(KeysForTranslate.search.localized,
                               text: $searchInput)
-                        .accentColor(Color(AppStyling.Color.systemBlack.color()))
-                        .foregroundColor(Color(AppStyling.Color.systemBlack.color()))
+                        .accentColor(AppStyling.MYColor.black.color())
+                        .foregroundColor(AppStyling.MYColor.black.color())
                 }
                 .padding(EdgeInsets(top: 5,
                                     leading: 5,
                                     bottom: 5,
                                     trailing: 5))
-                .background(Color(AppStyling.Color.systemWhite.color()).cornerRadius(8.0))
+                .background(AppStyling.MYColor.white.color()).cornerRadius(8.0)
                 
                 // 'Cancel' Button
                 Button(action: {
@@ -44,7 +44,7 @@ struct SearchBar: View {
                 }, label: {
                     Text(KeysForTranslate.cancel.localized)
                 })
-                .accentColor(Color(AppStyling.Color.systemWhite.color()))
+                .accentColor(AppStyling.MYColor.white.color())
                 .padding(EdgeInsets(top: 2,
                                     leading: 2,
                                     bottom: 2,

@@ -5,31 +5,28 @@
 //  Created by Дмитрий Чумаков on 08.12.2020.
 //
 
-import UIKit
+import SwiftUI
 
 struct AppStyling {
     
-    enum Color {
+    enum MYColor {
         
         case clear
-        case systemBlack
-        case systemWhite
-        case systemGray
-        case lightGray
+        case black
+        case white
+        case gray
         
-        /// - Parameter alpha: Default is 1
-        func color(alpha: CGFloat = 1) -> UIColor {
+        /// - Parameter opacity: Default is 1
+        func color(opacity: Double = 1) -> Color {
             switch self {
             case .clear:
-                return UIColor.clear
-            case .systemBlack:
-                return UIColor.black.withAlphaComponent(alpha)
-            case .systemWhite:
-                return UIColor.white.withAlphaComponent(alpha)
-            case .systemGray:
-                return UIColor.systemGray.withAlphaComponent(alpha)
-            case .lightGray:                
-                return UIColor.lightGray.withAlphaComponent(alpha)
+                return .clear
+            case .black:
+                return Color.black.opacity(opacity)
+            case .white:
+                return Color.white.opacity(opacity)
+            case .gray:
+                return Color.gray.opacity(opacity)
             }
         }
         
