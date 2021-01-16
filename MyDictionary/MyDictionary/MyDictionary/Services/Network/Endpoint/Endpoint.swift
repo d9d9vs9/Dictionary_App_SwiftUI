@@ -53,7 +53,7 @@ extension Endpoint {
             return nil
         }
         // Convert parameters to query items.
-        return dict.map { (key: String, value: Any?) -> URLQueryItem in
+        return dict.map { (key: String, value: Any) -> URLQueryItem in
             let valueString = String(describing: value)
             return URLQueryItem(name: key, value: valueString)
         }
