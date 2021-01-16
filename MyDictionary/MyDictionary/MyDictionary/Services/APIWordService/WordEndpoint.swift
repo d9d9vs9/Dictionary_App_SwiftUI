@@ -10,7 +10,7 @@ import Foundation
 enum WordEndpoint: Endpoint {
     
     case addWord(_ word: WordModel)
-    case getWords
+    case getWords(atModel: GetWordModel)
     case updateWord(atModel: UpdateWordModel)
     case deleteWord(atModel: DeleteWordModel)
     
@@ -57,8 +57,8 @@ enum WordEndpoint: Endpoint {
         switch self {
         case .addWord(let model):
             return model.data
-        case .getWords:
-            return nil
+        case .getWords(let model):
+            return model.data            
         case .updateWord(let model):
             return model.data
         case .deleteWord(let model):

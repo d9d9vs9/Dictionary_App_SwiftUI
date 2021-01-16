@@ -12,7 +12,7 @@ protocol WordManager: CRUDWord {
 }
 
 final class MYWordManager: WordManager {
-            
+    
     fileprivate let managedObjectContext: NSManagedObjectContext,
                     coreDataStack: CoreDataStack,
                     apiWordService: APIWordService,
@@ -69,7 +69,7 @@ extension MYWordManager {
 }
 
 extension MYWordManager {
-        
+    
     func delete(byUUID uuid: String, completionHandler: @escaping ResultDeletedWord) {
         wordCoreDataService.delete(byUUID: uuid, completionHandler: completionHandler)
         apiWordService.delete(byUUID: uuid, completionHandler: completionHandler)

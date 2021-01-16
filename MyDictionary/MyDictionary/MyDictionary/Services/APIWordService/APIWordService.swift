@@ -46,7 +46,8 @@ extension MYAPIWordService {
 extension MYAPIWordService {
     
     func fetchWords(fetchLimit: Int, fetchOffset: Int, completionHandler: @escaping FetchResultWords) {
-        APIOperation.init(WordEndpoint.getWords)
+        APIOperation.init(WordEndpoint.getWords(atModel: GetWordModel.init(limit: fetchLimit,
+                                                                           offset: fetchOffset)))
             .execute(in: requestDispatcher) { (response) in
                 switch response {
                 case .data(let data, _):
