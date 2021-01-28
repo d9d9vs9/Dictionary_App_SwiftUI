@@ -54,6 +54,14 @@
 		229C6C2A258007950034DCD4 /* AppStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C6C29258007950034DCD4 /* AppStyling.swift */; };
 		229F220725A4A11C000FEFD2 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229F220625A4A11C000FEFD2 /* Encodable+Extension.swift */; };
 		22AD16AB25A89611001E2568 /* APIWordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AD16AA25A89611001E2568 /* APIWordService.swift */; };
+		22B36AB225C2CBC500312773 /* CoreDataMigrationVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B36AB125C2CBC500312773 /* CoreDataMigrationVersion.swift */; };
+		22B36AB725C2CBCE00312773 /* CoreDataMigrationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B36AB625C2CBCE00312773 /* CoreDataMigrationStep.swift */; };
+		22B36ABC25C2CBD800312773 /* CoreDataMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B36ABB25C2CBD800312773 /* CoreDataMigrator.swift */; };
+		22B36AC125C2CBE000312773 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B36AC025C2CBE000312773 /* CoreDataManager.swift */; };
+		22B36AC625C2D32B00312773 /* NSPersistentStoreCoordinator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B36AC525C2D32B00312773 /* NSPersistentStoreCoordinator+Extension.swift */; };
+		22B36ACB25C2D37000312773 /* NSManagedObjectModel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B36ACA25C2D37000312773 /* NSManagedObjectModel+Extension.swift */; };
+		22B36AD025C2D7A100312773 /* CoreDataMigratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B36ACF25C2D7A100312773 /* CoreDataMigratorTests.swift */; };
+		22B36AD825C2D85800312773 /* NSManagedObjectContext+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B36AD725C2D85800312773 /* NSManagedObjectContext+Extension.swift */; };
 		22C3F5D6257A5DEC00449FBC /* CoreDataEntityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3F5D5257A5DEC00449FBC /* CoreDataEntityName.swift */; };
 		22D1892625B30942005807DE /* GetWordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1892525B30942005807DE /* GetWordModel.swift */; };
 		22E5C97D25795D2E00B7C347 /* AddWordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5C97C25795D2E00B7C347 /* AddWordProtocol.swift */; };
@@ -162,6 +170,14 @@
 		229C6C29258007950034DCD4 /* AppStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyling.swift; sourceTree = "<group>"; };
 		229F220625A4A11C000FEFD2 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		22AD16AA25A89611001E2568 /* APIWordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWordService.swift; sourceTree = "<group>"; };
+		22B36AB125C2CBC500312773 /* CoreDataMigrationVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMigrationVersion.swift; sourceTree = "<group>"; };
+		22B36AB625C2CBCE00312773 /* CoreDataMigrationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMigrationStep.swift; sourceTree = "<group>"; };
+		22B36ABB25C2CBD800312773 /* CoreDataMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMigrator.swift; sourceTree = "<group>"; };
+		22B36AC025C2CBE000312773 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		22B36AC525C2D32B00312773 /* NSPersistentStoreCoordinator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPersistentStoreCoordinator+Extension.swift"; sourceTree = "<group>"; };
+		22B36ACA25C2D37000312773 /* NSManagedObjectModel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectModel+Extension.swift"; sourceTree = "<group>"; };
+		22B36ACF25C2D7A100312773 /* CoreDataMigratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMigratorTests.swift; sourceTree = "<group>"; };
+		22B36AD725C2D85800312773 /* NSManagedObjectContext+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extension.swift"; sourceTree = "<group>"; };
 		22C3F5D5257A5DEC00449FBC /* CoreDataEntityName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEntityName.swift; sourceTree = "<group>"; };
 		22D1892525B30942005807DE /* GetWordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWordModel.swift; sourceTree = "<group>"; };
 		22E5C97C25795D2E00B7C347 /* AddWordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordProtocol.swift; sourceTree = "<group>"; };
@@ -241,6 +257,9 @@
 			children = (
 				2214C2FF2579324D0019701C /* String+Extension.swift */,
 				229F220625A4A11C000FEFD2 /* Encodable+Extension.swift */,
+				22B36AC525C2D32B00312773 /* NSPersistentStoreCoordinator+Extension.swift */,
+				22B36ACA25C2D37000312773 /* NSManagedObjectModel+Extension.swift */,
+				22B36AD725C2D85800312773 /* NSManagedObjectContext+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -672,6 +691,7 @@
 				22400A79257A86AB00699223 /* TestCoreDataStack.swift */,
 				2248270C257D078800B56D57 /* WordCoreDataServiceTests.swift */,
 				84BA37AC25716B5700C59D90 /* MyDictionaryTests.swift */,
+				22B36ACF25C2D7A100312773 /* CoreDataMigratorTests.swift */,
 				84BA37AE25716B5700C59D90 /* Info.plist */,
 			);
 			path = MyDictionaryTests;
@@ -705,6 +725,10 @@
 				84BA37E62571740100C59D90 /* CoreDataStack */,
 				84BA37D625716FF500C59D90 /* Model */,
 				229A01BF257A60FA006CF2DC /* Items */,
+				22B36AB125C2CBC500312773 /* CoreDataMigrationVersion.swift */,
+				22B36AB625C2CBCE00312773 /* CoreDataMigrationStep.swift */,
+				22B36ABB25C2CBD800312773 /* CoreDataMigrator.swift */,
+				22B36AC025C2CBE000312773 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -1094,8 +1118,10 @@
 				22E5C97D25795D2E00B7C347 /* AddWordProtocol.swift in Sources */,
 				84BA37E82571740F00C59D90 /* CoreDataStack.swift in Sources */,
 				2214C30E2579334A0019701C /* LocalizableProtocol.swift in Sources */,
+				22B36AD825C2D85800312773 /* NSManagedObjectContext+Extension.swift in Sources */,
 				2287C6BB2583A77F00E14F34 /* FetchResultWordsCount.swift in Sources */,
 				229A01C3257A60FA006CF2DC /* Word+CoreDataClass.swift in Sources */,
+				22B36AB725C2CBCE00312773 /* CoreDataMigrationStep.swift in Sources */,
 				2214C3002579324D0019701C /* String+Extension.swift in Sources */,
 				22C3F5D6257A5DEC00449FBC /* CoreDataEntityName.swift in Sources */,
 				84BA3850257185D200C59D90 /* WordListModule.swift in Sources */,
@@ -1116,6 +1142,7 @@
 				228D4B5325810C8800E8F27E /* WordValidationError.swift in Sources */,
 				84BA3860257192A200C59D90 /* WordListCell.swift in Sources */,
 				2248641325A5E9D800F8ADE8 /* DeleteWordModel.swift in Sources */,
+				22B36AC625C2D32B00312773 /* NSPersistentStoreCoordinator+Extension.swift in Sources */,
 				22E5C9CC25796E3000B7C347 /* AddWordView.swift in Sources */,
 				224826EB257D068000B56D57 /* CustomCoreDataError.swift in Sources */,
 				84BA383C257183FD00C59D90 /* RootView.swift in Sources */,
@@ -1131,6 +1158,7 @@
 				84BA384B2571852900C59D90 /* WordListRouter.swift in Sources */,
 				22D1892625B30942005807DE /* GetWordModel.swift in Sources */,
 				22482703257D06EC00B56D57 /* FetchResultWords.swift in Sources */,
+				22B36ABC25C2CBD800312773 /* CoreDataMigrator.swift in Sources */,
 				84BA382B25717F1100C59D90 /* WordDetailRouter.swift in Sources */,
 				22AD16AB25A89611001E2568 /* APIWordService.swift in Sources */,
 				84BA37F32571769500C59D90 /* WordListView.swift in Sources */,
@@ -1139,6 +1167,7 @@
 				2289C827259BBE8200DB941E /* Endpoint.swift in Sources */,
 				22455921259CA42200B00BD3 /* APINetworkSessionService.swift in Sources */,
 				22E90248257FBBEA00CF5846 /* SearchBar.swift in Sources */,
+				22B36AC125C2CBE000312773 /* CoreDataManager.swift in Sources */,
 				2214C307257932E60019701C /* AppLanguageType.swift in Sources */,
 				2289C806259B938A00DB941E /* HTTPMethod.swift in Sources */,
 				22E5C9D825796EE000B7C347 /* AddWordInteractor.swift in Sources */,
@@ -1146,7 +1175,9 @@
 				2245591C259CA39100B00BD3 /* NetworkSessionProtocol.swift in Sources */,
 				84BA379725716B5100C59D90 /* ContentView.swift in Sources */,
 				2248641825A5F66500F8ADE8 /* UpdateWordModel.swift in Sources */,
+				22B36ACB25C2D37000312773 /* NSManagedObjectModel+Extension.swift in Sources */,
 				2289C80C259B9C2000DB941E /* ConcurrentOperation.swift in Sources */,
+				22B36AB225C2CBC500312773 /* CoreDataMigrationVersion.swift in Sources */,
 				84BA3856257188B300C59D90 /* WordModel.swift in Sources */,
 				84BA380B2571772C00C59D90 /* WordListDataModel.swift in Sources */,
 				84BA3806257176F900C59D90 /* WordDetailDataModel.swift in Sources */,
@@ -1175,6 +1206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BA37AD25716B5700C59D90 /* MyDictionaryTests.swift in Sources */,
+				22B36AD025C2D7A100312773 /* CoreDataMigratorTests.swift in Sources */,
 				22400A7A257A86AB00699223 /* TestCoreDataStack.swift in Sources */,
 				2248270D257D078800B56D57 /* WordCoreDataServiceTests.swift in Sources */,
 			);

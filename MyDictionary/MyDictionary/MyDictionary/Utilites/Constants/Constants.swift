@@ -14,7 +14,11 @@ struct Constants {
         static let emptyString: String = ""
         static let defaultTableName: String = "Localizable"
         static let appName: String = "MyDictionary"
+        static let dot = "."
         static let momdExtension: String = "momd"
+        static let omoExtension: String = "omo"
+        static let momExtension: String = "mom"
+        static let sqliteExtension: String = "sqlite"
     }
     
     struct CoreData {

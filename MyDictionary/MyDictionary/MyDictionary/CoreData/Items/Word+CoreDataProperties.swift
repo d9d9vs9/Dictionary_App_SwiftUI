@@ -13,6 +13,7 @@ struct WordAttributeName {
     static let uuid: String = "uuid"
     static let word: String = "word"
     static let translatedWord: String = "translatedWord"
+    static let stringCreatedDate: String = "stringCreatedDate"
 }
 
 extension Word {
